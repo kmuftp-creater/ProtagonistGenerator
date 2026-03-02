@@ -113,6 +113,7 @@
             display: flex;
             align-items: center;
             letter-spacing: 0.05em;
+            white-space: nowrap;
         }
         .field-label i { width: 18px; text-align: center; margin-right: 4px; color: var(--theme-color); transition: color 0.3s ease;}
         
@@ -161,19 +162,19 @@
     <div id="toast-container"></div>
 
     <!-- 說明與自訂 Modal -->
-    <div id="custom-dialog" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50">
-        <div class="bg-surface border-line border rounded-[12px] shadow-2xl w-11/12 max-w-lg p-6 transform scale-95 transition-transform duration-200" id="dialog-box">
-            <h3 id="dialog-title" class="text-xl font-bold text-main mb-2">Title</h3>
-            <div id="dialog-content" class="text-muted text-sm mb-4">Message goes here</div>
-            <div class="flex justify-end gap-3 mt-6">
-                <button id="dialog-cancel" class="px-4 py-2 rounded-[8px] text-sm font-medium text-muted hover:text-main hover:bg-gray-500/10 transition border border-transparent">取消/關閉</button>
+    <div id="custom-dialog" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/60 p-4">
+        <div class="bg-surface border-line border rounded-[12px] shadow-2xl w-full max-w-2xl p-6 transform scale-95 transition-transform duration-200 flex flex-col max-h-[90vh]" id="dialog-box">
+            <h3 id="dialog-title" class="text-xl font-bold text-main mb-3 flex-none">Title</h3>
+            <div id="dialog-content" class="text-muted text-sm mb-2 overflow-y-auto custom-scrollbar pr-2 flex-1">Message goes here</div>
+            <div class="flex justify-end gap-3 mt-4 flex-none pt-3 border-t border-line">
+                <button id="dialog-cancel" class="px-4 py-2 rounded-[8px] text-sm font-medium text-muted hover:text-main hover:bg-gray-500/10 transition border border-transparent">關閉視窗</button>
                 <button id="dialog-confirm" class="px-4 py-2 rounded-[8px] text-sm font-medium bg-[var(--theme-color)] text-white hover:opacity-90 transition shadow-lg hidden">確認</button>
             </div>
         </div>
     </div>
 
     <!-- 頂部固定 Header -->
-    <header class="flex-none px-4 md:px-8 py-4 border-b border-line bg-surface z-30 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <header class="flex-none px-4 md:px-8 py-4 border-b border-line bg-surface z-30 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4 overflow-x-hidden">
         <div class="flex flex-col">
             <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
                 <span class="text-theme">天菜</span><span class="text-main">產生器</span>
@@ -240,7 +241,7 @@
             </nav>
 
             <!-- 內部可滑動區塊 -->
-            <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 space-y-10" id="scroll-content">
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-8 space-y-10" id="scroll-content">
                 
                 <!-- Section 1: 人物 (Identity) -->
                 <section id="tab-identity" class="space-y-5">
@@ -248,8 +249,8 @@
                         <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-user-circle mr-3 text-theme"></i>人物設定</h2>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="sm:col-span-2 lg:col-span-1">
                             <label class="field-label"><i class="fas fa-signature"></i> 人物名稱 (Name)</label>
                             <input type="text" id="char-name" value="Protagonist" class="input-field w-full px-4 py-2 text-theme font-mono text-sm">
                         </div>
@@ -263,7 +264,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div>
                             <label class="field-label"><i class="fas fa-birthday-cake"></i> 年齡 (Age)</label>
                             <select id="char-age" class="input-field w-full px-4 py-2 text-sm"></select>
@@ -272,7 +273,7 @@
                             <label class="field-label"><i class="fas fa-ruler-vertical"></i> 身高 (Height)</label>
                             <select id="body-height" class="input-field w-full px-4 py-2 text-sm"></select>
                         </div>
-                        <div class="col-span-2 md:col-span-1">
+                        <div>
                             <label class="field-label text-theme"><i class="fas fa-shapes"></i> 體態 (Type)</label>
                             <select id="body-type" class="input-field w-full px-4 py-2 text-sm"></select>
                         </div>
@@ -283,7 +284,7 @@
                             <label class="field-label text-theme !mb-0"><i class="fas fa-ruler-combined"></i> 三圍數據 (Measurements)</label>
                             <span id="bust-warn" class="text-[10px] text-[var(--success)] font-bold hidden flex items-center bg-[var(--success)]/10 px-2 py-1 rounded-full"><i class="fas fa-shield-alt mr-1"></i> 安全模式隱藏</span>
                         </div>
-                        <div class="grid grid-cols-3 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
                                 <label class="text-[10px] text-muted block mb-1">胸圍 (Bust)</label>
                                 <select id="body-bust" class="input-field w-full px-2 py-1.5 text-xs mb-1"></select>
@@ -303,7 +304,7 @@
                     </div>
 
                     <!-- 臉部、髮型、妝容與表情六宮格 -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div>
                             <label class="field-label"><i class="fas fa-cut"></i> 髮型 (Style)</label>
                             <select id="hair-style" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -350,7 +351,7 @@
                     <!-- 特殊質感 -->
                     <div class="bg-[var(--theme-glow)] border border-theme p-3 rounded-[8px] transition-all duration-300">
                         <label class="field-label text-theme mb-2"><i class="fas fa-wand-magic-sparkles"></i> 特殊質感疊加 (Effects)</label>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
                             <label class="flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition">
                                 <input type="checkbox" id="effect-damp-hair" class="w-4 h-4 rounded" style="accent-color: var(--theme-color);">
                                 <span class="text-xs text-main">💧 頭髮微濕</span>
@@ -373,22 +374,22 @@
                         <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-tshirt mr-3 text-theme"></i>服裝穿搭</h2>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="col-span-1 md:col-span-2 bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
                             <label class="field-label text-theme"><i class="fas fa-layer-group"></i> 服裝套裝 (Costume Preset)</label>
                             <select id="outfit-theme" class="input-field w-full px-4 py-2.5 text-sm font-medium mb-1"></select>
                             <input type="text" id="outfit-theme-custom" placeholder="自訂風格 (e.g. wearing a kimono)..." class="input-field w-full px-3 py-1.5 text-xs text-muted">
                         </div>
 
                         <!-- 穿著效果 (Fit & Physics) -->
-                        <div class="col-span-1 md:col-span-2 bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
                             <label class="field-label text-theme"><i class="fas fa-compress-arrows-alt"></i> 穿著效果 (Fit & Physics)</label>
                             <select id="outfit-fit-physics" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
                             <input type="text" id="outfit-fit-physics-custom" placeholder="自訂穿著效果..." class="input-field w-full px-3 py-1.5 text-xs text-muted">
                         </div>
 
                         <!-- 飾品配件區塊 -->
-                        <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-4 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                             <div>
                                 <label class="field-label"><i class="fas fa-hat-cowboy"></i> 頭飾 (Headwear)</label>
                                 <select id="outfit-head" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -411,7 +412,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line col-span-1 md:col-span-2">
+                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
                             <label class="field-label"><i class="fas fa-vest"></i> 外套 / 罩衫 (Outerwear)</label>
                             <div class="flex flex-col gap-1">
                                 <select id="outfit-outer" class="input-field w-full px-3 py-2 text-sm"></select>
@@ -423,10 +424,19 @@
                             <label class="field-label"><i class="fas fa-shirt"></i> 上衣 (Top)</label>
                             <div class="space-y-2">
                                 <select id="outfit-top" class="input-field w-full px-3 py-2 text-sm"></select>
-                                <div class="grid grid-cols-3 gap-2">
-                                    <select id="top-color" data-placeholder="顏色 (Color)" class="input-field w-full px-2 py-1.5 text-[11px]"></select>
-                                    <select id="top-mat" data-placeholder="材質 (Material)" class="input-field w-full px-2 py-1.5 text-[11px]"></select>
-                                    <select id="top-pat" data-placeholder="花紋 (Pattern)" class="input-field w-full px-2 py-1.5 text-[11px]"></select>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="text-[10px] text-muted block mb-1">顏色</label>
+                                        <select id="top-color" data-placeholder="-- 無 --" class="input-field w-full px-2 py-1.5 text-xs"></select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] text-muted block mb-1">材質</label>
+                                        <select id="top-mat" data-placeholder="-- 無 --" class="input-field w-full px-2 py-1.5 text-xs"></select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] text-muted block mb-1">花紋</label>
+                                        <select id="top-pat" data-placeholder="-- 無 --" class="input-field w-full px-2 py-1.5 text-xs"></select>
+                                    </div>
                                 </div>
                                 <input type="text" id="outfit-top-custom" placeholder="上衣自訂補充..." class="input-field w-full px-3 py-1.5 text-xs text-muted">
                             </div>
@@ -436,17 +446,26 @@
                             <label class="field-label"><i class="fas fa-user-tag"></i> 下著 (Bottom)</label>
                             <div class="space-y-2">
                                 <select id="outfit-bottom" class="input-field w-full px-3 py-2 text-sm"></select>
-                                <div class="grid grid-cols-3 gap-2">
-                                    <select id="bottom-color" data-placeholder="顏色 (Color)" class="input-field w-full px-2 py-1.5 text-[11px]"></select>
-                                    <select id="bottom-mat" data-placeholder="材質 (Material)" class="input-field w-full px-2 py-1.5 text-[11px]"></select>
-                                    <select id="bottom-pat" data-placeholder="花紋 (Pattern)" class="input-field w-full px-2 py-1.5 text-[11px]"></select>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                    <div>
+                                        <label class="text-[10px] text-muted block mb-1">顏色</label>
+                                        <select id="bottom-color" data-placeholder="-- 無 --" class="input-field w-full px-2 py-1.5 text-xs"></select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] text-muted block mb-1">材質</label>
+                                        <select id="bottom-mat" data-placeholder="-- 無 --" class="input-field w-full px-2 py-1.5 text-xs"></select>
+                                    </div>
+                                    <div>
+                                        <label class="text-[10px] text-muted block mb-1">花紋</label>
+                                        <select id="bottom-pat" data-placeholder="-- 無 --" class="input-field w-full px-2 py-1.5 text-xs"></select>
+                                    </div>
                                 </div>
                                 <input type="text" id="outfit-bottom-custom" placeholder="下著自訂補充..." class="input-field w-full px-3 py-1.5 text-xs text-muted">
                             </div>
                         </div>
 
                         <!-- 襪子鞋子區塊 -->
-                        <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div>
                                 <label class="field-label"><i class="fas fa-socks"></i> 襪子 (Socks)</label>
                                 <select id="outfit-sock" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -468,7 +487,7 @@
                     </div>
 
                     <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="field-label">基礎姿勢 (Pose)</label>
                                 <select id="action-pose" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -490,7 +509,7 @@
                     </div>
 
                     <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="field-label">時間 (Time)</label>
                                 <select id="scene-time" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -532,7 +551,7 @@
                     </div>
 
                     <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                             <div>
                                 <label class="field-label">焦段 (Lens)</label>
                                 <select id="cam-lens" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -544,7 +563,7 @@
                                 <input type="text" id="cam-aperture-custom" placeholder="自訂..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                             </div>
                             <div>
-                                <label class="field-label">構圖法則 (Composition)</label>
+                                <label class="field-label">構圖 (Composition)</label>
                                 <select id="scene-composition" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
                                 <input type="text" id="scene-composition-custom" placeholder="自訂..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                             </div>
@@ -631,15 +650,20 @@
                 
                 <textarea id="output-text" readonly class="flex-1 w-full bg-surface text-main text-sm p-4 rounded-[8px] border border-line font-mono resize-none outline-none leading-relaxed focus:border-theme transition-colors shadow-inner min-h-[100px]"></textarea>
                 
-                <button onclick="PromptEngine.copyPrompt()" class="mt-4 w-full bg-theme text-white hover:opacity-90 py-3 rounded-[8px] font-bold text-base transition-all shadow-md flex items-center justify-center gap-2 flex-none">
-                    <i class="fas fa-copy"></i> 複製提示詞 (Copy)
-                </button>
+                <div class="flex flex-col sm:flex-row gap-2 mt-4 flex-none">
+                    <button onclick="PromptEngine.copyPrompt(false)" class="flex-1 bg-theme text-white hover:opacity-90 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> 複製提示詞
+                    </button>
+                    <button onclick="PromptEngine.copyPrompt(true)" class="flex-1 bg-surface border border-line text-main hover:bg-gray-500/10 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-plus-circle text-theme"></i> 含負面詞複製
+                    </button>
+                </div>
             </div>
 
             <!-- History -->
             <div class="panel p-4 flex flex-col h-40 flex-none mb-4">
                 <div class="flex justify-between items-center mb-2">
-                    <label class="text-xs font-bold text-muted uppercase flex items-center"><i class="fas fa-history mr-2 text-theme"></i> 最近生成 (History)</label>
+                    <label class="text-xs font-bold text-muted uppercase flex items-center"><i class="fas fa-history mr-2 text-theme"></i> 歷史紀錄 (History)</label>
                     <button onclick="HistoryManager.clear()" class="text-[10px] text-muted hover:text-error transition flex items-center"><i class="fas fa-trash mr-1"></i> 清除</button>
                 </div>
                 <div id="history-list" class="flex-grow overflow-y-auto custom-scrollbar space-y-2 pr-1"></div>
@@ -650,7 +674,7 @@
 
     <!-- Footer -->
     <footer class="flex-none text-center text-muted text-xs pb-4">
-        v0.1.2 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+        v0.1.5 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
@@ -744,14 +768,20 @@
                     { value: "long hair with messy waves", label: "微波浪長髮 (Long Hair with Messy Waves)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "glossy long wavy hair", label: "柔亮大波浪 (Glossy Long Wavy Hair)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "sleek long hair with blunt bangs", label: "直順長髮+齊瀏海 (Sleek Long Hair with Blunt Bangs)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "glamorous side-parted vintage waves", label: "華麗側分復古波浪 (Glamorous Side-Parted Vintage Waves)", tags: ["clean", "sexy", "nsfw"] }
+                    { value: "glamorous side-parted vintage waves", label: "華麗側分復古波浪 (Glamorous Side-Parted Vintage Waves)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "middle-parted straight hair", label: "中分直髮 (Middle-parted straight hair)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "loose waves", label: "大波浪捲 (Loose waves)", tags: ["clean", "sexy", "nsfw"] }
                 ]},
                 { group: "中長髮", options: [
                     { value: "medium layered hair with center part", label: "中長層次+自然中分 (Medium Layered Hair with Center Part)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "medium straight hair with bangs", label: "中長直髮+齊瀏海 (Medium Straight Hair with Bangs)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "medium length wolf cut", label: "狼尾層次中長髮 (Medium Length Wolf Cut)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "french style medium length messy curls", label: "法式中長微亂捲 (French Style Medium Length Messy Curls)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "medium length natural layered cut", label: "自然層次剪裁 (Medium Length Natural Layered Cut)", tags: ["clean", "sexy", "nsfw"] }
+                    { value: "medium length natural layered cut", label: "自然層次剪裁 (Medium Length Natural Layered Cut)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "messy curly hair", label: "慵懶捲髮 (Messy curly hair)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "C-curl perm ends", label: "內彎髮尾 (C-curl perm ends)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "Japanese soft wavy hair", label: "日系微捲 (Japanese soft wavy hair)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "Korean medium-length hair", label: "韓式中長髮 (Korean medium-length hair)", tags: ["clean", "sexy", "nsfw"] }
                 ]},
                 { group: "短髮", options: [
                     { value: "airy short bob cut", label: "空氣感短鮑伯頭 (Airy Short Bob Cut)", tags: ["clean", "sexy", "nsfw"] },
@@ -759,7 +789,8 @@
                     { value: "deep side part short straight hair", label: "深側分直短髮 (Deep Side Part Short Straight Hair)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "short hair with blunt bangs", label: "齊劉海短髮妹妹頭 (Short Hair with Blunt Bangs)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "fluffy layered short hair", label: "碎層蓬鬆短髮 (Fluffy Layered Short Hair)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "pixie cut", label: "精靈短髮 (Pixie Cut)", tags: ["clean", "sexy", "nsfw"] }
+                    { value: "pixie cut", label: "精靈短髮 (Pixie Cut)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "short hair", label: "短髮造型 (Short hair)", tags: ["clean", "sexy", "nsfw"] }
                 ]},
                 { group: "綁髮/編髮", options: [
                     { value: "high ponytail", label: "高馬尾 (High Ponytail)", tags: ["clean", "sexy", "nsfw"] },
@@ -770,11 +801,14 @@
                     { value: "braids", label: "麻花辮 (Braids)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "bun", label: "丸子頭 (Bun)", tags: ["clean", "sexy", "nsfw"] }
                 ]},
-                { group: "其他", options: [
+                { group: "瀏海/其他", options: [
                     { value: "thin see-through bangs", label: "薄瀏海 (Thin See-Through Bangs)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "thin blunt bangs", label: "齊薄瀏海 (Thin Blunt Bangs)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "hime cut", label: "姬髮式 (Hime Cut)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "hair over eyes", label: "遮眼瀏海 (Hair Over Eyes)", tags: ["clean", "sexy", "nsfw"] }
+                    { value: "hair over eyes", label: "遮眼瀏海 (Hair Over Eyes)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "Korean bangs", label: "韓式瀏海 (Korean bangs)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "side-parted bangs", label: "側分瀏海 (Side-parted bangs)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "air bangs", label: "空氣瀏海 (Air bangs)", tags: ["clean", "sexy", "nsfw"] }
                 ]},
                 { group: "男性髮型", options: [
                     { value: "textured crop with fringe", label: "微分碎蓋 (Textured crop with fringe)", tags: ["clean", "sexy", "nsfw"] },
@@ -1693,16 +1727,16 @@
                 { value: "split diopter lens", label: "分割透鏡 (Split Diopter)", tags: ["clean", "sexy", "nsfw"] }
             ],
             camAperture: [
-                { value: "f/1.6", label: "f/1.6 (夢幻虛化) (Shallow DoF)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "f/1.8", label: "f/1.8 (大光圈) (Large Aperture)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "f/2.8", label: "f/2.8 (中光圈) (Medium Aperture)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "f/5.6", label: "f/5.6 (適中) (Moderate Aperture)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "f/8", label: "f/8 (小光圈) (Small Aperture)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "f/11", label: "f/11 (更小光圈) (Smaller Aperture)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "f/22", label: "f/22 (清晰) (Sharp Background)", tags: ["clean", "sexy", "nsfw"] }
+                { value: "f/1.6", label: "f/1.6 (極淺景深) (Shallow DoF)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "f/1.8", label: "f/1.8 (顯著散景) (Strong Bokeh)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "f/2.8", label: "f/2.8 (人像特寫) (Portrait Focus)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "f/5.6", label: "f/5.6 (街拍紀實) (Street/Doc)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "f/8", label: "f/8 (風景建築) (Landscape/Arch)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "f/11", label: "f/11 (深景深) (Deep DoF)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "f/22", label: "f/22 (全景深/星芒) (Full DoF)", tags: ["clean", "sexy", "nsfw"] }
             ],
             sceneComposition: [
-                { value: "rule of thirds", label: "三分法 (Rule of Thirds)", tags: ["clean", "sexy", "nsfw"] },
+                { value: "rule of thirds", label: "三分構圖 (Rule of Thirds)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "central composition", label: "中心構圖 (Central)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "symmetry composition", label: "對稱構圖 (Symmetry)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "leading lines composition", label: "引導線 (Leading Lines)", tags: ["clean", "sexy", "nsfw"] },
@@ -1742,28 +1776,35 @@
                 { value: "focus on feet", label: "聚焦美足 (Focus on Feet)", tags: ["clean", "sexy", "nsfw"] }
             ],
             sceneStyleRealistic: [
-                { group: "攝影與畫面風格", options: [
+                { group: "基礎攝影與風格", options: [
                     { value: "realism", label: "寫實 (Realism)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "iPhone photography", label: "iPhone 攝影 (IG風)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "influencer selfie", label: "網紅自拍 (Influencer)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "ultra-detailed photo", label: "超詳細照片 (Ultra-detailed)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "high fashion photography", label: "Fashion 時尚寫真 (High fashion)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "iPhone photography", label: "iPhone 手機攝影 (IG風)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "influencer selfie", label: "網紅自拍 (Influencer)", tags: ["clean", "sexy", "nsfw"] }
+                ]},
+                { group: "日系與私房寫真", options: [
                     { value: "japanese photobook style", label: "日系寫真 (Photobook)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "japanese sweet style", label: "日系甜美寫真 (Japanese Sweet Style)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "cinematic style", label: "電影感 (Cinematic)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "boudoir photography", label: "私房寫真 (Boudoir)", tags: ["sexy", "nsfw"] },
-                    { value: "polaroid aesthetic", label: "拍立得 (Polaroid)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "cyberpunk aesthetic", label: "賽博龐克 (Cyberpunk)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "film camera style", label: "底片相機風格 (Film camera)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "LOMO style", label: "LOMO風格 (LOMO style)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "Wong Kar-wai film style", label: "王家衛電影風格 (Wong Kar-wai)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "cafe style aesthetic", label: "咖啡館風格 (Cafe aesthetic)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "surrealism", label: "超現實主義 (Surrealism)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "ultra-detailed photo", label: "超詳細照片 (Ultra-detailed)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "dark aesthetic style", label: "dark 暗黑 (Dark aesthetic)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "artistic youth style", label: "文青風 (Artistic youth)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "fresh and light style", label: "小清新 (Fresh and light)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "airy photography", label: "空氣感寫真 (Airy photography)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "Muji style aesthetic", label: "無印良品風格 (Muji style)", tags: ["clean", "sexy", "nsfw"] },
-                    { value: "high fashion photography", label: "Fashion 時尚 (High fashion)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "fresh and light style", label: "小清新 (Fresh and light)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "artistic youth style", label: "文青風 (Artistic youth)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "boudoir photography", label: "私房寫真 (Boudoir)", tags: ["sexy", "nsfw"] }
+                ]},
+                { group: "電影與底片感", options: [
+                    { value: "cinematic style", label: "電影感 (Cinematic)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "cinematic color grading", label: "電影色調 (Cinematic color grading)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "Wong Kar-wai film style", label: "王家衛電影風格 (Wong Kar-wai)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "film camera style", label: "底片相機風格 (Film camera)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "LOMO style", label: "LOMO風格 (LOMO style)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "raw photo", label: "拍立得底片感 (Raw photo)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "cafe style aesthetic", label: "咖啡館風格 (Cafe aesthetic)", tags: ["clean", "sexy", "nsfw"] }
+                ]},
+                { group: "藝術與暗黑美學", options: [
+                    { value: "dark aesthetic style", label: "dark 暗黑 (Dark aesthetic)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "cyberpunk aesthetic", label: "賽博龐克 (Cyberpunk)", tags: ["clean", "sexy", "nsfw"] },
+                    { value: "surrealism", label: "超現實主義 (Surrealism)", tags: ["clean", "sexy", "nsfw"] },
                     { value: "dreamy Lofi photography", label: "夢幻洛菲攝影 (Dreamy Lofi)", tags: ["clean", "sexy", "nsfw"] }
                 ]}
             ],
@@ -1791,7 +1832,6 @@
                 { value: "long exposure", label: "長時間曝光 (Long Exposure)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "ghosting photography", label: "幽靈影像攝影 (Ghosting)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "free lensing", label: "自由鏡頭攝影 (Free Lensing)", tags: ["clean", "sexy", "nsfw"] },
-                { value: "sepia tone", label: "烏賊色調色 (Sepia Tone)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "solarization effect", label: "中途曝光 (Solarization)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "cross-processing", label: "交叉沖洗 (Cross-Processing)", tags: ["clean", "sexy", "nsfw"] },
                 { value: "inverted colors", label: "反轉顏色 (Inverted Colors)", tags: ["clean", "sexy", "nsfw"] },
@@ -2091,18 +2131,24 @@
                 UI.toast("已清除所有選擇", "fa-eraser");
             },
 
-            copyPrompt: () => {
-                const text = document.getElementById('output-text').value;
-                if(!text) return;
+            copyPrompt: (withNegative = false) => {
+                const positiveText = document.getElementById('output-text').value;
+                if(!positiveText) return;
+                
+                let copyText = positiveText;
+                if (withNegative) {
+                    const negativeText = "\nNegative Prompt: worst quality, low quality, blurry, low saturation, worst quality, blurry, watermark, text, error, acnes, age spot, 6 more fingers on one hand, deformity, bad legs, error legs, bad feet, malformed limbs, extra limbs, ugly, poorly drawn hands, poorly drawn feet, poorly drawn face, mutilated, extra fingers, mutated hands, bad hands, missing fingers, extra digit, fewer digits,bad anatomy, cloned face, disfigured, fused fingers,";
+                    copyText += negativeText;
+                }
                 
                 const textArea = document.createElement("textarea");
-                textArea.value = text;
+                textArea.value = copyText;
                 document.body.appendChild(textArea);
                 textArea.select();
                 try {
                     document.execCommand('copy');
-                    UI.toast("提示詞已複製！");
-                    HistoryManager.add(text);
+                    UI.toast(withNegative ? "已複製提示詞與負面詞！" : "提示詞已複製！");
+                    HistoryManager.add(positiveText); // 只把正向詞加入歷史紀錄
                 } catch (err) {
                     UI.toast("複製失敗，請手動選取", "fa-times-circle");
                 }
@@ -2278,27 +2324,57 @@
             },
             showHelp: () => {
                 const content = `
-                    <p class="mb-4">不同 AI 生成平台對於「裸露、敏感詞」的審查標準不一。請依照您使用的平台選擇對應模式：</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="p-4 rounded-[8px] border border-[var(--success)] bg-[var(--success)]/10 text-main">
-                            <h4 class="font-bold text-[var(--success)] mb-2 flex items-center"><i class="fas fa-check-square mr-2"></i>寬鬆平台 (推薦)</h4>
-                            <ul class="list-disc pl-5 text-sm space-y-1">
-                                <li>Civitai / Tensor.art / SeaArt</li>
-                                <li>Grok (xAI)</li>
-                                <li><strong>可使用：性感版、NSFW版</strong></li>
-                            </ul>
+                    <div class="space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-2">
+                        <div class="mb-4">
+                            <h4 class="font-bold text-main mb-2 border-b border-line pb-1">💡 操作方式</h4>
+                            <ol class="list-decimal pl-5 text-sm space-y-1 text-muted">
+                                <li><strong>選擇模式：</strong>依據使用的 AI 平台審查嚴格程度，選擇「清純版」、「性感版」或「NSFW版」。</li>
+                                <li><strong>挑選特徵：</strong>切換左側分頁，從下拉選單挑選或自行輸入喜好的風格與細節。</li>
+                                <li><strong>複製咒語：</strong>右側會即時生成英文提示詞，點擊「複製提示詞」或「含負面詞複製」。</li>
+                                <li><strong>貼上產圖：</strong>將複製的提示詞貼上至下方推薦的 AI 繪圖平台中生成圖片。</li>
+                            </ol>
                         </div>
-                        <div class="p-4 rounded-[8px] border border-[var(--error)] bg-[var(--error)]/10 text-main">
-                            <h4 class="font-bold text-[var(--error)] mb-2 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i>嚴格平台</h4>
-                            <ul class="list-disc pl-5 text-sm space-y-1">
-                                <li>Google Gemini / Meta AI</li>
-                                <li>禁止「Tight」、「Latex」、「Bust」等字眼。</li>
-                                <li><strong>請使用：清純版 (安全模式)</strong></li>
-                            </ul>
+
+                        <div class="mb-2">
+                            <h4 class="font-bold text-main mb-2 border-b border-line pb-1">🔗 AI 平台推薦與分類</h4>
+                            <div class="space-y-3">
+                                <!-- 嚴格平台 -->
+                                <div class="p-3 rounded-[8px] border border-blue-500/50 bg-blue-500/10 text-main">
+                                    <h5 class="font-bold text-blue-500 mb-1 flex items-center"><i class="fas fa-leaf mr-2"></i>嚴格平台 (請用：清純版)</h5>
+                                    <div class="flex flex-wrap gap-2 text-xs">
+                                        <a href="https://gemini.google.com/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Gemini</a>
+                                        <a href="https://dreamina.capcut.com/ai-tool/home/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">即夢</a>
+                                        <a href="https://www.doubao.com/chat/create-image" target="_blank" class="text-blue-400 hover:text-blue-300 underline">豆包</a>
+                                        <a href="https://app.pixverse.ai/onboard" target="_blank" class="text-blue-400 hover:text-blue-300 underline">吐司 (Pixverse)</a>
+                                        <a href="https://copilot.microsoft.com/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Copilot</a>
+                                        <a href="https://www.meta.ai/" target="_blank" class="text-blue-400 hover:text-blue-300 underline">Meta AI</a>
+                                    </div>
+                                </div>
+                                <!-- 寬鬆平台 (性感版) -->
+                                <div class="p-3 rounded-[8px] border border-pink-500/50 bg-pink-500/10 text-main">
+                                    <h5 class="font-bold text-pink-500 mb-1 flex items-center"><i class="fas fa-heart mr-2"></i>寬鬆平台 (可用：性感版)</h5>
+                                    <div class="flex flex-wrap gap-2 text-xs">
+                                        <a href="https://tengr.ai/en" target="_blank" class="text-pink-400 hover:text-pink-300 underline">tengr.ai</a>
+                                        <a href="https://x.ai/" target="_blank" class="text-pink-400 hover:text-pink-300 underline">Grok (xAI)</a>
+                                        <a href="https://leonardo.ai/" target="_blank" class="text-pink-400 hover:text-pink-300 underline">Leonardo.ai</a>
+                                        <a href="https://www.runninghub.ai/quick-create/VersatileVideoPro" target="_blank" class="text-pink-400 hover:text-pink-300 underline">Runninghub.ai</a>
+                                        <a href="https://poe.com/" target="_blank" class="text-pink-400 hover:text-pink-300 underline">Poe</a>
+                                    </div>
+                                </div>
+                                <!-- NSFW 平台 -->
+                                <div class="p-3 rounded-[8px] border border-orange-500/50 bg-orange-500/10 text-main">
+                                    <h5 class="font-bold text-orange-500 mb-1 flex items-center"><i class="fas fa-fire mr-2"></i>無限制平台 (可用：NSFW版)</h5>
+                                    <div class="flex flex-wrap gap-2 text-xs">
+                                        <a href="https://civitai.com/" target="_blank" class="text-orange-400 hover:text-orange-300 underline">Civitai</a>
+                                        <a href="https://tensor.art/zh-TW" target="_blank" class="text-orange-400 hover:text-orange-300 underline">Tensor.art</a>
+                                        <a href="https://www.seaart.ai/zhTW" target="_blank" class="text-orange-400 hover:text-orange-300 underline">SeaArt</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
-                UI.showModal('<i class="fas fa-book-open text-theme mr-2"></i>平台審查說明', content);
+                UI.showModal('<i class="fas fa-book-open text-theme mr-2"></i>平台審查說明與教學', content);
             },
             bindEvents: () => {
                 document.querySelectorAll('select, input').forEach(el => {
@@ -2325,7 +2401,7 @@
                 HistoryManager.render();
                 BookmarkManager.render();
                 App.bindEvents();
-                App.setMode('clean'); // 預設改為清純版
+                App.setMode('clean'); // 預設為清純版
 
                 const isDark = document.body.classList.contains('dark-mode');
                 const btn = document.getElementById('btn-theme-toggle');
