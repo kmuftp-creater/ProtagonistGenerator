@@ -19,11 +19,13 @@
             --border-line: #E2E8F0;
             --success: #5AC8A5;
             --error: #F06292;
+            --warning: #FFB74D;
             --theme-color: #3b82f6; 
             --theme-glow: rgba(59, 130, 246, 0.3);
             --radius-sm: 8px;
             --radius-md: 12px;
         }
+
         body.dark-mode {
             --bg-color: #0F172A;
             --surface: #1E293B;
@@ -31,11 +33,19 @@
             --text-muted: #94A3B8;
             --border-line: #334155;
         }
+
         body.mode-clean { --theme-color: #3b82f6; --theme-glow: rgba(59, 130, 246, 0.3); }
         body.mode-sexy { --theme-color: #ec4899; --theme-glow: rgba(236, 72, 153, 0.3); }
         body.mode-nsfw { --theme-color: #ea580c; --theme-glow: rgba(234, 88, 12, 0.3); }
 
-        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--text-main); transition: all 0.3s ease; min-height: 100vh;}
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overscroll-behavior-y: none; 
+        }
+
         .text-theme { color: var(--theme-color); transition: color 0.3s ease; }
         .bg-theme { background-color: var(--theme-color); transition: background-color 0.3s ease; }
         .border-theme { border-color: var(--theme-color); transition: border-color 0.3s ease; }
@@ -44,17 +54,56 @@
         .text-muted { color: var(--text-muted); transition: color 0.3s; }
         .border-line { border-color: var(--border-line); transition: border-color 0.3s; }
         
-        .panel { background-color: var(--surface); border: 1px solid var(--border-line); border-radius: var(--radius-md); box-shadow: 0 4px 12px -2px rgba(0,0,0,0.05); }
-        .input-field { background-color: var(--bg-color); border: 1px solid var(--border-line); color: var(--text-main); border-radius: var(--radius-sm); transition: all 0.2s; min-width: 0; }
-        .input-field:focus { outline: none; border-color: var(--theme-color); box-shadow: 0 0 0 2px var(--theme-glow); }
-        
-        select.input-field {
-            appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1em; padding-right: 1.8rem; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+        .panel {
+            background-color: var(--surface);
+            border: 1px solid var(--border-line);
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
         }
-        select.has-value { border-color: var(--theme-color) !important; box-shadow: 0 0 0 1px var(--theme-glow); }
-        
-        .field-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 0.375rem; display: flex; align-items: flex-start; letter-spacing: 0.05em; line-height: 1.2; white-space: nowrap; }
+
+        .input-field {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-line);
+            color: var(--text-main);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            min-width: 0; 
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--theme-color);
+            box-shadow: 0 0 0 2px var(--theme-glow);
+        }
+
+        select.input-field {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
+            padding-right: 1.8rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        select.has-value {
+            border-color: var(--theme-color) !important;
+            box-shadow: 0 0 0 1px var(--theme-glow);
+        }
+
+        .field-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.375rem;
+            display: flex;
+            align-items: flex-start;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
         .field-label i { width: 18px; flex-shrink: 0; text-align: center; margin-right: 4px; margin-top: 1px; color: var(--theme-color); transition: color 0.3s ease;}
         
         .tab-btn { transition: all 0.2s ease; border-bottom: 2px solid transparent; }
@@ -79,10 +128,14 @@
         .mode-btn:hover { opacity: 0.9; filter: grayscale(0%); }
         .mode-active { opacity: 1 !important; filter: grayscale(0%); border-color: var(--theme-color) !important; box-shadow: 0 4px 15px var(--theme-glow); transform: translateY(-2px); z-index: 10; }
 
-        section { scroll-margin-top: 100px; }
+        /* Offset for smooth scrolling, optimized for Desktop/Mobile */
+        section { scroll-margin-top: 60px; }
+        @media (min-width: 1024px) {
+            section { scroll-margin-top: 140px; }
+        }
     </style>
 </head>
-<body class="mode-clean dark-mode flex flex-col relative">
+<body class="mode-clean dark-mode flex flex-col min-h-screen">
 
     <div id="toast-container"></div>
 
@@ -97,49 +150,51 @@
         </div>
     </div>
 
-    <!-- 頂部固定 Header -->
-    <header class="flex-none px-4 md:px-6 py-3 border-b border-line bg-surface z-50 shadow-sm flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 w-full sticky top-0">
-        <div class="flex flex-col min-w-0">
-            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight truncate">
-                <span class="text-theme">天菜</span><span class="text-main">產生器</span>
-            </h1>
-            <p class="text-muted text-[10px] md:text-xs tracking-widest mt-1 font-medium truncate">
-                <i class="fas fa-wand-magic-sparkles mr-1 text-theme"></i>輕鬆創造屬於你的男/女主角
-            </p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-2 items-start sm:items-center w-full lg:w-auto">
-            <div class="flex gap-2">
-                <button onclick="App.showHelp()" class="panel px-3 py-1.5 text-xs text-main hover:text-theme transition flex items-center gap-1.5 whitespace-nowrap">
-                    <i class="fas fa-book-open text-theme"></i> 說明
-                </button>
-                <button onclick="App.toggleTheme()" class="panel px-3 py-1.5 text-xs text-main transition flex items-center gap-1.5 whitespace-nowrap" id="btn-theme-toggle">
-                    <i class="fas fa-sun text-yellow-400"></i> 亮色
-                </button>
+    <!-- 頂部固定 Header (滿版背景，內容切齊) -->
+    <header class="flex-none border-b border-line bg-surface z-50 shadow-sm w-full lg:sticky lg:top-0 lg:h-[80px] flex flex-col justify-center">
+        <div class="w-full max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 py-3 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+            <div class="flex flex-col min-w-0">
+                <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight truncate">
+                    <span class="text-theme">天菜</span><span class="text-main">產生器</span>
+                </h1>
+                <p class="text-muted text-[10px] md:text-xs tracking-widest mt-1 font-medium truncate">
+                    <i class="fas fa-wand-magic-sparkles mr-1 text-theme"></i>輕鬆創造屬於你的男/女主角
+                </p>
             </div>
 
-            <div class="flex bg-bg-color p-1 rounded-[10px] border border-line shadow-inner w-full sm:w-auto">
-                <button onclick="App.setMode('clean')" id="btn-clean" class="mode-btn flex-1 sm:flex-none bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[11px] px-3 sm:px-4 py-1.5 rounded-l-[6px] flex flex-col items-center justify-center gap-0.5">
-                    <i class="fas fa-leaf mb-0.5"></i><span class="font-bold whitespace-nowrap">清純版</span><span class="text-[8px] opacity-70">Safe</span>
-                </button>
-                <button onclick="App.setMode('sexy')" id="btn-sexy" class="mode-btn flex-1 sm:flex-none bg-pink-500/10 text-pink-600 dark:text-pink-400 text-[11px] px-3 sm:px-4 py-1.5 border-l border-r border-line flex flex-col items-center justify-center gap-0.5">
-                    <i class="fas fa-heart mb-0.5"></i><span class="font-bold whitespace-nowrap">性感版</span><span class="text-[8px] opacity-70">Standard</span>
-                </button>
-                <button onclick="App.setMode('nsfw')" id="btn-nsfw" class="mode-btn flex-1 sm:flex-none bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[11px] px-3 sm:px-4 py-1.5 rounded-r-[6px] flex flex-col items-center justify-center gap-0.5">
-                    <i class="fas fa-fire mb-0.5"></i><span class="font-bold whitespace-nowrap">NSFW版</span><span class="text-[8px] opacity-70">Uncensored</span>
-                </button>
+            <div class="flex flex-col sm:flex-row gap-2 items-start sm:items-center w-full lg:w-auto">
+                <div class="flex gap-2">
+                    <button onclick="App.showHelp()" class="panel px-3 py-1.5 text-xs text-main hover:text-theme transition flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fas fa-book-open text-theme"></i> 說明
+                    </button>
+                    <button onclick="App.toggleTheme()" class="panel px-3 py-1.5 text-xs text-main transition flex items-center gap-1.5 whitespace-nowrap" id="btn-theme-toggle">
+                        <i class="fas fa-sun text-yellow-400"></i> 亮色
+                    </button>
+                </div>
+
+                <div class="flex bg-bg-color p-1 rounded-[10px] border border-line shadow-inner w-full sm:w-auto">
+                    <button onclick="App.setMode('clean')" id="btn-clean" class="mode-btn flex-1 sm:flex-none bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[11px] px-3 sm:px-4 py-1.5 rounded-l-[6px] flex flex-col items-center justify-center gap-0.5">
+                        <i class="fas fa-leaf mb-0.5"></i><span class="font-bold whitespace-nowrap">清純版</span><span class="text-[8px] opacity-70">Safe</span>
+                    </button>
+                    <button onclick="App.setMode('sexy')" id="btn-sexy" class="mode-btn flex-1 sm:flex-none bg-pink-500/10 text-pink-600 dark:text-pink-400 text-[11px] px-3 sm:px-4 py-1.5 border-l border-r border-line flex flex-col items-center justify-center gap-0.5">
+                        <i class="fas fa-heart mb-0.5"></i><span class="font-bold whitespace-nowrap">性感版</span><span class="text-[8px] opacity-70">Standard</span>
+                    </button>
+                    <button onclick="App.setMode('nsfw')" id="btn-nsfw" class="mode-btn flex-1 sm:flex-none bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[11px] px-3 sm:px-4 py-1.5 rounded-r-[6px] flex flex-col items-center justify-center gap-0.5">
+                        <i class="fas fa-fire mb-0.5"></i><span class="font-bold whitespace-nowrap">NSFW版</span><span class="text-[8px] opacity-70">Uncensored</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- 中間核心排版 (flex-col-reverse 手機版Prompt在上，電腦版左右) -->
-    <div class="w-full max-w-[1500px] mx-auto p-3 sm:p-4 md:p-6 flex flex-col-reverse lg:flex-row gap-4 md:gap-6 items-start relative">
+    <!-- 中間核心排版 -->
+    <div class="flex-1 w-full max-w-[1500px] mx-auto px-3 sm:px-4 md:px-6 py-4 md:py-6 flex flex-col-reverse lg:flex-row gap-4 md:gap-6 items-start relative">
         
         <!-- 左側主控制區 -->
         <main class="w-full lg:w-[65%] xl:w-[70%] panel flex flex-col bg-surface z-10 relative">
             
             <!-- 完美的 Sticky 頁籤 -->
-            <nav class="flex-none flex overflow-x-auto custom-scrollbar border-b border-line bg-surface/95 backdrop-blur z-40 sticky top-[72px] lg:top-[76px] rounded-t-[12px]">
+            <nav class="flex-none flex overflow-x-auto custom-scrollbar border-b border-line bg-surface/95 backdrop-blur z-40 sticky top-0 lg:top-[80px] rounded-t-[12px]">
                 <button onclick="UI.scrollToSection('tab-identity')" id="btn-tab-identity" class="tab-btn flex-1 min-w-[70px] py-3 md:py-4 text-xs md:text-sm font-bold tab-active">
                     <i class="fas fa-user-circle mr-1 text-theme transition-colors"></i>人物
                 </button>
@@ -157,7 +212,7 @@
                 </button>
             </nav>
 
-            <div class="p-4 md:p-6 lg:p-8 space-y-10" id="scroll-content">
+            <div class="p-4 md:p-6 lg:p-8 space-y-10 pb-20" id="scroll-content">
                 
                 <!-- Section 1: 人物 -->
                 <section id="tab-identity" class="space-y-4 md:space-y-5">
@@ -288,7 +343,7 @@
                         <!-- 飾品配件區塊 -->
                         <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <p class="text-xs text-theme font-bold uppercase mb-3 flex items-center"><i class="fas fa-gem mr-2"></i> 飾品與配件</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-hat-cowboy"></i> 頭飾 (Headwear)</label>
                                     <select id="outfit-head" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
@@ -551,38 +606,9 @@
             </div>
         </main>
 
-        <!-- Right Column: Results & Tools (Sticky on Desktop, Top on Mobile) -->
-        <aside class="w-full lg:w-[320px] xl:w-[400px] flex flex-col gap-4 flex-none lg:sticky lg:top-[85px] z-30">
+        <!-- Right Column: Results & Tools -->
+        <aside class="flex-none w-full lg:w-[320px] xl:w-[400px] flex flex-col lg:sticky lg:top-[100px] z-30 gap-4 mb-4 lg:mb-0">
             
-            <div class="panel p-4 flex flex-col flex-none relative bg-gray-500/5">
-                <div class="flex justify-between items-center mb-3">
-                    <label class="text-sm font-bold text-theme tracking-wider flex items-center">
-                        <i class="fas fa-terminal mr-2"></i> PROMPT:
-                    </label>
-                    <span id="mode-status" class="text-[10px] uppercase font-bold px-2 py-1 rounded-[4px] bg-surface border border-line text-muted tracking-wider shadow-sm">Loading...</span>
-                </div>
-                
-                <textarea id="output-text" readonly class="w-full bg-surface text-main text-sm p-4 rounded-[8px] border border-line font-mono resize-none outline-none leading-relaxed focus:border-theme transition-colors shadow-inner h-[120px] lg:h-[180px]"></textarea>
-                
-                <div class="flex flex-col sm:flex-row gap-2 mt-3 flex-none">
-                    <button onclick="PromptEngine.copyPrompt(false)" class="flex-1 bg-theme text-white hover:opacity-90 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
-                        <i class="fas fa-copy"></i> 複製提示詞
-                    </button>
-                    <button onclick="PromptEngine.copyPrompt(true)" class="flex-1 bg-surface border border-line text-main hover:bg-gray-500/10 py-3 rounded-[8px] font-bold text-[11px] transition-all shadow-md flex items-center justify-center gap-1.5">
-                        <i class="fas fa-plus-circle text-theme"></i> 含負面詞複製
-                    </button>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 flex-none">
-                <button onclick="PromptEngine.resetAll()" class="panel border-line hover:border-gray-400 text-main text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
-                    <i class="fas fa-eraser text-lg group-hover:rotate-12 transition-transform"></i> 清除選擇
-                </button>
-                <button onclick="PromptEngine.randomizeAll()" class="panel border-line hover:border-theme text-main hover:text-theme text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
-                    <i class="fas fa-dice text-lg group-hover:rotate-12 transition-transform"></i> 隨機選取
-                </button>
-            </div>
-
             <div class="panel p-4 flex flex-col gap-2 flex-none">
                 <div class="flex justify-between items-center mb-1">
                     <label class="text-sm font-bold text-theme flex items-center"><i class="fas fa-bookmark mr-2"></i>個人書籤</label>
@@ -613,6 +639,35 @@
                 </div>
             </div>
 
+            <div class="grid grid-cols-2 gap-3 flex-none">
+                <button onclick="PromptEngine.resetAll()" class="panel border-line hover:border-gray-400 text-main text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
+                    <i class="fas fa-eraser text-lg group-hover:rotate-12 transition-transform"></i> 清除選擇
+                </button>
+                <button onclick="PromptEngine.randomizeAll()" class="panel border-line hover:border-theme text-main hover:text-theme text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
+                    <i class="fas fa-dice text-lg group-hover:rotate-12 transition-transform"></i> 隨機選取
+                </button>
+            </div>
+
+            <div class="panel p-4 flex flex-col flex-none relative bg-gray-500/5">
+                <div class="flex justify-between items-center mb-3">
+                    <label class="text-sm font-bold text-theme tracking-wider flex items-center">
+                        <i class="fas fa-terminal mr-2"></i> PROMPT:
+                    </label>
+                    <span id="mode-status" class="text-[10px] uppercase font-bold px-2 py-1 rounded-[4px] bg-surface border border-line text-muted tracking-wider shadow-sm">Loading...</span>
+                </div>
+                
+                <textarea id="output-text" readonly class="flex-none w-full bg-surface text-main text-sm p-4 rounded-[8px] border border-line font-mono resize-none outline-none leading-relaxed focus:border-theme transition-colors shadow-inner h-[140px]"></textarea>
+                
+                <div class="flex flex-col sm:flex-row gap-2 mt-3 flex-none">
+                    <button onclick="PromptEngine.copyPrompt(false)" class="flex-1 bg-theme text-white hover:opacity-90 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> 複製提示詞
+                    </button>
+                    <button onclick="PromptEngine.copyPrompt(true)" class="flex-1 bg-surface border border-line text-main hover:bg-gray-500/10 py-3 rounded-[8px] font-bold text-[11px] transition-all shadow-md flex items-center justify-center gap-1.5">
+                        <i class="fas fa-plus-circle text-theme"></i> 含負面詞複製
+                    </button>
+                </div>
+            </div>
+
             <!-- History -->
             <div class="panel p-4 flex flex-col flex-1 min-h-[150px] lg:max-h-[30vh]">
                 <div class="flex justify-between items-center mb-2">
@@ -626,7 +681,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line">
+    <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line mt-auto">
         v0.1.10 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
@@ -1407,13 +1462,7 @@
             },
             scrollToSection: (id) => {
                 const el = document.getElementById(id);
-                const container = document.getElementById('scroll-content');
-                if (el && container) {
-                    container.scrollTo({
-                        top: el.offsetTop - container.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
             },
             updateVisuals: () => {
                 document.querySelectorAll('select, input[type="text"]').forEach(el => {
@@ -1901,20 +1950,17 @@
                     if (el.type !== 'checkbox') el.addEventListener('input', PromptEngine.build);
                 });
 
-                const container = document.getElementById('scroll-content');
-                if (container) {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.replace('tab-active', 'tab-inactive'));
-                                const btn = document.getElementById(`btn-${entry.target.id}`);
-                                if(btn) btn.classList.replace('tab-inactive', 'tab-active');
-                            }
-                        });
-                    }, { root: container, rootMargin: "-20% 0px -80% 0px" });
-                    
-                    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
-                }
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.replace('tab-active', 'tab-inactive'));
+                            const btn = document.getElementById(`btn-${entry.target.id}`);
+                            if(btn) btn.classList.replace('tab-inactive', 'tab-active');
+                        }
+                    });
+                }, { rootMargin: "-20% 0px -80% 0px" });
+                
+                document.querySelectorAll('section').forEach(sec => observer.observe(sec));
             },
             init: async () => {
                 await Database.init();
