@@ -19,14 +19,11 @@
             --border-line: #E2E8F0;
             --success: #5AC8A5;
             --error: #F06292;
-            --warning: #FFB74D;
-            --info: #4FC3F7;
             --theme-color: #3b82f6; 
             --theme-glow: rgba(59, 130, 246, 0.3);
             --radius-sm: 8px;
             --radius-md: 12px;
         }
-
         body.dark-mode {
             --bg-color: #0F172A;
             --surface: #1E293B;
@@ -34,19 +31,11 @@
             --text-muted: #94A3B8;
             --border-line: #334155;
         }
-
         body.mode-clean { --theme-color: #3b82f6; --theme-glow: rgba(59, 130, 246, 0.3); }
         body.mode-sexy { --theme-color: #ec4899; --theme-glow: rgba(236, 72, 153, 0.3); }
         body.mode-nsfw { --theme-color: #ea580c; --theme-glow: rgba(234, 88, 12, 0.3); }
 
-        body {
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overscroll-behavior-y: none; 
-        }
-
+        body { font-family: 'Inter', 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--text-main); transition: all 0.3s ease; min-height: 100vh;}
         .text-theme { color: var(--theme-color); transition: color 0.3s ease; }
         .bg-theme { background-color: var(--theme-color); transition: background-color 0.3s ease; }
         .border-theme { border-color: var(--theme-color); transition: border-color 0.3s ease; }
@@ -55,56 +44,18 @@
         .text-muted { color: var(--text-muted); transition: color 0.3s; }
         .border-line { border-color: var(--border-line); transition: border-color 0.3s; }
         
-        .panel {
-            background-color: var(--surface);
-            border: 1px solid var(--border-line);
-            border-radius: var(--radius-md);
-            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .input-field {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-line);
-            color: var(--text-main);
-            border-radius: var(--radius-sm);
-            transition: all 0.2s;
-            min-width: 0; 
-        }
-        .input-field:focus {
-            outline: none;
-            border-color: var(--theme-color);
-            box-shadow: 0 0 0 2px var(--theme-glow);
-        }
-
+        .panel { background-color: var(--surface); border: 1px solid var(--border-line); border-radius: var(--radius-md); box-shadow: 0 4px 12px -2px rgba(0,0,0,0.05); }
+        .input-field { background-color: var(--bg-color); border: 1px solid var(--border-line); color: var(--text-main); border-radius: var(--radius-sm); transition: all 0.2s; min-width: 0; }
+        .input-field:focus { outline: none; border-color: var(--theme-color); box-shadow: 0 0 0 2px var(--theme-glow); }
+        
         select.input-field {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 0.5rem center;
-            background-size: 1em;
-            padding-right: 1.8rem;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
+            appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1em; padding-right: 1.8rem; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
         }
-        select.has-value {
-            border-color: var(--theme-color) !important;
-            box-shadow: 0 0 0 1px var(--theme-glow);
-        }
-
-        .field-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 0.375rem;
-            display: flex;
-            align-items: center;
-            letter-spacing: 0.05em;
-            white-space: nowrap;
-        }
-        .field-label i { width: 18px; flex-shrink: 0; text-align: center; margin-right: 4px; color: var(--theme-color); transition: color 0.3s ease;}
+        select.has-value { border-color: var(--theme-color) !important; box-shadow: 0 0 0 1px var(--theme-glow); }
+        
+        .field-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 0.375rem; display: flex; align-items: flex-start; letter-spacing: 0.05em; line-height: 1.2; white-space: nowrap; }
+        .field-label i { width: 18px; flex-shrink: 0; text-align: center; margin-right: 4px; margin-top: 1px; color: var(--theme-color); transition: color 0.3s ease;}
         
         .tab-btn { transition: all 0.2s ease; border-bottom: 2px solid transparent; }
         .tab-active { border-bottom-color: var(--theme-color); color: var(--theme-color); background: rgba(128, 128, 128, 0.05); }
@@ -116,14 +67,8 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--border-line); border-radius: 4px; }
         .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: var(--theme-color); }
 
-        #toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; }
-        .toast {
-            background-color: var(--surface); color: var(--text-main); padding: 1rem 1.5rem; border-radius: var(--radius-sm);
-            border-left: 4px solid var(--theme-color); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            display: flex; align-items: center; gap: 0.75rem;
-            transform: translateX(120%); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            font-size: 0.875rem; font-weight: 500; border: 1px solid var(--border-line);
-        }
+        #toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none; }
+        .toast { background-color: var(--surface); color: var(--text-main); padding: 1rem 1.5rem; border-radius: var(--radius-sm); border-left: 4px solid var(--theme-color); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 0.75rem; transform: translateX(120%); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); font-size: 0.875rem; font-weight: 500; border: 1px solid var(--border-line); pointer-events: auto; }
         .toast.show { transform: translateX(0); }
 
         #custom-dialog { backdrop-filter: blur(4px); transition: opacity 0.2s ease; }
@@ -132,24 +77,16 @@
         
         .mode-btn { transition: all 0.3s ease; border: 1px solid var(--border-line); opacity: 0.5; filter: grayscale(80%); }
         .mode-btn:hover { opacity: 0.9; filter: grayscale(0%); }
-        .mode-active { 
-            opacity: 1 !important; 
-            filter: grayscale(0%);
-            border-color: var(--theme-color) !important; 
-            box-shadow: 0 4px 15px var(--theme-glow); 
-            transform: translateY(-2px);
-            z-index: 10; 
-        }
+        .mode-active { opacity: 1 !important; filter: grayscale(0%); border-color: var(--theme-color) !important; box-shadow: 0 4px 15px var(--theme-glow); transform: translateY(-2px); z-index: 10; }
 
-        /* 確保捲動到區塊時不會被 fixed header 擋住 */
-        section { scroll-margin-top: 6rem; }
+        section { scroll-margin-top: 100px; }
     </style>
 </head>
-<body class="mode-clean dark-mode flex flex-col min-h-screen">
+<body class="mode-clean dark-mode flex flex-col relative">
 
     <div id="toast-container"></div>
 
-    <div id="custom-dialog" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/60 p-4">
+    <div id="custom-dialog" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/60 p-4">
         <div class="bg-surface border-line border rounded-[12px] shadow-2xl w-full max-w-2xl p-6 transform scale-95 transition-transform duration-200 flex flex-col max-h-[90vh]" id="dialog-box">
             <h3 id="dialog-title" class="text-xl font-bold text-main mb-3 flex-none">Title</h3>
             <div id="dialog-content" class="text-muted text-sm md:text-base mb-2 overflow-y-auto custom-scrollbar pr-2 flex-1">Message</div>
@@ -161,107 +98,104 @@
     </div>
 
     <!-- 頂部固定 Header -->
-    <header class="flex-none px-4 md:px-8 py-4 border-b border-line bg-surface z-50 shadow-sm flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 overflow-x-hidden w-full sticky top-0">
+    <header class="flex-none px-4 md:px-6 py-3 border-b border-line bg-surface z-50 shadow-sm flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 w-full sticky top-0">
         <div class="flex flex-col min-w-0">
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight truncate">
+            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight truncate">
                 <span class="text-theme">天菜</span><span class="text-main">產生器</span>
             </h1>
-            <p class="text-muted text-xs md:text-sm tracking-widest mt-1 font-medium truncate">
-                <i class="fas fa-wand-magic-sparkles mr-2 text-theme"></i>輕鬆創造屬於你的男/女主角
+            <p class="text-muted text-[10px] md:text-xs tracking-widest mt-1 font-medium truncate">
+                <i class="fas fa-wand-magic-sparkles mr-1 text-theme"></i>輕鬆創造屬於你的男/女主角
             </p>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center w-full lg:w-auto">
+        <div class="flex flex-col sm:flex-row gap-2 items-start sm:items-center w-full lg:w-auto">
             <div class="flex gap-2">
-                <button onclick="App.showHelp()" class="panel px-3 py-2 text-sm text-main hover:text-theme transition flex items-center gap-2 whitespace-nowrap">
+                <button onclick="App.showHelp()" class="panel px-3 py-1.5 text-xs text-main hover:text-theme transition flex items-center gap-1.5 whitespace-nowrap">
                     <i class="fas fa-book-open text-theme"></i> 說明
                 </button>
-                <button onclick="App.toggleTheme()" class="panel px-3 py-2 text-sm text-main transition flex items-center gap-2 whitespace-nowrap" id="btn-theme-toggle">
+                <button onclick="App.toggleTheme()" class="panel px-3 py-1.5 text-xs text-main transition flex items-center gap-1.5 whitespace-nowrap" id="btn-theme-toggle">
                     <i class="fas fa-sun text-yellow-400"></i> 亮色
                 </button>
             </div>
 
-            <div class="flex bg-bg-color p-1.5 rounded-[12px] border border-line shadow-inner w-full sm:w-auto">
-                <button onclick="App.setMode('clean')" id="btn-clean" class="mode-btn flex-1 sm:flex-none bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs px-3 sm:px-5 py-2 rounded-l-[8px] flex flex-col items-center justify-center gap-1">
-                    <i class="fas fa-leaf text-base mb-1"></i>
-                    <span class="font-bold whitespace-nowrap">清純版</span>
-                    <span class="text-[9px] opacity-70">Safe</span>
+            <div class="flex bg-bg-color p-1 rounded-[10px] border border-line shadow-inner w-full sm:w-auto">
+                <button onclick="App.setMode('clean')" id="btn-clean" class="mode-btn flex-1 sm:flex-none bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[11px] px-3 sm:px-4 py-1.5 rounded-l-[6px] flex flex-col items-center justify-center gap-0.5">
+                    <i class="fas fa-leaf mb-0.5"></i><span class="font-bold whitespace-nowrap">清純版</span><span class="text-[8px] opacity-70">Safe</span>
                 </button>
-                <button onclick="App.setMode('sexy')" id="btn-sexy" class="mode-btn flex-1 sm:flex-none bg-pink-500/10 text-pink-600 dark:text-pink-400 text-xs px-3 sm:px-5 py-2 border-l border-r border-line flex flex-col items-center justify-center gap-1">
-                    <i class="fas fa-heart text-base mb-1"></i>
-                    <span class="font-bold whitespace-nowrap">性感版</span>
-                    <span class="text-[9px] opacity-70">Standard</span>
+                <button onclick="App.setMode('sexy')" id="btn-sexy" class="mode-btn flex-1 sm:flex-none bg-pink-500/10 text-pink-600 dark:text-pink-400 text-[11px] px-3 sm:px-4 py-1.5 border-l border-r border-line flex flex-col items-center justify-center gap-0.5">
+                    <i class="fas fa-heart mb-0.5"></i><span class="font-bold whitespace-nowrap">性感版</span><span class="text-[8px] opacity-70">Standard</span>
                 </button>
-                <button onclick="App.setMode('nsfw')" id="btn-nsfw" class="mode-btn flex-1 sm:flex-none bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs px-3 sm:px-5 py-2 rounded-r-[8px] flex flex-col items-center justify-center gap-1">
-                    <i class="fas fa-fire text-base mb-1"></i>
-                    <span class="font-bold whitespace-nowrap">NSFW版</span>
-                    <span class="text-[9px] opacity-70">Uncensored</span>
+                <button onclick="App.setMode('nsfw')" id="btn-nsfw" class="mode-btn flex-1 sm:flex-none bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[11px] px-3 sm:px-4 py-1.5 rounded-r-[6px] flex flex-col items-center justify-center gap-0.5">
+                    <i class="fas fa-fire mb-0.5"></i><span class="font-bold whitespace-nowrap">NSFW版</span><span class="text-[8px] opacity-70">Uncensored</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <div class="flex-1 w-full max-w-[1400px] mx-auto p-4 md:p-6 flex flex-col lg:flex-row gap-6 items-start relative">
+    <!-- 中間核心排版 (flex-col-reverse 手機版Prompt在上，電腦版左右) -->
+    <div class="w-full max-w-[1500px] mx-auto p-3 sm:p-4 md:p-6 flex flex-col-reverse lg:flex-row gap-4 md:gap-6 items-start relative">
         
         <!-- 左側主控制區 -->
-        <main class="flex-1 min-w-0 panel flex flex-col h-full overflow-hidden w-full lg:w-[65%] xl:w-[70%]">
-            <nav class="flex-none flex border-b border-line bg-surface z-40 shadow-sm overflow-x-auto custom-scrollbar whitespace-nowrap sticky top-0">
-                <button onclick="UI.scrollToSection('tab-identity')" id="btn-tab-identity" class="tab-btn flex-1 min-w-[70px] py-4 text-sm font-bold tab-active">
+        <main class="w-full lg:w-[65%] xl:w-[70%] panel flex flex-col bg-surface z-10 relative">
+            
+            <!-- 完美的 Sticky 頁籤 -->
+            <nav class="flex-none flex overflow-x-auto custom-scrollbar border-b border-line bg-surface/95 backdrop-blur z-40 sticky top-[72px] lg:top-[76px] rounded-t-[12px]">
+                <button onclick="UI.scrollToSection('tab-identity')" id="btn-tab-identity" class="tab-btn flex-1 min-w-[70px] py-3 md:py-4 text-xs md:text-sm font-bold tab-active">
                     <i class="fas fa-user-circle mr-1 text-theme transition-colors"></i>人物
                 </button>
-                <button onclick="UI.scrollToSection('tab-outfit')" id="btn-tab-outfit" class="tab-btn flex-1 min-w-[70px] py-4 text-sm font-bold tab-inactive">
+                <button onclick="UI.scrollToSection('tab-outfit')" id="btn-tab-outfit" class="tab-btn flex-1 min-w-[70px] py-3 md:py-4 text-xs md:text-sm font-bold tab-inactive">
                     <i class="fas fa-tshirt mr-1 text-theme transition-colors"></i>穿搭
                 </button>
-                <button onclick="UI.scrollToSection('tab-action')" id="btn-tab-action" class="tab-btn flex-1 min-w-[70px] py-4 text-sm font-bold tab-inactive">
+                <button onclick="UI.scrollToSection('tab-action')" id="btn-tab-action" class="tab-btn flex-1 min-w-[70px] py-3 md:py-4 text-xs md:text-sm font-bold tab-inactive">
                     <i class="fas fa-running mr-1 text-theme transition-colors"></i>動作
                 </button>
-                <button onclick="UI.scrollToSection('tab-scene')" id="btn-tab-scene" class="tab-btn flex-1 min-w-[70px] py-4 text-sm font-bold tab-inactive">
+                <button onclick="UI.scrollToSection('tab-scene')" id="btn-tab-scene" class="tab-btn flex-1 min-w-[70px] py-3 md:py-4 text-xs md:text-sm font-bold tab-inactive">
                     <i class="fas fa-map-marked-alt mr-1 text-theme transition-colors"></i>場景
                 </button>
-                <button onclick="UI.scrollToSection('tab-camera')" id="btn-tab-camera" class="tab-btn flex-1 min-w-[70px] py-4 text-sm font-bold tab-inactive">
+                <button onclick="UI.scrollToSection('tab-camera')" id="btn-tab-camera" class="tab-btn flex-1 min-w-[70px] py-3 md:py-4 text-xs md:text-sm font-bold tab-inactive">
                     <i class="fas fa-camera mr-1 text-theme transition-colors"></i>鏡頭
                 </button>
             </nav>
 
-            <div class="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-8 space-y-10" id="scroll-content">
+            <div class="p-4 md:p-6 lg:p-8 space-y-10" id="scroll-content">
                 
-                <!-- Section 1: 人物 (Identity) -->
-                <section id="tab-identity" class="space-y-5">
+                <!-- Section 1: 人物 -->
+                <section id="tab-identity" class="space-y-4 md:space-y-5">
                     <div class="flex justify-between items-center pb-2 border-b border-line">
-                        <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-user-circle mr-3 text-theme"></i>人物設定</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-main flex items-center"><i class="fas fa-user-circle mr-3 text-theme"></i>人物設定</h2>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                         <div class="sm:col-span-2 lg:col-span-1">
                             <label class="field-label"><i class="fas fa-signature"></i> 人物名稱 (Name)</label>
-                            <input type="text" id="char-name" value="Protagonist" class="input-field w-full px-4 py-2 text-theme font-mono text-sm">
+                            <input type="text" id="char-name" value="Protagonist" class="input-field w-full px-3 py-2 text-theme font-mono text-sm">
                         </div>
                         <div>
                             <label class="field-label"><i class="fas fa-venus-mars"></i> 性別 (Gender)</label>
-                            <select id="gender" class="input-field w-full px-4 py-2 text-sm"></select>
+                            <select id="gender" class="input-field w-full px-3 py-2 text-sm"></select>
                         </div>
                         <div>
                             <label class="field-label"><i class="fas fa-globe-asia"></i> 種族/國籍 (Race)</label>
-                            <select id="race" class="input-field w-full px-4 py-2 text-sm"></select>
+                            <select id="race" class="input-field w-full px-3 py-2 text-sm"></select>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                         <div>
                             <label class="field-label"><i class="fas fa-birthday-cake"></i> 年齡 (Age)</label>
-                            <select id="char-age" class="input-field w-full px-4 py-2 text-sm"></select>
+                            <select id="char-age" class="input-field w-full px-3 py-2 text-sm"></select>
                         </div>
                         <div>
                             <label class="field-label"><i class="fas fa-ruler-vertical"></i> 身高 (Height)</label>
-                            <select id="body-height" class="input-field w-full px-4 py-2 text-sm"></select>
+                            <select id="body-height" class="input-field w-full px-3 py-2 text-sm"></select>
                         </div>
                         <div>
                             <label class="field-label text-theme"><i class="fas fa-shapes"></i> 體態 (Type)</label>
-                            <select id="body-type" class="input-field w-full px-4 py-2 text-sm"></select>
+                            <select id="body-type" class="input-field w-full px-3 py-2 text-sm"></select>
                         </div>
                     </div>
 
-                    <div id="bust-container" class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                    <div id="bust-container" class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                         <div class="flex justify-between items-center mb-3">
                             <label class="field-label text-theme !mb-0"><i class="fas fa-ruler-combined"></i> 三圍數據 (Measurements)</label>
                             <span id="bust-warn" class="text-[10px] text-[var(--success)] font-bold hidden flex items-center bg-[var(--success)]/10 px-2 py-1 rounded-full"><i class="fas fa-shield-alt mr-1"></i> 安全模式隱藏</span>
@@ -285,8 +219,7 @@
                         </div>
                     </div>
 
-                    <!-- 臉部、髮型、妝容與表情 -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                         <div>
                             <label class="field-label"><i class="fas fa-cut"></i> 髮型 (Style)</label>
                             <select id="hair-style" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
@@ -334,53 +267,52 @@
                 </section>
 
                 <!-- Section 2: 穿搭 (Outfit) -->
-                <section id="tab-outfit" class="space-y-5">
+                <section id="tab-outfit" class="space-y-4 md:space-y-5">
                     <div class="flex justify-between items-center pb-2 border-b border-line">
-                        <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-tshirt mr-3 text-theme"></i>服裝穿搭</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-main flex items-center"><i class="fas fa-tshirt mr-3 text-theme"></i>服裝穿搭</h2>
                     </div>
 
                     <div class="grid grid-cols-1 gap-4">
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <label class="field-label text-theme"><i class="fas fa-layer-group"></i> 服裝套裝 (Costume Preset)</label>
-                            <select id="outfit-theme" class="input-field w-full px-4 py-2.5 text-sm font-medium mb-1"></select>
-                            <input type="text" id="outfit-theme-custom" placeholder="自訂風格 (e.g. wearing a kimono)..." class="input-field w-full px-3 py-1.5 text-xs text-muted">
+                            <select id="outfit-theme" class="input-field w-full px-3 py-2 text-sm font-medium mb-1"></select>
+                            <input type="text" id="outfit-theme-custom" placeholder="自訂風格 (e.g. wearing a kimono)..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                         </div>
 
-                        <!-- 穿著效果 (Fit & Physics) -->
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <label class="field-label text-theme"><i class="fas fa-compress-arrows-alt"></i> 穿著效果 (Fit & Physics)</label>
                             <select id="outfit-fit-physics" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="outfit-fit-physics-custom" placeholder="自訂穿著效果..." class="input-field w-full px-3 py-1.5 text-xs text-muted">
+                            <input type="text" id="outfit-fit-physics-custom" placeholder="自訂穿著效果..." class="input-field w-full px-3 py-1.5 text-xs text-muted mt-1">
                         </div>
 
                         <!-- 飾品配件區塊 -->
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <p class="text-xs text-theme font-bold uppercase mb-3 flex items-center"><i class="fas fa-gem mr-2"></i> 飾品與配件</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-hat-cowboy"></i> 頭飾 (Headwear)</label>
-                                    <select id="outfit-head" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                    <select id="outfit-head" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
                                     <input type="text" id="outfit-head-custom" placeholder="自訂頭飾..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                                 </div>
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-gem"></i> 飾品 (Jewelry)</label>
-                                    <select id="outfit-acc" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                    <select id="outfit-acc" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
                                     <input type="text" id="outfit-acc-custom" placeholder="自訂飾品..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                                 </div>
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-hand-paper"></i> 手部 (Hands)</label>
-                                    <select id="outfit-hands" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                    <select id="outfit-hands" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
                                     <input type="text" id="outfit-hands-custom" placeholder="自訂手部..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                                 </div>
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-shopping-bag"></i> 配件 (Acc)</label>
-                                    <select id="outfit-bag" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                    <select id="outfit-bag" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
                                     <input type="text" id="outfit-bag-custom" placeholder="自訂配件..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <label class="field-label"><i class="fas fa-vest"></i> 外套 / 罩衫 (Outerwear)</label>
                             <div class="flex flex-col gap-1">
                                 <select id="outfit-outer" class="input-field w-full px-3 py-2 text-sm"></select>
@@ -388,7 +320,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <label class="field-label"><i class="fas fa-shirt"></i> 上衣 (Top)</label>
                             <div class="space-y-2">
                                 <select id="outfit-top" class="input-field w-full px-3 py-2 text-sm"></select>
@@ -410,7 +342,7 @@
                             </div>
                         </div>
 
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <label class="field-label"><i class="fas fa-user-tag"></i> 下著 (Bottom)</label>
                             <div class="space-y-2">
                                 <select id="outfit-bottom" class="input-field w-full px-3 py-2 text-sm"></select>
@@ -433,17 +365,17 @@
                         </div>
 
                         <!-- 襪子鞋子區塊 -->
-                        <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                        <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                             <p class="text-xs text-theme font-bold uppercase mb-3 flex items-center"><i class="fas fa-shoe-prints mr-2"></i> 腿部與鞋襪</p>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-socks"></i> 襪子 (Socks)</label>
-                                    <select id="outfit-sock" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                    <select id="outfit-sock" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
                                     <input type="text" id="outfit-sock-custom" placeholder="自訂襪子..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                                 </div>
                                 <div class="min-w-0">
                                     <label class="field-label"><i class="fas fa-shoe-prints"></i> 鞋子 (Shoes)</label>
-                                    <select id="outfit-shoe" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                    <select id="outfit-shoe" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
                                     <input type="text" id="outfit-shoe-custom" placeholder="自訂鞋子..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                                 </div>
                             </div>
@@ -452,34 +384,88 @@
                 </section>
 
                 <!-- Section 3: 動作 (Action) -->
-                <section id="tab-action" class="space-y-5">
+                <section id="tab-action" class="space-y-4 md:space-y-5">
                     <div class="flex justify-between items-center pb-2 border-b border-line">
-                        <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-running mr-3 text-theme"></i>動作設定</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-main flex items-center"><i class="fas fa-running mr-3 text-theme"></i>動作設定</h2>
                     </div>
 
-                    <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                    <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="field-label">基礎姿勢 (Pose)</label>
                                 <select id="action-pose" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="action-pose-custom" placeholder="自訂姿勢..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                <input type="text" id="action-pose-custom" placeholder="自訂姿勢..." class="input-field w-full px-2 py-1.5 text-xs text-muted mt-1">
                             </div>
                             <div>
                                 <label class="field-label">互動行為 (Activity)</label>
                                 <select id="action-activity" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="action-activity-custom" placeholder="自訂行為..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                <input type="text" id="action-activity-custom" placeholder="自訂行為..." class="input-field w-full px-2 py-1.5 text-xs text-muted mt-1">
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <!-- Section 4: 場景 (Scene) -->
-                <section id="tab-scene" class="space-y-5">
+                <section id="tab-scene" class="space-y-4 md:space-y-5">
                     <div class="flex justify-between items-center pb-2 border-b border-line">
-                        <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-map-marked-alt mr-3 text-theme"></i>場景與氛圍</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-main flex items-center"><i class="fas fa-map-marked-alt mr-3 text-theme"></i>場景與氛圍</h2>
                     </div>
 
-                    <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                    <div class="bg-[var(--theme-glow)] border border-theme p-4 rounded-[8px] transition-all duration-300">
+                        <label class="field-label text-theme mb-3"><i class="fas fa-wand-magic-sparkles"></i> 質感疊加 (Texture Overlay)</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 texture-container">
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-damp-hair" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="noticeably damp hair, glistening wet hair texture">
+                                <span class="text-sm text-main truncate">💧 頭髮微濕</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-steamy" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="steamy skin, misty condensation, warm glow">
+                                <span class="text-sm text-main truncate">🧖‍♀️ 霧氣蒸騰</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
+                                <input type="checkbox" id="effect-showered" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="freshly showered, dripping wet, water droplets on skin">
+                                <span class="text-sm text-main truncate">🚿 出浴質感</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
+                                <input type="checkbox" id="effect-oily" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="oiled skin, shiny skin">
+                                <span class="text-sm text-main truncate">🧴 油光質感</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-rain" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="soaked by rain, drenched clothes, water streaks on face">
+                                <span class="text-sm text-main truncate">🌧️ 雨水滑落</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
+                                <input type="checkbox" id="effect-sweaty" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="wet skin, sweating, glistening skin">
+                                <span class="text-sm text-main truncate">💦 濕身汗水</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-underwater" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="underwater caustics, shimmering water reflections on skin">
+                                <span class="text-sm text-main truncate">🌊 水波光影折射</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-glitter" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="glittery skin, shimmering particles, sparkling highlights">
+                                <span class="text-sm text-main truncate">💎 閃粉亮片</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-frost" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="frosted eyelashes, snow-dusted hair, icy skin texture">
+                                <span class="text-sm text-main truncate">❄️ 冰霜附著</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
+                                <input type="checkbox" id="effect-goosebumps" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="visible goosebumps, chilled skin texture, micro-detail pores">
+                                <span class="text-sm text-main truncate">🥶 雞皮疙瘩</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-flush" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="sun-kissed flush, rosy skin undertone, natural redness">
+                                <span class="text-sm text-main truncate">🍷 微醺/曬後泛紅</span>
+                            </label>
+                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
+                                <input type="checkbox" id="effect-glow" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="bioluminescent skin, glowing veins, UV reactive body paint">
+                                <span class="text-sm text-main truncate">🧪 螢光/生物發光</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="field-label">地點 (Location)</label>
@@ -513,70 +499,15 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- 特殊質感疊加移到這裡 -->
-                    <div class="bg-[var(--theme-glow)] border border-theme p-4 rounded-[8px] transition-all duration-300">
-                        <label class="field-label text-theme mb-3"><i class="fas fa-wand-magic-sparkles"></i> 質感疊加 (Texture Overlay)</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2" id="texture-overlay-container">
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="noticeably damp hair, glistening wet hair texture">
-                                <span class="text-sm text-main truncate">💧 頭髮微濕</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="steamy skin, misty condensation, warm glow">
-                                <span class="text-sm text-main truncate">🧖‍♀️ 霧氣蒸騰</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="freshly showered, dripping wet, water droplets on skin">
-                                <span class="text-sm text-main truncate">🚿 出浴質感</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="oiled skin, shiny skin">
-                                <span class="text-sm text-main truncate">🧴 油光質感</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="soaked by rain, drenched clothes, water streaks on face">
-                                <span class="text-sm text-main truncate">🌧️ 雨水滑落</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="wet skin, sweating, glistening skin">
-                                <span class="text-sm text-main truncate">💦 濕身汗水</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="underwater caustics, shimmering water reflections on skin">
-                                <span class="text-sm text-main truncate">🌊 水波光影折射</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="glittery skin, shimmering particles, sparkling highlights">
-                                <span class="text-sm text-main truncate">💎 閃粉亮片</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="frosted eyelashes, snow-dusted hair, icy skin texture">
-                                <span class="text-sm text-main truncate">❄️ 冰霜附著</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="visible goosebumps, chilled skin texture, micro-detail pores">
-                                <span class="text-sm text-main truncate">🥶 雞皮疙瘩</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="sun-kissed flush, rosy skin undertone, natural redness">
-                                <span class="text-sm text-main truncate">🍷 微醺/曬後泛紅</span>
-                            </label>
-                            <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
-                                <input type="checkbox" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="bioluminescent skin, glowing veins, UV reactive body paint">
-                                <span class="text-sm text-main truncate">🧪 螢光/生物發光</span>
-                            </label>
-                        </div>
-                    </div>
                 </section>
 
                 <!-- Section 5: 鏡頭 (Camera) -->
-                <section id="tab-camera" class="space-y-5">
+                <section id="tab-camera" class="space-y-4 md:space-y-5">
                     <div class="flex justify-between items-center pb-2 border-b border-line">
-                        <h2 class="text-xl font-bold text-main flex items-center"><i class="fas fa-camera mr-3 text-theme"></i>鏡頭與風格</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-main flex items-center"><i class="fas fa-camera mr-3 text-theme"></i>鏡頭與風格</h2>
                     </div>
 
-                    <div class="bg-gray-500/5 p-4 rounded-[8px] border border-line">
+                    <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                             <div>
                                 <label class="field-label">焦段 (Lens)</label>
@@ -617,13 +548,41 @@
                     </div>
                 </section>
                 
-                <div class="h-10"></div>
             </div>
         </main>
 
-        <!-- Right Column: Results & Tools (Sticky 佈局) -->
-        <aside class="w-full lg:w-[320px] xl:w-[400px] flex flex-col gap-4 lg:sticky lg:top-4 h-auto lg:h-[calc(100vh-8rem)] flex-none">
+        <!-- Right Column: Results & Tools (Sticky on Desktop, Top on Mobile) -->
+        <aside class="w-full lg:w-[320px] xl:w-[400px] flex flex-col gap-4 flex-none lg:sticky lg:top-[85px] z-30">
             
+            <div class="panel p-4 flex flex-col flex-none relative bg-gray-500/5">
+                <div class="flex justify-between items-center mb-3">
+                    <label class="text-sm font-bold text-theme tracking-wider flex items-center">
+                        <i class="fas fa-terminal mr-2"></i> PROMPT:
+                    </label>
+                    <span id="mode-status" class="text-[10px] uppercase font-bold px-2 py-1 rounded-[4px] bg-surface border border-line text-muted tracking-wider shadow-sm">Loading...</span>
+                </div>
+                
+                <textarea id="output-text" readonly class="w-full bg-surface text-main text-sm p-4 rounded-[8px] border border-line font-mono resize-none outline-none leading-relaxed focus:border-theme transition-colors shadow-inner h-[120px] lg:h-[180px]"></textarea>
+                
+                <div class="flex flex-col sm:flex-row gap-2 mt-3 flex-none">
+                    <button onclick="PromptEngine.copyPrompt(false)" class="flex-1 bg-theme text-white hover:opacity-90 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> 複製提示詞
+                    </button>
+                    <button onclick="PromptEngine.copyPrompt(true)" class="flex-1 bg-surface border border-line text-main hover:bg-gray-500/10 py-3 rounded-[8px] font-bold text-[11px] transition-all shadow-md flex items-center justify-center gap-1.5">
+                        <i class="fas fa-plus-circle text-theme"></i> 含負面詞複製
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 flex-none">
+                <button onclick="PromptEngine.resetAll()" class="panel border-line hover:border-gray-400 text-main text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
+                    <i class="fas fa-eraser text-lg group-hover:rotate-12 transition-transform"></i> 清除選擇
+                </button>
+                <button onclick="PromptEngine.randomizeAll()" class="panel border-line hover:border-theme text-main hover:text-theme text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
+                    <i class="fas fa-dice text-lg group-hover:rotate-12 transition-transform"></i> 隨機選取
+                </button>
+            </div>
+
             <div class="panel p-4 flex flex-col gap-2 flex-none">
                 <div class="flex justify-between items-center mb-1">
                     <label class="text-sm font-bold text-theme flex items-center"><i class="fas fa-bookmark mr-2"></i>個人書籤</label>
@@ -635,7 +594,7 @@
                 </div>
 
                 <div class="flex gap-2 items-center">
-                    <input type="text" id="bookmark-name" class="input-field px-3 py-2 text-sm flex-1 min-w-0" placeholder="輸入名稱 (預設用人物名稱)...">
+                    <input type="text" id="bookmark-name" class="input-field px-3 py-2 text-sm flex-1 min-w-0" placeholder="名稱 (預設用人物名)...">
                     <button onclick="BookmarkManager.save()" class="bg-surface border border-line text-main hover:bg-gray-500/10 px-4 py-2 rounded-[8px] text-sm flex-none flex items-center gap-2 transition shadow-sm">
                         <i class="fas fa-save text-theme"></i> 儲存
                     </button>
@@ -654,37 +613,8 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-3 flex-none">
-                <button onclick="PromptEngine.resetAll()" class="panel border-line hover:border-gray-400 text-main text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
-                    <i class="fas fa-eraser text-lg group-hover:rotate-12 transition-transform"></i> 清除選擇
-                </button>
-                <button onclick="PromptEngine.randomizeAll()" class="panel border-line hover:border-theme text-main hover:text-theme text-sm font-bold py-3 transition shadow-sm flex items-center justify-center gap-2 group">
-                    <i class="fas fa-dice text-lg group-hover:rotate-12 transition-transform"></i> 隨機選取
-                </button>
-            </div>
-
-            <div class="panel p-4 flex flex-col flex-none lg:flex-1 min-h-[250px] relative bg-gray-500/5">
-                <div class="flex justify-between items-center mb-3">
-                    <label class="text-sm font-bold text-theme tracking-wider flex items-center">
-                        <i class="fas fa-terminal mr-2"></i> PROMPT:
-                    </label>
-                    <span id="mode-status" class="text-[10px] uppercase font-bold px-2 py-1 rounded-[4px] bg-surface border border-line text-muted tracking-wider shadow-sm">Loading...</span>
-                </div>
-                
-                <textarea id="output-text" readonly class="flex-1 w-full bg-surface text-main text-sm p-4 rounded-[8px] border border-line font-mono resize-none outline-none leading-relaxed focus:border-theme transition-colors shadow-inner min-h-[120px]"></textarea>
-                
-                <div class="flex flex-col sm:flex-row gap-2 mt-3 flex-none">
-                    <button onclick="PromptEngine.copyPrompt(false)" class="flex-1 bg-theme text-white hover:opacity-90 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
-                        <i class="fas fa-copy"></i> 複製提示詞
-                    </button>
-                    <button onclick="PromptEngine.copyPrompt(true)" class="flex-1 bg-surface border border-line text-main hover:bg-gray-500/10 py-3 rounded-[8px] font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
-                        <i class="fas fa-plus-circle text-theme"></i> 含負面詞複製
-                    </button>
-                </div>
-            </div>
-
             <!-- History -->
-            <div class="panel p-4 flex flex-col h-40 flex-none mb-4">
+            <div class="panel p-4 flex flex-col flex-1 min-h-[150px] lg:max-h-[30vh]">
                 <div class="flex justify-between items-center mb-2">
                     <label class="text-xs font-bold text-muted uppercase flex items-center"><i class="fas fa-history mr-2 text-theme"></i> 歷史紀錄 (History)</label>
                     <button onclick="HistoryManager.clear()" class="text-[10px] text-muted hover:text-error transition flex items-center"><i class="fas fa-trash mr-1"></i> 清除</button>
@@ -696,8 +626,8 @@
     </div>
 
     <!-- Footer -->
-    <footer class="flex-none text-center text-muted text-xs pb-4 w-full">
-        v0.1.9 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+    <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line">
+        v0.1.10 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
@@ -712,168 +642,106 @@
             ],
             race: [
                 grp("亞洲 (Asian)", [
-                    opt("Taiwanese", "台灣 (Taiwan)"),
-                    opt("Japanese", "日本 (Japanese)"),
-                    opt("Korean", "韓國 (Korean)"),
-                    opt("Hong Konger", "香港 (Hong Kong)"),
-                    opt("Chinese", "中國 (Chinese)"),
-                    opt("East Asian", "東亞 (East Asian)"),
-                    opt("Thai", "泰國 (Thai)"),
-                    opt("Indian", "印度 (Indian)"),
+                    opt("Taiwanese", "台灣 (Taiwan)"), opt("Japanese", "日本 (Japanese)"),
+                    opt("Korean", "韓國 (Korean)"), opt("Hong Konger", "香港 (Hong Kong)"),
+                    opt("Chinese", "中國 (Chinese)"), opt("East Asian", "東亞 (East Asian)"),
+                    opt("Thai", "泰國 (Thai)"), opt("Indian", "印度 (Indian)"),
                     opt("Mixed Asian", "混血 (Mixed)")
                 ]),
                 grp("中東 (Middle Eastern)", [
-                    opt("Arab", "阿拉伯 (Arab)"),
-                    opt("Persian", "波斯 (Persian)"),
-                    opt("Israeli", "以色列 (Israeli)")
+                    opt("Arab", "阿拉伯 (Arab)"), opt("Persian", "波斯 (Persian)"), opt("Israeli", "以色列 (Israeli)")
                 ]),
                 grp("歐美 (European/American)", [
-                    opt("American", "美國 (American)"),
-                    opt("British", "英國 (British)"),
-                    opt("French", "法國 (French)"),
-                    opt("German", "德國 (German)"),
-                    opt("Italian", "義大利 (Italian)"),
-                    opt("Spanish", "西班牙 (Spanish)"),
-                    opt("Greek", "希臘 (Greek)"),
-                    opt("Russian", "俄羅斯 (Russian)"),
-                    opt("Ukrainian", "烏克蘭 (Ukrainian)"),
-                    opt("Swedish", "瑞典 (Swedish)"),
-                    opt("Norwegian", "挪威 (Norwegian)"),
-                    opt("Danish", "丹麥 (Danish)"),
-                    opt("Latina", "拉丁裔 (Latina)"),
-                    opt("African American", "非裔 (African American)")
+                    opt("American", "美國 (American)"), opt("British", "英國 (British)"),
+                    opt("French", "法國 (French)"), opt("German", "德國 (German)"),
+                    opt("Italian", "義大利 (Italian)"), opt("Spanish", "西班牙 (Spanish)"),
+                    opt("Greek", "希臘 (Greek)"), opt("Russian", "俄羅斯 (Russian)"),
+                    opt("Ukrainian", "烏克蘭 (Ukrainian)"), opt("Swedish", "瑞典 (Swedish)"),
+                    opt("Norwegian", "挪威 (Norwegian)"), opt("Danish", "丹麥 (Danish)"),
+                    opt("Latina", "拉丁裔 (Latina)"), opt("African American", "非裔 (African American)")
                 ])
             ],
             charAge: [
-                opt("Baby", "Baby (Baby)", ["clean"]),
-                opt("3 years old", "3歲 (3 years old)", ["clean"]),
-                opt("5 years old", "5歲 (5 years old)", ["clean"]),
-                opt("8 years old", "8歲 (8 years old)", ["clean"]),
-                opt("10 years old", "10歲 (10 years old)", ["clean"]),
-                opt("12 years old", "12歲 (12 years old)", ["clean"]),
-                opt("15 years old", "15歲 (15 years old)", ["clean"]),
-                opt("18 years old", "18歲 (18 years old)"),
-                opt("in early 20s", "20歲初 (in early 20s)"),
-                opt("22 years old", "22歲 (22 years old)"),
-                opt("in mid 20s", "25歲左右 (in mid 20s)"),
-                opt("in late 20s", "28-30歲 (in late 20s)"),
+                opt("Baby", "Baby (Baby)", ["clean"]), opt("3 years old", "3歲 (3 years old)", ["clean"]),
+                opt("5 years old", "5歲 (5 years old)", ["clean"]), opt("8 years old", "8歲 (8 years old)", ["clean"]),
+                opt("10 years old", "10歲 (10 years old)", ["clean"]), opt("12 years old", "12歲 (12 years old)", ["clean"]),
+                opt("15 years old", "15歲 (15 years old)", ["clean"]), opt("18 years old", "18歲 (18 years old)"),
+                opt("in early 20s", "20歲初 (in early 20s)"), opt("22 years old", "22歲 (22 years old)"),
+                opt("in mid 20s", "25歲左右 (in mid 20s)"), opt("in late 20s", "28-30歲 (in late 20s)"),
                 opt("in early 30s, mature", "30+ 輕熟 (in early 30s, mature)")
             ],
             bodyHeight: [
-                opt("Average height", "標準身高 (Average)"),
-                opt("Petite", "嬌小可愛 (Petite)"),
-                opt("Tall", "高挑模特 (Tall)"),
-                opt("Towering", "極高 (Towering)")
+                opt("Average height", "標準身高 (Average)"), opt("Petite", "嬌小可愛 (Petite)"),
+                opt("Tall", "高挑模特 (Tall)"), opt("Towering", "極高 (Towering)")
             ],
             bodyType: [
                 grp("身形特徵", [
-                    opt("slender and bony", "骨感纖細 (Slender and bony)"),
-                    opt("slim and athletic", "纖細曼妙 (Slim and athletic)"),
-                    opt("well-proportioned figure", "勻稱健美 (Well-proportioned figure)"),
-                    opt("full-figured", "豐滿圓潤 (Full-figured)"),
-                    opt("chubby", "微胖 (Chubby)"),
-                    opt("lean toned physique", "初階健身 (Lean toned physique)"),
-                    opt("muscular build", "健美壯碩 (Muscular build)"),
-                    opt("soft and fleshy", "柔軟豐滿 (Soft & Fleshy)", ["sexy", "nsfw"]),
-                    opt("statuesque S-curve", "S曲線 (Statuesque)", ["sexy", "nsfw"]),
-                    opt("marshmallow soft body", "棉花糖 (Marshmallow)", ["sexy", "nsfw"])
+                    opt("slender and bony", "骨感纖細 (Slender and bony)"), opt("slim and athletic", "纖細曼妙 (Slim and athletic)"),
+                    opt("well-proportioned figure", "勻稱健美 (Well-proportioned figure)"), opt("full-figured", "豐滿圓潤 (Full-figured)"),
+                    opt("chubby", "微胖 (Chubby)"), opt("lean toned physique", "初階健身 (Lean toned physique)"),
+                    opt("muscular build", "健美壯碩 (Muscular build)"), opt("soft and fleshy", "柔軟豐滿 (Soft & Fleshy)", ["sexy", "nsfw"]),
+                    opt("statuesque S-curve", "S曲線 (Statuesque)", ["sexy", "nsfw"]), opt("marshmallow soft body", "棉花糖 (Marshmallow)", ["sexy", "nsfw"])
                 ])
             ],
             bodyBust: [
-                opt("petite breasts", "A罩杯 (Petite)"),
-                opt("medium breasts", "B罩杯 (Medium)"),
-                opt("full breasts", "C罩杯 (Full)", ["sexy", "nsfw"]),
-                opt("large breasts", "D罩杯 (Large)", ["sexy", "nsfw"]),
+                opt("petite breasts", "A罩杯 (Petite)"), opt("medium breasts", "B罩杯 (Medium)"),
+                opt("full breasts", "C罩杯 (Full)", ["sexy", "nsfw"]), opt("large breasts", "D罩杯 (Large)", ["sexy", "nsfw"]),
                 opt("huge breasts", "E罩杯 (Huge)", ["sexy", "nsfw"])
             ],
             bodyWaist: [
-                opt("wasp waist", "螞蟻腰 (Wasp)"),
-                opt("slim waist", "纖細 (Slim)"),
-                opt("toned waist", "馬甲線 (Toned)"),
-                opt("natural waist", "標準 (Natural)"),
-                opt("thick waist", "水桶腰 (Thick)")
+                opt("wasp waist", "螞蟻腰 (Wasp)"), opt("slim waist", "纖細 (Slim)"),
+                opt("toned waist", "馬甲線 (Toned)"), opt("natural waist", "標準 (Natural)"), opt("thick waist", "水桶腰 (Thick)")
             ],
             bodyHip: [
-                opt("narrow hips", "窄臀纖腿 (Narrow)"),
-                opt("proportional hips", "標準 (Proportional)"),
-                opt("curvy hips", "S型曲線 (Curvy)"),
-                opt("thick thighs", "蜜大腿 (Thick)"),
-                opt("wide hips", "寬臀 (Wide)")
+                opt("narrow hips", "窄臀纖腿 (Narrow)"), opt("proportional hips", "標準 (Proportional)"),
+                opt("curvy hips", "S型曲線 (Curvy)"), opt("thick thighs", "蜜大腿 (Thick)"), opt("wide hips", "寬臀 (Wide)")
             ],
             hairStyle: [
                 grp("長髮", [
-                    opt("long straight hair", "長直髮 (Long Straight Hair)"),
-                    opt("long hair with messy waves", "微波浪長髮 (Long Hair with Messy Waves)"),
-                    opt("glossy long wavy hair", "柔亮大波浪 (Glossy Long Wavy Hair)"),
-                    opt("sleek long hair with blunt bangs", "直順長髮+齊瀏海 (Sleek Long Hair with Blunt Bangs)"),
-                    opt("glamorous side-parted vintage waves", "華麗側分復古波浪 (Glamorous Side-Parted Vintage Waves)"),
-                    opt("middle-parted straight hair", "中分直髮 (Middle-parted straight hair)"),
+                    opt("long straight hair", "長直髮 (Long Straight Hair)"), opt("long hair with messy waves", "微波浪長髮 (Long Hair with Messy Waves)"),
+                    opt("glossy long wavy hair", "柔亮大波浪 (Glossy Long Wavy Hair)"), opt("sleek long hair with blunt bangs", "直順長髮+齊瀏海 (Sleek Long Hair with Blunt Bangs)"),
+                    opt("glamorous side-parted vintage waves", "華麗側分復古波浪 (Glamorous Side-Parted Vintage Waves)"), opt("middle-parted straight hair", "中分直髮 (Middle-parted straight hair)"),
                     opt("loose waves", "大波浪捲 (Loose waves)")
                 ]),
                 grp("中長髮", [
-                    opt("medium layered hair with center part", "中長層次+自然中分 (Medium Layered Hair with Center Part)"),
-                    opt("medium straight hair with bangs", "中長直髮+齊瀏海 (Medium Straight Hair with Bangs)"),
-                    opt("medium length wolf cut", "狼尾層次中長髮 (Medium Length Wolf Cut)"),
-                    opt("french style medium length messy curls", "法式中長微亂捲 (French Style Medium Length Messy Curls)"),
-                    opt("medium length natural layered cut", "自然層次剪裁 (Medium Length Natural Layered Cut)"),
-                    opt("messy curly hair", "慵懶捲髮 (Messy curly hair)"),
-                    opt("C-curl perm ends", "內彎髮尾 (C-curl perm ends)"),
-                    opt("Japanese soft wavy hair", "日系微捲 (Japanese soft wavy hair)"),
-                    opt("Korean medium-length hair", "韓式中長髮 (Korean medium-length hair)")
+                    opt("medium layered hair with center part", "中長層次+自然中分 (Medium Layered Hair with Center Part)"), opt("medium straight hair with bangs", "中長直髮+齊瀏海 (Medium Straight Hair with Bangs)"),
+                    opt("medium length wolf cut", "狼尾層次中長髮 (Medium Length Wolf Cut)"), opt("french style medium length messy curls", "法式中長微亂捲 (French Style Medium Length Messy Curls)"),
+                    opt("medium length natural layered cut", "自然層次剪裁 (Medium Length Natural Layered Cut)"), opt("messy curly hair", "慵懶捲髮 (Messy curly hair)"),
+                    opt("C-curl perm ends", "內彎髮尾 (C-curl perm ends)"), opt("Japanese soft wavy hair", "日系微捲 (Japanese soft wavy hair)"), opt("Korean medium-length hair", "韓式中長髮 (Korean medium-length hair)")
                 ]),
                 grp("短髮", [
-                    opt("airy short bob cut", "空氣感短鮑伯頭 (Airy Short Bob Cut)"),
-                    opt("short straight hair", "短直髮 (Short Straight Hair)"),
-                    opt("deep side part short straight hair", "深側分直短髮 (Deep Side Part Short Straight Hair)"),
-                    opt("short hair with blunt bangs", "齊劉海短髮妹妹頭 (Short Hair with Blunt Bangs)"),
-                    opt("fluffy layered short hair", "碎層蓬鬆短髮 (Fluffy Layered Short Hair)"),
-                    opt("pixie cut", "精靈短髮 (Pixie Cut)"),
-                    opt("short hair", "短髮造型 (Short hair)")
+                    opt("airy short bob cut", "空氣感短鮑伯頭 (Airy Short Bob Cut)"), opt("short straight hair", "短直髮 (Short Straight Hair)"),
+                    opt("deep side part short straight hair", "深側分直短髮 (Deep Side Part Short Straight Hair)"), opt("short hair with blunt bangs", "齊劉海短髮妹妹頭 (Short Hair with Blunt Bangs)"),
+                    opt("fluffy layered short hair", "碎層蓬鬆短髮 (Fluffy Layered Short Hair)"), opt("pixie cut", "精靈短髮 (Pixie Cut)"), opt("short hair", "短髮造型 (Short hair)")
                 ]),
                 grp("綁髮/編髮", [
-                    opt("high ponytail", "高馬尾 (High Ponytail)"),
-                    opt("low ponytail", "低馬尾 (Low Ponytail)"),
-                    opt("updo", "優雅盤髮 (Updo)"),
-                    opt("side ponytail", "側馬尾 (Side Ponytail)"),
-                    opt("twintails", "雙馬尾 (Twintails)"),
-                    opt("braids", "麻花辮 (Braids)"),
-                    opt("bun", "丸子頭 (Bun)")
+                    opt("high ponytail", "高馬尾 (High Ponytail)"), opt("low ponytail", "低馬尾 (Low Ponytail)"),
+                    opt("updo", "優雅盤髮 (Updo)"), opt("side ponytail", "側馬尾 (Side Ponytail)"),
+                    opt("twintails", "雙馬尾 (Twintails)"), opt("braids", "麻花辮 (Braids)"), opt("bun", "丸子頭 (Bun)")
                 ]),
                 grp("瀏海/其他", [
-                    opt("thin see-through bangs", "薄瀏海 (Thin See-Through Bangs)"),
-                    opt("thin blunt bangs", "齊薄瀏海 (Thin Blunt Bangs)"),
-                    opt("hime cut", "姬髮式 (Hime Cut)"),
-                    opt("hair over eyes", "遮眼瀏海 (Hair Over Eyes)"),
-                    opt("Korean bangs", "韓式瀏海 (Korean bangs)"),
-                    opt("side-parted bangs", "側分瀏海 (Side-parted bangs)"),
-                    opt("air bangs", "空氣瀏海 (Air bangs)")
+                    opt("thin see-through bangs", "薄瀏海 (Thin See-Through Bangs)"), opt("thin blunt bangs", "齊薄瀏海 (Thin Blunt Bangs)"),
+                    opt("hime cut", "姬髮式 (Hime Cut)"), opt("hair over eyes", "遮眼瀏海 (Hair Over Eyes)"),
+                    opt("Korean bangs", "韓式瀏海 (Korean bangs)"), opt("side-parted bangs", "側分瀏海 (Side-parted bangs)"), opt("air bangs", "空氣瀏海 (Air bangs)")
                 ]),
                 grp("男性髮型", [
-                    opt("textured crop with fringe", "微分碎蓋 (Textured crop with fringe)"),
-                    opt("spiky front hair", "美式前刺 (Spiky front hair)"),
-                    opt("7-3 side part hair", "三七側分 (7-3 side part hair)"),
-                    opt("slicked-back undercut", "潮男背頭 (Slicked-back undercut)"),
-                    opt("Morgan perm", "摩根紋理燙 (Morgan perm)"),
-                    opt("Korean textured perm", "韓式紋理燙 (Korean textured perm)"),
-                    opt("buzz cut", "寸頭 (Buzz cut)"),
-                    opt("2-8 short side part", "二八短側分 (2-8 short side part)"),
-                    opt("Korean curly hair", "韓系捲髮 (Korean curly hair)"),
-                    opt("casual side part", "休閒側分 (Casual side part)")
+                    opt("textured crop with fringe", "微分碎蓋 (Textured crop with fringe)"), opt("spiky front hair", "美式前刺 (Spiky front hair)"),
+                    opt("7-3 side part hair", "三七側分 (7-3 side part hair)"), opt("slicked-back undercut", "潮男背頭 (Slicked-back undercut)"),
+                    opt("Morgan perm", "摩根紋理燙 (Morgan perm)"), opt("Korean textured perm", "韓式紋理燙 (Korean textured perm)"),
+                    opt("buzz cut", "寸頭 (Buzz cut)"), opt("2-8 short side part", "二八短側分 (2-8 short side part)"),
+                    opt("Korean curly hair", "韓系捲髮 (Korean curly hair)"), opt("casual side part", "休閒側分 (Casual side part)")
                 ])
             ],
             hairColor: [
-                opt("Black", "黑色 (Black)"), opt("Dark Brown", "深棕 (Dark Brown)"),
-                opt("Light Brown", "淺棕 (Light Brown)"), opt("Ash Blonde", "淺金灰 (Ash Blonde)"),
-                opt("Blonde", "金色 (Blonde)"), opt("Platinum", "白金 (Platinum)"),
-                opt("Silver", "銀色 (Silver)"), opt("White", "白色 (White)"),
-                opt("Red", "紅色 (Red)"), opt("Pink", "粉紅 (Pink)"),
-                opt("Purple", "紫色 (Purple)"), opt("Blue", "藍色 (Blue)"),
+                opt("Black", "黑色 (Black)"), opt("Dark Brown", "深棕 (Dark Brown)"), opt("Light Brown", "淺棕 (Light Brown)"),
+                opt("Ash Blonde", "淺金灰 (Ash Blonde)"), opt("Blonde", "金色 (Blonde)"), opt("Platinum", "白金 (Platinum)"),
+                opt("Silver", "銀色 (Silver)"), opt("White", "白色 (White)"), opt("Red", "紅色 (Red)"),
+                opt("Pink", "粉紅 (Pink)"), opt("Purple", "紫色 (Purple)"), opt("Blue", "藍色 (Blue)"),
                 opt("Ombre", "漸層挑染 (Ombre)"), opt("Streaked", "多色挑染 (Streaked)")
             ],
             eyeColor: [
-                opt("Light Brown", "淺棕 (Light Brown)"), opt("Dark Brown", "深褐 (Dark Brown)"),
-                opt("Black", "黑 (Black)"), opt("Amber", "琥珀 (Amber)"),
-                opt("Blue", "藍 (Blue)"), opt("Green", "綠 (Green)"),
+                opt("Light Brown", "淺棕 (Light Brown)"), opt("Dark Brown", "深褐 (Dark Brown)"), opt("Black", "黑 (Black)"),
+                opt("Amber", "琥珀 (Amber)"), opt("Blue", "藍 (Blue)"), opt("Green", "綠 (Green)"),
                 opt("Grey", "灰 (Grey)"), opt("Hazel", "榛果色 (Hazel)")
             ],
             faceShape: [
@@ -888,156 +756,95 @@
             ],
             makeupBase: [
                 grp("綜合妝容風格", [
-                    opt("Japanese sweet makeup", "日系甜美妝 (Japanese sweet makeup)"),
-                    opt("Korean clear makeup", "韓系清透妝 (Korean clear makeup)"),
-                    opt("Korean natural makeup", "韓系自然妝 (Korean natural makeup)"),
-                    opt("Japanese basic makeup", "日系基礎妝 (Japanese basic makeup)"),
-                    opt("light mixed-race makeup", "輕混血妝感 (Light mixed-race makeup)"),
-                    opt("sophisticated office makeup", "職場精緻妝 (Sophisticated office makeup)"),
-                    opt("creamy nude makeup", "奶油裸妝風格 (Creamy nude makeup)"),
-                    opt("youthful energetic makeup", "元氣少女妝 (Youthful energetic makeup)"),
-                    opt("cool mature makeup", "冷豔成熟妝 (Cool mature makeup)"),
-                    opt("dewy fairy makeup", "仙女系輕透妝 (Dewy fairy makeup)"),
-                    opt("Igari makeup", "日式宿醉妝 (Igari makeup)"),
-                    opt("Western contour makeup", "歐美立體妝 (Western contour makeup)"),
-                    opt("no-makeup makeup", "偽素顏/裸妝零妝感 (No-makeup makeup)"),
-                    opt("matte makeup", "霧面妝效 (Matte makeup)"),
-                    opt("natural makeup", "自然妝容 (Natural makeup)"),
-                    opt("glass skin male makeup", "Glass Skin男妝 (Glass skin male makeup)"),
-                    opt("ancient male makeup", "古風男妝 (Ancient male makeup)"),
-                    opt("heroic eyebrow makeup", "劍眉星目妝 (Heroic eyebrow makeup)")
+                    opt("Japanese sweet makeup", "日系甜美妝 (Japanese sweet makeup)"), opt("Korean clear makeup", "韓系清透妝 (Korean clear makeup)"),
+                    opt("Korean natural makeup", "韓系自然妝 (Korean natural makeup)"), opt("Japanese basic makeup", "日系基礎妝 (Japanese basic makeup)"),
+                    opt("light mixed-race makeup", "輕混血妝感 (Light mixed-race makeup)"), opt("sophisticated office makeup", "職場精緻妝 (Sophisticated office makeup)"),
+                    opt("creamy nude makeup", "奶油裸妝風格 (Creamy nude makeup)"), opt("youthful energetic makeup", "元氣少女妝 (Youthful energetic makeup)"),
+                    opt("cool mature makeup", "冷豔成熟妝 (Cool mature makeup)"), opt("dewy fairy makeup", "仙女系輕透妝 (Dewy fairy makeup)"),
+                    opt("Igari makeup", "日式宿醉妝 (Igari makeup)"), opt("Western contour makeup", "歐美立體妝 (Western contour makeup)"),
+                    opt("no-makeup makeup", "偽素顏/裸妝零妝感 (No-makeup makeup)"), opt("matte makeup", "霧面妝效 (Matte makeup)"),
+                    opt("natural makeup", "自然妝容 (Natural makeup)"), opt("glass skin male makeup", "Glass Skin男妝 (Glass skin male makeup)"),
+                    opt("ancient male makeup", "古風男妝 (Ancient male makeup)"), opt("heroic eyebrow makeup", "劍眉星目妝 (Heroic eyebrow makeup)")
                 ])
             ],
             makeupDetail: [
                 grp("唇妝與眼妝", [
-                    opt("Classic Red Lips", "經典紅唇 (Classic Red Lips)"),
-                    opt("Glossy Lips", "水光唇釉 (Glossy Lips)"),
-                    opt("Matte Nude Lips", "霧面裸唇 (Matte Nude Lips)"),
-                    opt("Gradient Lips", "咬唇妝 (Gradient Lips)"),
-                    opt("Lipstick trace", "口紅痕跡 (Lipstick trace)"),
-                    opt("Sharp Winged Eyeliner", "精緻眼線 (Sharp Winged Eyeliner)"),
-                    opt("Long Voluminous Eyelashes", "濃密睫毛 (Long Voluminous Eyelashes)"),
-                    opt("Dark Smoky Eye Makeup", "煙燻眼妝 (Dark Smoky Eye Makeup)"),
-                    opt("Heavy Eyeshadow", "眼影濃妝 (Heavy Eyeshadow)"),
-                    opt("Faux Freckles", "雀斑妝 (Faux Freckles)"),
-                    opt("Sunburned Blush", "曬傷妝 (Sunburned Blush)"),
-                    opt("Slightly Dirty Face", "戰損/髒汙妝 (Slightly Dirty Face)")
+                    opt("Classic Red Lips", "經典紅唇 (Classic Red Lips)"), opt("Glossy Lips", "水光唇釉 (Glossy Lips)"),
+                    opt("Matte Nude Lips", "霧面裸唇 (Matte Nude Lips)"), opt("Gradient Lips", "咬唇妝 (Gradient Lips)"),
+                    opt("Lipstick trace", "口紅痕跡 (Lipstick trace)"), opt("Sharp Winged Eyeliner", "精緻眼線 (Sharp Winged Eyeliner)"),
+                    opt("Long Voluminous Eyelashes", "濃密睫毛 (Long Voluminous Eyelashes)"), opt("Dark Smoky Eye Makeup", "煙燻眼妝 (Dark Smoky Eye Makeup)"),
+                    opt("Heavy Eyeshadow", "眼影濃妝 (Heavy Eyeshadow)"), opt("Faux Freckles", "雀斑妝 (Faux Freckles)"),
+                    opt("Sunburned Blush", "曬傷妝 (Sunburned Blush)"), opt("Slightly Dirty Face", "戰損/髒汙妝 (Slightly Dirty Face)")
                 ])
             ],
             outfitFitPhysics: [
-                opt("loose and oversized fit", "寬鬆感 (Loose/Oversized)"),
-                opt("form-fitting", "極度貼合 (Form Fitting)"),
-                opt("straining fabric", "緊繃張力 (Straining Fabric)", ["sexy", "nsfw"]),
-                opt("sheer hint", "透膚質感 (Sheer Hint)", ["sexy", "nsfw"]),
+                opt("loose and oversized fit", "寬鬆感 (Loose/Oversized)"), opt("form-fitting", "極度貼合 (Form Fitting)"),
+                opt("straining fabric", "緊繃張力 (Straining Fabric)", ["sexy", "nsfw"]), opt("sheer hint", "透膚質感 (Sheer Hint)", ["sexy", "nsfw"]),
                 opt("squeezing flesh", "勒肉感 (Squeezing)", ["sexy", "nsfw"])
             ],
             itemColors: [
-                opt("black", "黑 (Black)"), opt("white", "白 (White)"),
-                opt("red", "紅 (Red)"), opt("blue", "藍 (Blue)"),
-                opt("pink", "粉紅 (Pink)"), opt("yellow", "黃 (Yellow)"),
-                opt("green", "綠 (Green)"), opt("purple", "紫 (Purple)"),
-                opt("gold", "金 (Gold)"), opt("silver", "銀 (Silver)"),
-                opt("grey", "灰 (Grey)"), opt("brown", "棕 (Brown)"), opt("beige", "米色 (Beige)")
+                opt("black", "黑 (Black)"), opt("white", "白 (White)"), opt("red", "紅 (Red)"), opt("blue", "藍 (Blue)"),
+                opt("pink", "粉紅 (Pink)"), opt("yellow", "黃 (Yellow)"), opt("green", "綠 (Green)"), opt("purple", "紫 (Purple)"),
+                opt("gold", "金 (Gold)"), opt("silver", "銀 (Silver)"), opt("grey", "灰 (Grey)"), opt("brown", "棕 (Brown)"), opt("beige", "米色 (Beige)")
             ],
             itemMaterials: [
-                opt("cotton", "純棉 (Cotton)"), opt("denim", "牛仔 (Denim)"),
-                opt("ribbed knit", "羅紋針織 (Ribbed)"), opt("fleece", "抓絨 (Fleece)"),
-                opt("wool", "羊毛 (Wool)"), opt("cashmere", "羊絨針織 (Cashmere)"),
-                opt("silk", "高級絲綢 (High-end Silk)"), opt("brocade", "錦緞 (Brocade)"),
-                opt("leather", "皮革 (Leather)"), opt("lace", "蕾絲 (Lace)"),
-                opt("sheer", "透膚雪紡 (Sheer)"), opt("tulle", "薄紗 (Tulle)"),
-                opt("mesh", "網紗 (Mesh)"), opt("latex", "乳膠 (Latex)", ["sexy", "nsfw"]),
-                opt("pvc", "漆皮 (PVC)", ["sexy", "nsfw"])
+                opt("cotton", "純棉 (Cotton)"), opt("denim", "牛仔 (Denim)"), opt("ribbed knit", "羅紋針織 (Ribbed)"),
+                opt("fleece", "抓絨 (Fleece)"), opt("wool", "羊毛 (Wool)"), opt("cashmere", "羊絨針織 (Cashmere)"),
+                opt("silk", "高級絲綢 (High-end Silk)"), opt("brocade", "錦緞 (Brocade)"), opt("leather", "皮革 (Leather)"),
+                opt("lace", "蕾絲 (Lace)"), opt("sheer", "透膚雪紡 (Sheer)"), opt("tulle", "薄紗 (Tulle)"),
+                opt("mesh", "網紗 (Mesh)"), opt("latex", "乳膠 (Latex)", ["sexy", "nsfw"]), opt("pvc", "漆皮 (PVC)", ["sexy", "nsfw"])
             ],
             itemPatterns: [
-                opt("small floral print", "碎花 (Small Floral Print)"),
-                opt("traditional japanese patterns", "和風花紋 (Traditional Japanese Patterns)"),
-                opt("geometric patterns", "幾何圖案 (Geometric Patterns)"),
-                opt("leopard print", "豹紋 (Leopard Print)"),
-                opt("snakeskin print", "蛇紋 (Snakeskin Print)"),
-                opt("plaid", "格紋 (Plaid)"),
-                opt("striped", "條紋 (Striped)"),
-                opt("polka dot", "波點 (Polka Dot)")
+                opt("small floral print", "碎花 (Small Floral Print)"), opt("traditional japanese patterns", "和風花紋 (Traditional Japanese Patterns)"),
+                opt("geometric patterns", "幾何圖案 (Geometric Patterns)"), opt("leopard print", "豹紋 (Leopard Print)"),
+                opt("snakeskin print", "蛇紋 (Snakeskin Print)"), opt("plaid", "格紋 (Plaid)"),
+                opt("striped", "條紋 (Striped)"), opt("polka dot", "波點 (Polka Dot)")
             ],
             outfitTheme: [
                 grp("通用風格", [
-                    opt("school uniform", "校園/JK (School uniform)"),
-                    opt("casual outfit", "便服 (Casual outfit)"),
-                    opt("sporty outfit", "運動 (Sporty outfit)"),
-                    opt("streetwear outfit", "街頭 (Streetwear outfit)"),
-                    opt("athleisure outfit", "運動休閒 (Athleisure outfit)"),
-                    opt("resort wear", "度假風 (Resort wear)"),
-                    opt("cyberpunk outfit", "賽博龐克 (Cyberpunk outfit)"),
-                    opt("evening dress", "晚宴 (Evening dress)"),
-                    opt("winter outfit", "冬季/滑雪 (Winter outfit)"),
-                    opt("cosplay outfit", "角色扮演 (Cosplay outfit)"),
-                    opt("sleepwear", "舒適睡衣 (Sleepwear)"),
-                    opt("tomboy workwear", "中性工裝 (Tomboy/Workwear)"),
-                    opt("modern kimono", "現代和風 (Modern kimono)"),
-                    opt("vintage outfit", "經典復古 (Vintage outfit)"),
+                    opt("school uniform", "校園/JK (School uniform)"), opt("casual outfit", "便服 (Casual outfit)"),
+                    opt("sporty outfit", "運動 (Sporty outfit)"), opt("streetwear outfit", "街頭 (Streetwear outfit)"),
+                    opt("athleisure outfit", "運動休閒 (Athleisure outfit)"), opt("resort wear", "度假風 (Resort wear)"),
+                    opt("cyberpunk outfit", "賽博龐克 (Cyberpunk outfit)"), opt("evening dress", "晚宴 (Evening dress)"),
+                    opt("winter outfit", "冬季/滑雪 (Winter outfit)"), opt("cosplay outfit", "角色扮演 (Cosplay outfit)"),
+                    opt("sleepwear", "舒適睡衣 (Sleepwear)"), opt("tomboy workwear", "中性工裝 (Tomboy/Workwear)"),
+                    opt("modern kimono", "現代和風 (Modern kimono)"), opt("vintage outfit", "經典復古 (Vintage outfit)"),
                     opt("dressy casual outfit", "華麗休閒 (Dressy casual outfit)")
                 ]),
                 grp("女性服裝風格", [
-                    opt("cheongsam dress", "中式/旗袍 (Cheongsam)"),
-                    opt("office lady outfit", "OL/秘書 (Office lady outfit)"),
-                    opt("Mori girl harajuku outfit", "日系森女/原宿 (Mori & Harajuku)"),
-                    opt("Korean style outfit", "韓系精緻 (Korean style outfit)"),
-                    opt("Western minimalist outfit", "歐美簡約 (Western minimalist outfit)"),
-                    opt("French chic outfit", "法式慵懶 (French chic outfit)"),
-                    opt("smart casual outfit", "商務休閒 (Smart casual outfit)"),
-                    opt("preppy style outfit", "美式學院 (Preppy style outfit)"),
-                    opt("tweed chanel style outfit", "精緻小香風 (Tweed/Chanel style)"),
-                    opt("fresh floral outfit", "清新碎花 (Fresh floral outfit)"),
-                    opt("light-colored shirt dress", "淺色襯衫式洋裝 (Light-colored shirt dress)"),
-                    opt("layered suspender dress", "假兩件式吊帶連衣裙 (Layered suspender dress)"),
-                    opt("pink chiffon dress", "粉色雪紡洋裝 (Pink chiffon dress)"),
-                    opt("white T-shirt and pleated mini skirt", "白T+百褶短裙 (White T-shirt and pleated mini skirt)"),
-                    opt("beige square-neck puff-sleeve dress", "米白色方領泡泡袖洋裝 (Beige square-neck puff-sleeve dress)"),
-                    opt("lace dress", "蕾絲洋裝 (Lace dress)"),
-                    opt("knitted dress", "針織洋裝 (Knitted dress)"),
-                    opt("white T-shirt and denim shorts", "白T+短牛仔褲 (White T-shirt and denim shorts)"),
-                    opt("spaghetti strap dress", "細肩帶連衣裙 (Spaghetti strap dress)"),
-                    opt("white camisole and wide-leg jeans", "白色細肩帶+牛仔寬褲 (White camisole and wide-leg jeans)"),
-                    opt("Korean cinched denim dress", "韓版氣質收腰仿牛仔連衣裙 (Korean cinched denim dress)"),
-                    opt("off-shoulder top and suspender skirt", "一字領露肩上衣+吊帶裙 (Off-shoulder top and suspender skirt)"),
+                    opt("cheongsam dress", "中式/旗袍 (Cheongsam)"), opt("office lady outfit", "OL/秘書 (Office lady outfit)"),
+                    opt("Mori girl harajuku outfit", "日系森女/原宿 (Mori & Harajuku)"), opt("Korean style outfit", "韓系精緻 (Korean style outfit)"),
+                    opt("Western minimalist outfit", "歐美簡約 (Western minimalist outfit)"), opt("French chic outfit", "法式慵懶 (French chic outfit)"),
+                    opt("smart casual outfit", "商務休閒 (Smart casual outfit)"), opt("preppy style outfit", "美式學院 (Preppy style outfit)"),
+                    opt("tweed chanel style outfit", "精緻小香風 (Tweed/Chanel style)"), opt("fresh floral outfit", "清新碎花 (Fresh floral outfit)"),
+                    opt("light-colored shirt dress", "淺色襯衫式洋裝 (Light-colored shirt dress)"), opt("layered suspender dress", "假兩件式吊帶連衣裙 (Layered suspender dress)"),
+                    opt("pink chiffon dress", "粉色雪紡洋裝 (Pink chiffon dress)"), opt("white T-shirt and pleated mini skirt", "白T+百褶短裙 (White T-shirt and pleated mini skirt)"),
+                    opt("beige square-neck puff-sleeve dress", "米白色方領泡泡袖洋裝 (Beige square-neck puff-sleeve dress)"), opt("lace dress", "蕾絲洋裝 (Lace dress)"),
+                    opt("knitted dress", "針織洋裝 (Knitted dress)"), opt("white T-shirt and denim shorts", "白T+短牛仔褲 (White T-shirt and denim shorts)"),
+                    opt("spaghetti strap dress", "細肩帶連衣裙 (Spaghetti strap dress)"), opt("white camisole and wide-leg jeans", "白色細肩帶+牛仔寬褲 (White camisole and wide-leg jeans)"),
+                    opt("Korean cinched denim dress", "韓版氣質收腰仿牛仔連衣裙 (Korean cinched denim dress)"), opt("off-shoulder top and suspender skirt", "一字領露肩上衣+吊帶裙 (Off-shoulder top and suspender skirt)"),
                     opt("denim slip dress", "吊帶裙牛仔連衣裙 (Denim slip dress)")
                 ]),
                 grp("男性服裝風格", [
-                    opt("Chinese tunic suit", "中山裝 (Chinese tunic suit)"),
-                    opt("dark suit jacket and white shirt", "深色西裝外套+白襯衫 (Dark suit jacket and white shirt)"),
-                    opt("dark suit jacket and light blue shirt", "深色西裝外套+淺藍襯衫 (Dark suit jacket and light blue shirt)"),
-                    opt("black turtleneck sweater", "黑色高領毛衣 (Black turtleneck sweater)"),
-                    opt("light blue shirt", "淺藍襯衫 (Light blue shirt)"),
-                    opt("white shirt and jeans", "白襯衫+牛仔褲 (White shirt and jeans)"),
-                    opt("dark Polo shirt and jeans", "深色 Polo 衫+牛仔褲 (Dark Polo shirt and jeans)"),
-                    opt("casual T-shirt and jeans", "休閒 T 恤+牛仔褲 (Casual T-shirt and jeans)"),
-                    opt("American casual T-shirt and jeans", "美式休閒 T 恤+牛仔褲 (American casual T-shirt and jeans)"),
-                    opt("Japanese fresh minimalist outfit", "日系清新風 (Japanese fresh minimalist outfit)"),
-                    opt("Korean minimalist outfit", "韓系簡約風 (Korean minimalist outfit)"),
-                    opt("smart-casual date outfit", "輕鬆約會風 (Smart-casual date outfit)"),
+                    opt("Chinese tunic suit", "中山裝 (Chinese tunic suit)"), opt("dark suit jacket and white shirt", "深色西裝外套+白襯衫 (Dark suit jacket and white shirt)"),
+                    opt("dark suit jacket and light blue shirt", "深色西裝外套+淺藍襯衫 (Dark suit jacket and light blue shirt)"), opt("black turtleneck sweater", "黑色高領毛衣 (Black turtleneck sweater)"),
+                    opt("light blue shirt", "淺藍襯衫 (Light blue shirt)"), opt("white shirt and jeans", "白襯衫+牛仔褲 (White shirt and jeans)"),
+                    opt("dark Polo shirt and jeans", "深色 Polo 衫+牛仔褲 (Dark Polo shirt and jeans)"), opt("casual T-shirt and jeans", "休閒 T 恤+牛仔褲 (Casual T-shirt and jeans)"),
+                    opt("American casual T-shirt and jeans", "美式休閒 T 恤+牛仔褲 (American casual T-shirt and jeans)"), opt("Japanese fresh minimalist outfit", "日系清新風 (Japanese fresh minimalist outfit)"),
+                    opt("Korean minimalist outfit", "韓系簡約風 (Korean minimalist outfit)"), opt("smart-casual date outfit", "輕鬆約會風 (Smart-casual date outfit)"),
                     opt("British gentleman outfit", "英倫紳士風 (British gentleman outfit)")
                 ]),
                 grp("女性性感服裝", [
-                    opt("maid outfit", "女僕 (Maid outfit)", ["sexy", "nsfw"]),
-                    opt("swimsuit", "泳裝 (Swimsuit)", ["sexy", "nsfw"]),
-                    opt("lingerie", "性感內衣 (Lingerie)", ["sexy", "nsfw"]),
-                    opt("Victoria's Secret style lingerie", "維秘風/性感睡衣 (Victoria's Secret style)", ["sexy", "nsfw"]),
-                    opt("sexy and hot outfit", "性感且火辣 (Sexy & hot outfit)", ["sexy", "nsfw"]),
-                    opt("lace bodysuit", "蕾絲連身衣 (Lace bodysuit)", ["sexy", "nsfw"]),
-                    opt("sheer silk kimono", "透明絲質和服 (Sheer silk kimono)", ["sexy", "nsfw"]),
-                    opt("ribbed crop top and skirt set", "短版小可愛和裙子套裝 (Ribbed crop top and skirt set)", ["sexy", "nsfw"]),
-                    opt("tie-front crop top and high-waisted shorts set", "綁帶短版上衣和高腰短褲套裝 (Tie-front crop top & shorts)", ["sexy", "nsfw"]),
-                    opt("velvet off-shoulder bodysuit", "天鵝絨露肩連身衣 (Velvet off-shoulder bodysuit)", ["sexy", "nsfw"]),
-                    opt("enchantress mesh bodysuit", "妖嬈網眼連身衣 (Enchantress mesh bodysuit)", ["sexy", "nsfw"]),
-                    opt("transparent chiffon tunic", "透明雪紡束腰長袍 (Transparent chiffon tunic)", ["sexy", "nsfw"]),
-                    opt("sheer lace babydoll dress", "透明蕾絲嬰兒裙 (Sheer lace babydoll dress)", ["sexy", "nsfw"]),
-                    opt("plunging neckline satin dress", "深V領緞面洋裝 (Plunging neckline satin dress)", ["sexy", "nsfw"]),
-                    opt("lace-up corset bodysuit", "綁帶蕾絲束腰連身衣 (Lace-up corset bodysuit)", ["sexy", "nsfw"]),
-                    opt("lace trim silk chemise", "蕾絲邊絲質夜袍 (Lace trim silk chemise)", ["sexy", "nsfw"]),
-                    opt("sequin plunge bodysuit", "亮片深V連身衣 (Sequin plunge bodysuit)", ["sexy", "nsfw"]),
-                    opt("sinister lace bodysuit", "陰森蕾絲連身衣 (Sinister lace bodysuit)", ["sexy", "nsfw"]),
-                    opt("sultry silk chemise", "性感真絲襯裙/妖豔絲質長襯裙 (Sultry silk chemise)", ["sexy", "nsfw"]),
-                    opt("micro bikini", "微型比基尼 (Micro bikini)", ["nsfw"])
+                    opt("maid outfit", "女僕 (Maid outfit)", ["sexy", "nsfw"]), opt("swimsuit", "泳裝 (Swimsuit)", ["sexy", "nsfw"]),
+                    opt("lingerie", "性感內衣 (Lingerie)", ["sexy", "nsfw"]), opt("Victoria's Secret style lingerie", "維秘風/性感睡衣 (Victoria's Secret style)", ["sexy", "nsfw"]),
+                    opt("sexy and hot outfit", "性感且火辣 (Sexy & hot outfit)", ["sexy", "nsfw"]), opt("lace bodysuit", "蕾絲連身衣 (Lace bodysuit)", ["sexy", "nsfw"]),
+                    opt("sheer silk kimono", "透明絲質和服 (Sheer silk kimono)", ["sexy", "nsfw"]), opt("ribbed crop top and skirt set", "短版小可愛和裙子套裝 (Ribbed crop top and skirt set)", ["sexy", "nsfw"]),
+                    opt("tie-front crop top and high-waisted shorts set", "綁帶短版上衣和高腰短褲套裝 (Tie-front crop top & shorts)", ["sexy", "nsfw"]), opt("velvet off-shoulder bodysuit", "天鵝絨露肩連身衣 (Velvet off-shoulder bodysuit)", ["sexy", "nsfw"]),
+                    opt("enchantress mesh bodysuit", "妖嬈網眼連身衣 (Enchantress mesh bodysuit)", ["sexy", "nsfw"]), opt("transparent chiffon tunic", "透明雪紡束腰長袍 (Transparent chiffon tunic)", ["sexy", "nsfw"]),
+                    opt("sheer lace babydoll dress", "透明蕾絲嬰兒裙 (Sheer lace babydoll dress)", ["sexy", "nsfw"]), opt("plunging neckline satin dress", "深V領緞面洋裝 (Plunging neckline satin dress)", ["sexy", "nsfw"]),
+                    opt("lace-up corset bodysuit", "綁帶蕾絲束腰連身衣 (Lace-up corset bodysuit)", ["sexy", "nsfw"]), opt("lace trim silk chemise", "蕾絲邊絲質夜袍 (Lace trim silk chemise)", ["sexy", "nsfw"]),
+                    opt("sequin plunge bodysuit", "亮片深V連身衣 (Sequin plunge bodysuit)", ["sexy", "nsfw"]), opt("sinister lace bodysuit", "陰森蕾絲連身衣 (Sinister lace bodysuit)", ["sexy", "nsfw"]),
+                    opt("sultry silk chemise", "性感真絲襯裙/妖豔絲質長襯裙 (Sultry silk chemise)", ["sexy", "nsfw"]), opt("micro bikini", "微型比基尼 (Micro bikini)", ["nsfw"])
                 ]),
                 grp("NSFW 風格", [
                     opt("nude, full body naked", "全身赤裸 (Nude)", ["nsfw"])
@@ -1045,599 +852,356 @@
             ],
             outfitBag: [
                 grp("各式包款", [
-                    opt("handbag", "手袋 (Handbag)"),
-                    opt("satchel", "斜背迷你包 (Satchel)"),
-                    opt("leather school briefcase bag", "JK書包 (皮革) (Leather school briefcase)"),
-                    opt("navy blue nylon school bag", "尼龍書包 (深藍) (Navy blue nylon school bag)"),
-                    opt("small square bag", "小方包 (Small square bag)"),
-                    opt("mini bucket bag", "迷你水桶包 (Mini bucket bag)"),
-                    opt("quilted chain bag", "菱格紋鏈帶包 (Quilted chain bag)"),
-                    opt("tote bag", "托特包 (Tote bag)"),
-                    opt("stylish clutch", "時尚手拿包 (Stylish clutch)"),
-                    opt("crossbody bag", "側背包 (Crossbody bag)"),
-                    opt("clutch bag", "手拿包 (Clutch bag)"),
-                    opt("evening bag", "晚宴包 (Evening bag)"),
-                    opt("trendy tote bag", "ZARA托特包 (Trendy tote bag)"),
-                    opt("stylish crossbody bag", "ZARA斜背包 (Stylish crossbody bag)"),
-                    opt("designer bucket bag", "ZARA水桶包 (Designer bucket bag)"),
-                    opt("classic crossbody tote", "Coach斜背包托特包 (Classic crossbody tote)"),
+                    opt("handbag", "手袋 (Handbag)"), opt("satchel", "斜背迷你包 (Satchel)"),
+                    opt("leather school briefcase bag", "JK書包 (皮革) (Leather school briefcase)"), opt("navy blue nylon school bag", "尼龍書包 (深藍) (Navy blue nylon school bag)"),
+                    opt("small square bag", "小方包 (Small square bag)"), opt("mini bucket bag", "迷你水桶包 (Mini bucket bag)"),
+                    opt("quilted chain bag", "菱格紋鏈帶包 (Quilted chain bag)"), opt("tote bag", "托特包 (Tote bag)"),
+                    opt("stylish clutch", "時尚手拿包 (Stylish clutch)"), opt("crossbody bag", "側背包 (Crossbody bag)"),
+                    opt("clutch bag", "手拿包 (Clutch bag)"), opt("evening bag", "晚宴包 (Evening bag)"),
+                    opt("trendy tote bag", "ZARA托特包 (Trendy tote bag)"), opt("stylish crossbody bag", "ZARA斜背包 (Stylish crossbody bag)"),
+                    opt("designer bucket bag", "ZARA水桶包 (Designer bucket bag)"), opt("classic crossbody tote", "Coach斜背包托特包 (Classic crossbody tote)"),
                     opt("small designer handbag", "Coach小型手提包 (Small designer handbag)")
                 ]),
                 grp("其他配件", [
-                    opt("vintage camera", "小型復古風格相機 (Vintage camera)"),
-                    opt("leather harness", "皮革束帶 (Harness)", ["sexy", "nsfw"]),
-                    opt("bluetooth earpiece", "藍牙耳機 (耳上) (Bluetooth earpiece)"),
-                    opt("sunglasses around neck", "太陽眼鏡 (頸上) (Sunglasses around neck)"),
-                    opt("feather accessories", "羽毛裝飾 (Feather accessories)"),
-                    opt("glitter and sparkles", "亮片裝飾 (Glitter and sparkles)"),
-                    opt("leg garter", "腿環 (Leg garter)", ["sexy", "nsfw"]),
-                    opt("armband", "臂章 (風紀委員) (Armband)")
+                    opt("vintage camera", "小型復古風格相機 (Vintage camera)"), opt("leather harness", "皮革束帶 (Harness)", ["sexy", "nsfw"]),
+                    opt("bluetooth earpiece", "藍牙耳機 (耳上) (Bluetooth earpiece)"), opt("sunglasses around neck", "太陽眼鏡 (頸上) (Sunglasses around neck)"),
+                    opt("feather accessories", "羽毛裝飾 (Feather accessories)"), opt("glitter and sparkles", "亮片裝飾 (Glitter and sparkles)"),
+                    opt("leg garter", "腿環 (Leg garter)", ["sexy", "nsfw"]), opt("armband", "臂章 (風紀委員) (Armband)")
                 ])
             ],
             outfitHead: [
                 grp("日常帽款 (Hats)", [
-                    opt("cap", "棒球帽 (Cap)"),
-                    opt("pompom hat", "針織毛帽 (Pompom hat)"),
-                    opt("beanie", "毛線帽 (Beanie)"),
-                    opt("earmuffs", "毛絨護耳罩 (Earmuffs)"),
-                    opt("straw hat", "寬簷草帽 (Straw hat)"),
-                    opt("beret", "畫家帽 (Beret)"),
-                    opt("bucket hat", "漁夫帽 (Bucket hat)"),
-                    opt("newsboy cap", "報童帽 (Newsboy cap)"),
-                    opt("visor cap", "遮陽帽 (Visor cap)"),
-                    opt("bandana", "頭巾 (Bandana)"),
+                    opt("cap", "棒球帽 (Cap)"), opt("pompom hat", "針織毛帽 (Pompom hat)"),
+                    opt("beanie", "毛線帽 (Beanie)"), opt("earmuffs", "毛絨護耳罩 (Earmuffs)"),
+                    opt("straw hat", "寬簷草帽 (Straw hat)"), opt("beret", "畫家帽 (Beret)"),
+                    opt("bucket hat", "漁夫帽 (Bucket hat)"), opt("newsboy cap", "報童帽 (Newsboy cap)"),
+                    opt("visor cap", "遮陽帽 (Visor cap)"), opt("bandana", "頭巾 (Bandana)"),
                     opt("cowboy hat", "牛仔帽 (Cowboy hat)")
                 ]),
                 grp("髮飾/頭帶 (Hair Acc)", [
-                    opt("headband", "髮箍 (Headband)"),
-                    opt("lace headband", "蕾絲髮箍 (Lace headband)"),
-                    opt("silk ribbon hairband", "絲帶髮帶 (Silk ribbon hairband)"),
-                    opt("giant bow on top of head", "大蝴蝶結 (頭頂) (Giant bow)"),
-                    opt("multiple colorful hair clips", "髮夾 (多個) (Multiple hair clips)"),
-                    opt("metal hair clip", "金屬髮夾 (Metal hair clip)"),
-                    opt("pearl hairpin", "珍珠髮釵 (Pearl hairpin)"),
-                    opt("flower hair accessory", "花朵髮飾 (Flower hair accessory)"),
-                    opt("tiara", "皇冠 (Tiara)"),
-                    opt("wedding veil", "新娘頭紗 (Wedding veil)"),
-                    opt("sports sweatband", "運動頭帶 (Sports sweatband)"),
-                    opt("traditional Chinese hair stick", "中式髮簪 (Chinese hair stick)")
+                    opt("headband", "髮箍 (Headband)"), opt("lace headband", "蕾絲髮箍 (Lace headband)"),
+                    opt("silk ribbon hairband", "絲帶髮帶 (Silk ribbon hairband)"), opt("giant bow on top of head", "大蝴蝶結 (頭頂) (Giant bow)"),
+                    opt("multiple colorful hair clips", "髮夾 (多個) (Multiple hair clips)"), opt("metal hair clip", "金屬髮夾 (Metal hair clip)"),
+                    opt("pearl hairpin", "珍珠髮釵 (Pearl hairpin)"), opt("flower hair accessory", "花朵髮飾 (Flower hair accessory)"),
+                    opt("tiara", "皇冠 (Tiara)"), opt("wedding veil", "新娘頭紗 (Wedding veil)"),
+                    opt("sports sweatband", "運動頭帶 (Sports sweatband)"), opt("traditional Chinese hair stick", "中式髮簪 (Chinese hair stick)")
                 ]),
                 grp("眼鏡/面部 (Face)", [
-                    opt("thin metal rimmed glasses", "細框眼鏡 (Thin metal rimmed glasses)"),
-                    opt("thick black-rimmed glasses", "黑框眼鏡 (Thick black-rimmed glasses)"),
-                    opt("sunglasses perched on head", "太陽眼鏡 (頭頂) (Sunglasses perched on head)"),
-                    opt("wearing dark sunglasses", "太陽眼鏡 (戴著) (Wearing dark sunglasses)"),
-                    opt("monocle", "單片眼鏡 (Monocle)"),
-                    opt("medical eye patch", "眼罩 (醫療) (Medical eye patch)"),
-                    opt("white face mask", "口罩 (白色) (White face mask)"),
-                    opt("black face mask", "口罩 (黑) (Black face mask)")
+                    opt("thin metal rimmed glasses", "細框眼鏡 (Thin metal rimmed glasses)"), opt("thick black-rimmed glasses", "黑框眼鏡 (Thick black-rimmed glasses)"),
+                    opt("sunglasses perched on head", "太陽眼鏡 (頭頂) (Sunglasses perched on head)"), opt("wearing dark sunglasses", "太陽眼鏡 (戴著) (Wearing dark sunglasses)"),
+                    opt("monocle", "單片眼鏡 (Monocle)"), opt("medical eye patch", "眼罩 (醫療) (Medical eye patch)"),
+                    opt("white face mask", "口罩 (白色) (White face mask)"), opt("black face mask", "口罩 (黑) (Black face mask)")
                 ]),
                 grp("角色扮演 (Cosplay)", [
-                    opt("black bunny ears headband", "兔耳髮箍 (Black bunny ears)"),
-                    opt("fluffy cat ears", "貓耳 (毛茸茸) (Fluffy cat ears)"),
-                    opt("fox ears", "狐狸耳 (Fox ears)"),
-                    opt("frilly maid headdress", "女僕喀秋莎 (Frilly maid headdress)"),
-                    opt("black lace blindfold", "蕾絲眼罩 (Black lace blindfold)", ["sexy", "nsfw"]),
-                    opt("small devil horns", "惡魔角 (Small devil horns)"),
-                    opt("glowing angel halo", "天使光環 (Glowing angel halo)"),
-                    opt("headphones around neck", "耳機 (掛頸) (Headphones around neck)"),
-                    opt("cat-ear gaming headphones", "貓耳耳機 (Cat-ear gaming headphones)"),
-                    opt("over-ear headphones", "頭戴式耳機 (Over-ear headphones)"),
-                    opt("nurse hat", "護士帽 (Nurse hat)"),
-                    opt("tall pointed wizard hat", "魔法師帽 (Wizard hat)")
+                    opt("black bunny ears headband", "兔耳髮箍 (Black bunny ears)"), opt("fluffy cat ears", "貓耳 (毛茸茸) (Fluffy cat ears)"),
+                    opt("fox ears", "狐狸耳 (Fox ears)"), opt("frilly maid headdress", "女僕喀秋莎 (Frilly maid headdress)"),
+                    opt("black lace blindfold", "蕾絲眼罩 (Black lace blindfold)", ["sexy", "nsfw"]), opt("small devil horns", "惡魔角 (Small devil horns)"),
+                    opt("glowing angel halo", "天使光環 (Glowing angel halo)"), opt("headphones around neck", "耳機 (掛頸) (Headphones around neck)"),
+                    opt("cat-ear gaming headphones", "貓耳耳機 (Cat-ear gaming headphones)"), opt("over-ear headphones", "頭戴式耳機 (Over-ear headphones)"),
+                    opt("nurse hat", "護士帽 (Nurse hat)"), opt("tall pointed wizard hat", "魔法師帽 (Wizard hat)")
                 ])
             ],
             outfitAcc: [
                 grp("耳部 (Earrings)", [
-                    opt("earrings", "耳環 (Earrings)"),
-                    opt("diamond studs", "鑽石耳釘 (Diamond studs)"),
-                    opt("hoop earrings", "大圓圈耳環 (Hoop earrings)"),
-                    opt("long dangling earrings", "長垂墜耳環 (Long dangling earrings)"),
-                    opt("elegant pearl earrings", "珍珠耳環 (Elegant pearl earrings)"),
-                    opt("tassel earrings", "流蘇耳環 (Tassel earrings)"),
-                    opt("gothic cross earrings", "十字架耳環 (Gothic cross earrings)"),
-                    opt("ear cuff", "耳骨夾 (Ear cuff)"),
-                    opt("ear stud", "耳釘 (Ear stud)"),
-                    opt("multiple piercings", "多重耳環 (Multiple piercings)")
+                    opt("earrings", "耳環 (Earrings)"), opt("diamond studs", "鑽石耳釘 (Diamond studs)"),
+                    opt("hoop earrings", "大圓圈耳環 (Hoop earrings)"), opt("long dangling earrings", "長垂墜耳環 (Long dangling earrings)"),
+                    opt("elegant pearl earrings", "珍珠耳環 (Elegant pearl earrings)"), opt("tassel earrings", "流蘇耳環 (Tassel earrings)"),
+                    opt("gothic cross earrings", "十字架耳環 (Gothic cross earrings)"), opt("ear cuff", "耳骨夾 (Ear cuff)"),
+                    opt("ear stud", "耳釘 (Ear stud)"), opt("multiple piercings", "多重耳環 (Multiple piercings)")
                 ]),
                 grp("頸部 (Neck)", [
-                    opt("chunky wool scarf", "厚羊毛圍巾 (Chunky wool scarf)"),
-                    opt("plaid pattern winter scarf", "格紋圍巾 (Plaid pattern winter scarf)"),
-                    opt("leather choker", "皮革頸圈 (Leather choker)"),
-                    opt("black lace choker", "蕾絲頸鍊 (Black lace choker)"),
-                    opt("gold chain necklace", "金屬項鍊 (Gold chain necklace)"),
-                    opt("layered pearl necklace", "多層珍珠項鍊 (Layered pearl necklace)"),
-                    opt("luxury diamond necklace", "鑽石項鍊 (Luxury diamond necklace)"),
-                    opt("red ribbon around neck", "紅絲帶 (頸部) (Red ribbon around neck)"),
-                    opt("simple necklace", "簡約項鍊 (Simple necklace)"),
-                    opt("delicate thin chain necklace", "細鍊 (Delicate thin chain necklace)"),
-                    opt("statement necklace", "造型項鍊 (Statement necklace)"),
-                    opt("bell choker", "鈴鐺項鍊 (Bell choker)")
+                    opt("chunky wool scarf", "厚羊毛圍巾 (Chunky wool scarf)"), opt("plaid pattern winter scarf", "格紋圍巾 (Plaid pattern winter scarf)"),
+                    opt("leather choker", "皮革頸圈 (Leather choker)"), opt("black lace choker", "蕾絲頸鍊 (Black lace choker)"),
+                    opt("gold chain necklace", "金屬項鍊 (Gold chain necklace)"), opt("layered pearl necklace", "多層珍珠項鍊 (Layered pearl necklace)"),
+                    opt("luxury diamond necklace", "鑽石項鍊 (Luxury diamond necklace)"), opt("red ribbon around neck", "紅絲帶 (頸部) (Red ribbon around neck)"),
+                    opt("simple necklace", "簡約項鍊 (Simple necklace)"), opt("delicate thin chain necklace", "細鍊 (Delicate thin chain necklace)"),
+                    opt("statement necklace", "造型項鍊 (Statement necklace)"), opt("bell choker", "鈴鐺項鍊 (Bell choker)")
                 ]),
                 grp("其他穿刺與裝飾", [
-                    opt("lip piercing", "唇環 (Lip piercing)"),
-                    opt("eyebrow piercing", "眉毛穿刺 (Eyebrow piercing)"),
+                    opt("lip piercing", "唇環 (Lip piercing)"), opt("eyebrow piercing", "眉毛穿刺 (Eyebrow piercing)"),
                     opt("navel piercing", "肚臍環 (Navel piercing)", ["sexy", "nsfw"])
                 ])
             ],
             outfitHands: [
                 grp("手套與手部配件", [
-                    opt("long satin gloves", "緞面長手套 (Long satin gloves)"),
-                    opt("sheer lace gloves", "蕾絲手套 (Sheer lace gloves)"),
-                    opt("mittens", "毛絨連指手套 (Mittens)"),
-                    opt("red ribbon tied around hands", "紅色緞帶 (綁手) (Red ribbon tied around hands)"),
-                    opt("multiple rings", "戒指 (多枚) (Multiple rings)"),
-                    opt("single diamond ring", "單一鑽戒 (Single diamond ring)"),
-                    opt("delicate bracelet chain", "手鍊 (Delicate bracelet chain)"),
-                    opt("wristwatch", "手錶 (Wristwatch)"),
-                    opt("gold bracelets", "金手鐲 (Gold bracelets)"),
-                    opt("colorful nail polish", "指甲油 (Colorful nail polish)"),
+                    opt("long satin gloves", "緞面長手套 (Long satin gloves)"), opt("sheer lace gloves", "蕾絲手套 (Sheer lace gloves)"),
+                    opt("mittens", "毛絨連指手套 (Mittens)"), opt("red ribbon tied around hands", "紅色緞帶 (綁手) (Red ribbon tied around hands)"),
+                    opt("multiple rings", "戒指 (多枚) (Multiple rings)"), opt("single diamond ring", "單一鑽戒 (Single diamond ring)"),
+                    opt("delicate bracelet chain", "手鍊 (Delicate bracelet chain)"), opt("wristwatch", "手錶 (Wristwatch)"),
+                    opt("gold bracelets", "金手鐲 (Gold bracelets)"), opt("colorful nail polish", "指甲油 (Colorful nail polish)"),
                     opt("french manicure", "法式指甲 (French manicure)")
                 ])
             ],
             outfitOuter: [
                 grp("大衣與夾克", [
-                    opt("denim jacket", "牛仔外套 (Denim jacket)"),
-                    opt("cardigan", "針織開衫 (Cardigan)"),
-                    opt("leather jacket", "皮夾克 (Leather jacket)"),
-                    opt("transparent vinyl jacket", "透明塑膠外套 (Transparent vinyl jacket)"),
-                    opt("checkered wool blazer", "格紋羊毛西裝外套 (Checkered wool blazer)"),
-                    opt("classic navy blazer", "經典海軍藍西裝外套 (Classic navy blazer)"),
-                    opt("gray school blazer", "灰色校服西裝外套 (Gray school blazer)"),
-                    opt("school emblem blazer", "校徽西裝外套 (School emblem blazer)"),
-                    opt("cropped hooded windbreaker", "短版連帽防風外套 (Cropped hooded windbreaker)"),
-                    opt("puffer jacket", "蓬鬆羽絨褸 (Puffer jacket)"),
-                    opt("ski suit", "滑雪連身服 (Ski suit)"),
-                    opt("ski jacket", "滑雪外套 (Ski jacket)"),
-                    opt("parka jacket", "連帽派克大衣 (Parka jacket)"),
-                    opt("wool coat", "羊毛大衣 (Wool coat)"),
-                    opt("double breasted jacket", "雙排扣外套 (Double breasted jacket)"),
-                    opt("vest outfit", "背心外套 (Vest outfit)"),
-                    opt("bomber jacket", "飛行夾克 (Bomber jacket)"),
-                    opt("windbreaker", "運動風褸 (Windbreaker)"),
-                    opt("zip hoodie", "連帽外套 (Zip hoodie)"),
-                    opt("varsity letterman jacket", "學士風字母夾克/棒球褸 (Varsity letterman jacket)"),
-                    opt("trench coat", "風衣 (Trench coat)"),
-                    opt("shawl", "披肩 (Shawl)")
+                    opt("denim jacket", "牛仔外套 (Denim jacket)"), opt("cardigan", "針織開衫 (Cardigan)"),
+                    opt("leather jacket", "皮夾克 (Leather jacket)"), opt("transparent vinyl jacket", "透明塑膠外套 (Transparent vinyl jacket)"),
+                    opt("checkered wool blazer", "格紋羊毛西裝外套 (Checkered wool blazer)"), opt("classic navy blazer", "經典海軍藍西裝外套 (Classic navy blazer)"),
+                    opt("gray school blazer", "灰色校服西裝外套 (Gray school blazer)"), opt("school emblem blazer", "校徽西裝外套 (School emblem blazer)"),
+                    opt("cropped hooded windbreaker", "短版連帽防風外套 (Cropped hooded windbreaker)"), opt("puffer jacket", "蓬鬆羽絨褸 (Puffer jacket)"),
+                    opt("ski suit", "滑雪連身服 (Ski suit)"), opt("ski jacket", "滑雪外套 (Ski jacket)"),
+                    opt("parka jacket", "連帽派克大衣 (Parka jacket)"), opt("wool coat", "羊毛大衣 (Wool coat)"),
+                    opt("double breasted jacket", "雙排扣外套 (Double breasted jacket)"), opt("vest outfit", "背心外套 (Vest outfit)"),
+                    opt("bomber jacket", "飛行夾克 (Bomber jacket)"), opt("windbreaker", "運動風褸 (Windbreaker)"),
+                    opt("zip hoodie", "連帽外套 (Zip hoodie)"), opt("varsity letterman jacket", "學士風字母夾克/棒球褸 (Varsity letterman jacket)"),
+                    opt("trench coat", "風衣 (Trench coat)"), opt("shawl", "披肩 (Shawl)")
                 ])
             ],
             outfitTop: [
                 grp("日常/時尚 (Casual/Fashion)", [
-                    opt("t-shirt", "T恤 (T-shirt)"),
-                    opt("blouse", "襯衫 (Blouse)"),
-                    opt("tight-fitting t-shirt", "緊身T恤 (Tight-fitting t-shirt)"),
-                    opt("fitted t-shirt", "合身T恤 (Fitted t-shirt)"),
-                    opt("oversized boyfriend t-shirt", "Oversize 男友T恤 (Oversized boyfriend t-shirt)"),
-                    opt("hoodie", "連帽衛衣 (Hoodie)"),
-                    opt("plaid flannel shirt", "格子襯衫 (Plaid flannel shirt)"),
-                    opt("ribbed knit cardigan", "羅紋針織開襟衫 (Ribbed knit cardigan)"),
-                    opt("lace long-sleeve blouse", "蕾絲長袖襯衫 (Lace long-sleeve blouse)"),
-                    opt("victorian style long-sleeve blouse", "維多利亞風格長袖襯衫 (Victorian style long-sleeve blouse)"),
-                    opt("loose cowl neck top", "寬鬆垂領上衣 (Loose cowl neck top)"),
-                    opt("off-shoulder knitted sweater", "露肩針織衫 (Off-shoulder knitted sweater)"),
-                    opt("tight ribbed knit sweater", "緊身針織衫 (Tight ribbed knit sweater)"),
-                    opt("baby tee", "短版緊身T恤 (Baby tee)"),
-                    opt("crop top with mandarin collar", "短版立領襯衫 (Crop top with mandarin collar)"),
-                    opt("sleeveless turtleneck", "高領無袖上衣 (Sleeveless turtleneck)"),
-                    opt("floral sundress", "連身裙 (全身) (Floral sundress)"),
-                    opt("turtleneck sweater", "高領厚毛衣 (Turtleneck sweater)"),
-                    opt("fleece top", "毛絨抓絨上衣 (Fleece top)"),
-                    opt("blazer", "修身西裝外套 (Blazer)"),
-                    opt("white silk button-down shirt", "絲綢襯衫 (白) (White silk button-down shirt)"),
-                    opt("semi-sheer chiffon blouse", "雪紡襯衫 (半透) (Semi-sheer chiffon blouse)"),
-                    opt("formal suit vest", "西裝馬甲 (Formal suit vest)"),
-                    opt("double-breasted suit jacket", "雙排扣西裝 (Double-breasted suit jacket)"),
-                    opt("mandarin collar shirt", "立領襯衫 (Mandarin collar shirt)"),
-                    opt("classic white oxford shirt", "經典白色牛津襯衫 (Classic white oxford shirt)"),
-                    opt("embroidered linen chemise", "刺繡亞麻衫 (Embroidered linen chemise)"),
-                    opt("linen blouse with puffed sleeves", "亞麻上衣配泡泡袖 (Linen blouse with puffed sleeves)"),
+                    opt("t-shirt", "T恤 (T-shirt)"), opt("blouse", "襯衫 (Blouse)"),
+                    opt("tight-fitting t-shirt", "緊身T恤 (Tight-fitting t-shirt)"), opt("fitted t-shirt", "合身T恤 (Fitted t-shirt)"),
+                    opt("oversized boyfriend t-shirt", "Oversize 男友T恤 (Oversized boyfriend t-shirt)"), opt("hoodie", "連帽衛衣 (Hoodie)"),
+                    opt("plaid flannel shirt", "格子襯衫 (Plaid flannel shirt)"), opt("ribbed knit cardigan", "羅紋針織開襟衫 (Ribbed knit cardigan)"),
+                    opt("lace long-sleeve blouse", "蕾絲長袖襯衫 (Lace long-sleeve blouse)"), opt("victorian style long-sleeve blouse", "維多利亞風格長袖襯衫 (Victorian style long-sleeve blouse)"),
+                    opt("loose cowl neck top", "寬鬆垂領上衣 (Loose cowl neck top)"), opt("off-shoulder knitted sweater", "露肩針織衫 (Off-shoulder knitted sweater)"),
+                    opt("tight ribbed knit sweater", "緊身針織衫 (Tight ribbed knit sweater)"), opt("baby tee", "短版緊身T恤 (Baby tee)"),
+                    opt("crop top with mandarin collar", "短版立領襯衫 (Crop top with mandarin collar)"), opt("sleeveless turtleneck", "高領無袖上衣 (Sleeveless turtleneck)"),
+                    opt("floral sundress", "連身裙 (全身) (Floral sundress)"), opt("turtleneck sweater", "高領厚毛衣 (Turtleneck sweater)"),
+                    opt("fleece top", "毛絨抓絨上衣 (Fleece top)"), opt("blazer", "修身西裝外套 (Blazer)"),
+                    opt("white silk button-down shirt", "絲綢襯衫 (白) (White silk button-down shirt)"), opt("semi-sheer chiffon blouse", "雪紡襯衫 (半透) (Semi-sheer chiffon blouse)"),
+                    opt("formal suit vest", "西裝馬甲 (Formal suit vest)"), opt("double-breasted suit jacket", "雙排扣西裝 (Double-breasted suit jacket)"),
+                    opt("mandarin collar shirt", "立領襯衫 (Mandarin collar shirt)"), opt("classic white oxford shirt", "經典白色牛津襯衫 (Classic white oxford shirt)"),
+                    opt("embroidered linen chemise", "刺繡亞麻衫 (Embroidered linen chemise)"), opt("linen blouse with puffed sleeves", "亞麻上衣配泡泡袖 (Linen blouse with puffed sleeves)"),
                     opt("sailor collar white blouse", "海軍領白色襯衫 (Sailor collar white blouse)")
                 ]),
                 grp("吊帶/背心(Camisoles & Vests)", [
-                    opt("crop top", "短版上衣 (Crop top)"),
-                    opt("spaghetti strap camisole", "基礎吊帶背心 (Spaghetti strap camisole)"),
-                    opt("lace-trimmed camisole", "細肩帶蕾絲背心 (Lace-trimmed camisole)"),
-                    opt("racerback tank top", "緊身工字背心 (Racerback tank top)"),
-                    opt("ribbed knit sweater vest", "羅紋針織背心 (Ribbed knit sweater vest)"),
-                    opt("halter top", "掛脖短版背心 (Halter top)"),
-                    opt("criss-cross strap tank top", "交叉綁帶背心 (Criss-cross strap tank top)"),
-                    opt("cropped athletic tank top", "短版運動背心 (Cropped athletic tank top)"),
-                    opt("satin camisole", "緞面內搭背心 (Satin camisole)"),
-                    opt("spaghetti strap camisole showing belly button", "露肚臍吊帶背心 (Spaghetti strap camisole showing belly button)", ["sexy", "nsfw"]),
-                    opt("tank top with large armholes revealing sideboob", "大袖口背心 (側乳) (Tank top revealing sideboob)", ["nsfw"]),
-                    opt("spaghetti strap camisole with sideboob", "露肚肚吊帶背心 (側乳) (Camisole with sideboob)", ["nsfw"])
+                    opt("crop top", "短版上衣 (Crop top)"), opt("spaghetti strap camisole", "基礎吊帶背心 (Spaghetti strap camisole)"),
+                    opt("lace-trimmed camisole", "細肩帶蕾絲背心 (Lace-trimmed camisole)"), opt("racerback tank top", "緊身工字背心 (Racerback tank top)"),
+                    opt("ribbed knit sweater vest", "羅紋針織背心 (Ribbed knit sweater vest)"), opt("halter top", "掛脖短版背心 (Halter top)"),
+                    opt("criss-cross strap tank top", "交叉綁帶背心 (Criss-cross strap tank top)"), opt("cropped athletic tank top", "短版運動背心 (Cropped athletic tank top)"),
+                    opt("satin camisole", "緞面內搭背心 (Satin camisole)"), opt("spaghetti strap camisole showing belly button", "露肚臍吊帶背心 (Spaghetti strap camisole showing belly button)", ["sexy", "nsfw"]),
+                    opt("tank top with large armholes revealing sideboob", "大袖口背心 (側乳) (Tank top revealing sideboob)", ["nsfw"]), opt("spaghetti strap camisole with sideboob", "露肚肚吊帶背心 (側乳) (Camisole with sideboob)", ["nsfw"])
                 ]),
                 grp("露肩/綁帶款式", [
-                    opt("tie-dye halter crop top", "水洗染露背上衣 (Tie-dye halter crop top)"),
-                    opt("beaded fringe bra top", "珠片流蘇胸衣 (Beaded fringe bra top)", ["sexy", "nsfw"]),
-                    opt("cutout mesh sleeveless tee", "網眼開口無袖T恤 (Cutout mesh sleeveless tee)"),
-                    opt("off-shoulder knit sweater", "露肩針織毛衣 (Off-shoulder knit sweater)"),
-                    opt("satin cold shoulder blouse", "緞面露肩上衣 (Satin cold shoulder blouse)"),
-                    opt("sheer lace off-shoulder top", "蕾絲露肩上衣 (Sheer lace off-shoulder top)", ["sexy", "nsfw"]),
-                    opt("ruffled off-shoulder crop top", "荷葉邊露肩短上衣 (Ruffled off-shoulder crop top)"),
-                    opt("velvet off-shoulder shirt", "天鵝絨露肩襯衫 (Velvet off-shoulder shirt)"),
-                    opt("cotton cold shoulder tee", "棉質露肩T恤 (Cotton cold shoulder tee)"),
-                    opt("sequined off-shoulder top", "亮片露肩上衣 (Sequined off-shoulder top)"),
-                    opt("mesh cold shoulder blouse", "網眼露肩上衣 (Mesh cold shoulder blouse)"),
-                    opt("silk off-shoulder blouse", "絲質露肩上衣 (Silk off-shoulder blouse)"),
-                    opt("denim cold shoulder jacket", "牛仔露肩夾克 (Denim cold shoulder jacket)"),
-                    opt("lace-trimmed off-shoulder tee", "蕾絲邊露肩T恤 (Lace-trimmed off-shoulder tee)"),
-                    opt("linen cold shoulder top", "亞麻露肩上衣 (Linen cold shoulder top)"),
-                    opt("crochet off-shoulder blouse", "鉤織露肩上衣 (Crochet off-shoulder blouse)"),
-                    opt("velvet cold shoulder sweater", "天鵝絨露肩毛衣 (Velvet cold shoulder sweater)"),
-                    opt("cutout off-shoulder crop top", "開口露肩短上衣 (Cutout off-shoulder crop top)")
+                    opt("tie-dye halter crop top", "水洗染露背上衣 (Tie-dye halter crop top)"), opt("beaded fringe bra top", "珠片流蘇胸衣 (Beaded fringe bra top)", ["sexy", "nsfw"]),
+                    opt("cutout mesh sleeveless tee", "網眼開口無袖T恤 (Cutout mesh sleeveless tee)"), opt("off-shoulder knit sweater", "露肩針織毛衣 (Off-shoulder knit sweater)"),
+                    opt("satin cold shoulder blouse", "緞面露肩上衣 (Satin cold shoulder blouse)"), opt("sheer lace off-shoulder top", "蕾絲露肩上衣 (Sheer lace off-shoulder top)", ["sexy", "nsfw"]),
+                    opt("ruffled off-shoulder crop top", "荷葉邊露肩短上衣 (Ruffled off-shoulder crop top)"), opt("velvet off-shoulder shirt", "天鵝絨露肩襯衫 (Velvet off-shoulder shirt)"),
+                    opt("cotton cold shoulder tee", "棉質露肩T恤 (Cotton cold shoulder tee)"), opt("sequined off-shoulder top", "亮片露肩上衣 (Sequined off-shoulder top)"),
+                    opt("mesh cold shoulder blouse", "網眼露肩上衣 (Mesh cold shoulder blouse)"), opt("silk off-shoulder blouse", "絲質露肩上衣 (Silk off-shoulder blouse)"),
+                    opt("denim cold shoulder jacket", "牛仔露肩夾克 (Denim cold shoulder jacket)"), opt("lace-trimmed off-shoulder tee", "蕾絲邊露肩T恤 (Lace-trimmed off-shoulder tee)"),
+                    opt("linen cold shoulder top", "亞麻露肩上衣 (Linen cold shoulder top)"), opt("crochet off-shoulder blouse", "鉤織露肩上衣 (Crochet off-shoulder blouse)"),
+                    opt("velvet cold shoulder sweater", "天鵝絨露肩毛衣 (Velvet cold shoulder sweater)"), opt("cutout off-shoulder crop top", "開口露肩短上衣 (Cutout off-shoulder crop top)")
                 ]),
                 grp("制服/特殊服裝 (Uniforms)", [
-                    opt("traditional elegant silk cheongsam", "古典長旗袍 (優雅) (Traditional elegant silk cheongsam)"),
-                    opt("high-slit cheongsam", "高衩旗袍 (露腿) (High-slit cheongsam)", ["sexy", "nsfw"]),
-                    opt("modified cheongsam with deep v-neck", "開胸旗袍 (挖空) (Modified cheongsam with deep v-neck)", ["sexy", "nsfw"]),
-                    opt("halter-neck cheongsam", "入膊旗袍 (削肩) (Halter-neck cheongsam)"),
-                    opt("modern tight mini cheongsam", "短裙改良旗袍 (Modern tight mini cheongsam)", ["sexy", "nsfw"]),
-                    opt("heavy-duty canvas work apron", "職人工作圍裙 (Heavy-duty canvas work apron)"),
-                    opt("cute frilly kitchen apron", "可愛廚房圍裙 (Cute frilly kitchen apron)"),
-                    opt("utility boiler suit", "工裝連身服 (Utility boiler suit)"),
-                    opt("classic navy blue sailor uniform top", "傳統水手服 (深藍) (Classic navy blue sailor uniform top)"),
-                    opt("white short-sleeve sailor uniform top", "夏季水手服 (白) (White short-sleeve sailor uniform top)"),
-                    opt("school uniform blazer", "西裝外套 (校服) (School uniform blazer)"),
-                    opt("beige knit school cardigan", "米色針織開衫 (校服) (Beige knit school cardigan)"),
-                    opt("navy blue knitted school vest", "海軍藍針織背心 (Navy blue knitted school vest)"),
-                    opt("white button-up shirt with ribbon", "白襯衫+領結 (White button-up shirt with ribbon)"),
-                    opt("white button-up shirt with necktie", "白襯衫+領帶 (White button-up shirt with necktie)"),
-                    opt("japanese school gym jersey jacket", "體育服外套 (Japanese school gym jersey jacket)"),
-                    opt("white school gym t-shirt", "體育服T恤 (White school gym t-shirt)"),
-                    opt("classic nurse uniform", "護士服 (Classic nurse uniform)"),
-                    opt("classic french maid outfit", "女僕裝 (Classic french maid outfit)"),
-                    opt("traditional japanese kimono", "傳統和服 (Traditional japanese kimono)"),
-                    opt("traditional korean hanbok", "傳統韓服 (Traditional korean hanbok)"),
-                    opt("traditional thai outfit", "傳統泰服 (Traditional thai outfit)"),
+                    opt("traditional elegant silk cheongsam", "古典長旗袍 (優雅) (Traditional elegant silk cheongsam)"), opt("high-slit cheongsam", "高衩旗袍 (露腿) (High-slit cheongsam)", ["sexy", "nsfw"]),
+                    opt("modified cheongsam with deep v-neck", "開胸旗袍 (挖空) (Modified cheongsam with deep v-neck)", ["sexy", "nsfw"]), opt("halter-neck cheongsam", "入膊旗袍 (削肩) (Halter-neck cheongsam)"),
+                    opt("modern tight mini cheongsam", "短裙改良旗袍 (Modern tight mini cheongsam)", ["sexy", "nsfw"]), opt("heavy-duty canvas work apron", "職人工作圍裙 (Heavy-duty canvas work apron)"),
+                    opt("cute frilly kitchen apron", "可愛廚房圍裙 (Cute frilly kitchen apron)"), opt("utility boiler suit", "工裝連身服 (Utility boiler suit)"),
+                    opt("classic navy blue sailor uniform top", "傳統水手服 (深藍) (Classic navy blue sailor uniform top)"), opt("white short-sleeve sailor uniform top", "夏季水手服 (白) (White short-sleeve sailor uniform top)"),
+                    opt("school uniform blazer", "西裝外套 (校服) (School uniform blazer)"), opt("beige knit school cardigan", "米色針織開衫 (校服) (Beige knit school cardigan)"),
+                    opt("navy blue knitted school vest", "海軍藍針織背心 (Navy blue knitted school vest)"), opt("white button-up shirt with ribbon", "白襯衫+領結 (White button-up shirt with ribbon)"),
+                    opt("white button-up shirt with necktie", "白襯衫+領帶 (White button-up shirt with necktie)"), opt("japanese school gym jersey jacket", "體育服外套 (Japanese school gym jersey jacket)"),
+                    opt("white school gym t-shirt", "體育服T恤 (White school gym t-shirt)"), opt("classic nurse uniform", "護士服 (Classic nurse uniform)"),
+                    opt("classic french maid outfit", "女僕裝 (Classic french maid outfit)"), opt("traditional japanese kimono", "傳統和服 (Traditional japanese kimono)"),
+                    opt("traditional korean hanbok", "傳統韓服 (Traditional korean hanbok)"), opt("traditional thai outfit", "傳統泰服 (Traditional thai outfit)"),
                     opt("chinese ancient hanfu", "中式漢服 (Chinese ancient hanfu)")
                 ]),
                 grp("性感/內衣/泳裝 (Sexy/Intimates)", [
-                    opt("sexy sundress", "性感連身裙 (Sexy sundress)", ["sexy", "nsfw"]),
-                    opt("sheer lace cheongsam lingerie", "蕾絲透視旗袍 (Sheer lace cheongsam lingerie)", ["sexy", "nsfw"]),
-                    opt("tight shiny latex bodysuit top", "乳膠緊身衣 (上身) (Tight shiny latex bodysuit top)", ["sexy", "nsfw"]),
-                    opt("translucent tulle top", "透視薄紗襯衫 (Translucent tulle top)", ["sexy", "nsfw"]),
-                    opt("fishnet top", "網狀上衣 (Fishnet top)", ["sexy", "nsfw"]),
-                    opt("open-front sheer blouse", "開襟透視上衣 (Open-front sheer blouse)", ["sexy", "nsfw"]),
-                    opt("satin bunny girl corset bodysuit", "兔女郎馬甲 (Satin bunny girl corset bodysuit)", ["sexy", "nsfw"]),
-                    opt("tight white formal shirt straining buttons", "爆扣襯衫 (Tight white formal shirt straining buttons)", ["sexy", "nsfw"]),
-                    opt("wet shirt", "濕透襯衫 (Wet shirt)", ["sexy", "nsfw"]),
-                    opt("tight nurse tunic with zipper down", "護士服 (拉鍊) (Tight nurse tunic with zipper down)", ["sexy", "nsfw"]),
-                    opt("sexy nurse uniform with open chest", "護士服 (開胸) (Sexy nurse uniform with open chest)", ["sexy", "nsfw"]),
-                    opt("sexy french maid outfit with low-cut neckline", "女僕裝 (低胸) (Sexy french maid outfit with low-cut neckline)", ["sexy", "nsfw"]),
-                    opt("sexy french maid outfit with short skirt", "女僕裝 (短裙) (Sexy french maid outfit with short skirt)", ["sexy", "nsfw"]),
-                    opt("cropped sailor uniform top", "性感水手服 (露腰) (Cropped sailor uniform top)", ["sexy", "nsfw"]),
-                    opt("rococo style fitted dress", "洛可可風格塑身連身裙 (Rococo style fitted dress)", ["sexy", "nsfw"]),
-                    opt("sexy japanese kimono", "性感和服 (Sexy japanese kimono)", ["sexy", "nsfw"]),
-                    opt("sexy korean hanbok", "性感韓服 (Sexy korean hanbok)", ["sexy", "nsfw"]),
-                    opt("sexy thai outfit", "性感泰服 (Sexy thai outfit)", ["sexy", "nsfw"]),
-                    opt("sexy chinese ancient hanfu", "性感漢服 (Sexy chinese ancient hanfu)", ["sexy", "nsfw"]),
-                    opt("luxurious and elegant evening gown with deep v-neck", "超深V高貴華麗晚裝 (Luxurious deep V evening gown)", ["sexy", "nsfw"]),
-                    opt("deep v-neck top", "深V開胸上衣 (Deep v-neck top)", ["sexy", "nsfw"]),
-                    opt("deep v-neck top with thin straps", "深V細肩帶上衣 (Deep v-neck top with thin straps)", ["sexy", "nsfw"]),
-                    opt("backless top with criss-cross straps", "綁帶露背上衣 (Backless top with criss-cross straps)", ["sexy", "nsfw"]),
-                    opt("front-tie crop top", "綁帶露胸上衣 (Front-tie crop top)", ["sexy", "nsfw"]),
-                    opt("high-neck sleeveless sweater with open sides", "側開高領毛衣 (High-neck sleeveless sweater with open sides)", ["sexy", "nsfw"]),
-                    opt("virgin killer sweater", "殺死處男毛衣 (Virgin killer sweater)", ["sexy", "nsfw"]),
-                    opt("sexy women's clothing", "性感女裝 (Sexy women's clothing)", ["sexy", "nsfw"]),
-                    opt("push-up bra", "集中型胸圍 (Push-up bra)", ["sexy", "nsfw"]),
-                    opt("bralette", "無鋼圈胸圍 (Bralette)", ["sexy", "nsfw"]),
-                    opt("demi-cup bra", "1/2杯內衣 (Demi-cup bra)", ["sexy", "nsfw"]),
-                    opt("cage bra", "籠式胸圍 (Cage bra)", ["sexy", "nsfw"]),
-                    opt("bandeau bra", "無肩帶胸圍 (Bandeau bra)", ["sexy", "nsfw"]),
-                    opt("sports bra", "運動內衣 (Sports bra)"),
-                    opt("sexy lace-up bra", "性感蕾絲胸圍 (Sexy lace-up bra)", ["sexy", "nsfw"]),
-                    opt("sheer lace bra", "透明蕾絲胸罩 (Sheer lace bra)", ["sexy", "nsfw"]),
-                    opt("teddy lingerie", "超深V高衩連身睡衣 (Teddy lingerie)", ["sexy", "nsfw"]),
-                    opt("triangle string bikini top", "三點式比基尼上衣 (Triangle string bikini top)", ["sexy", "nsfw"]),
-                    opt("deep-v halter neck swimsuit", "深V掛脖泳裝 (Deep-v halter neck swimsuit)", ["sexy", "nsfw"]),
-                    opt("high-cut bodysuit swimsuit", "側空連身泳衣 (High-cut bodysuit swimsuit)", ["sexy", "nsfw"]),
-                    opt("onesie sleepwear", "居家連身服 (Onesie sleepwear)"),
-                    opt("bf-style oversized white shirt", "寬鬆白襯衫 (BF風) (BF-style oversized white shirt)"),
-                    opt("spaghetti strap nightgown", "吊帶露背絲綢睡裙 (Spaghetti strap nightgown)", ["sexy", "nsfw"]),
-                    opt("spaghetti strap top with one strap slipping off shoulder", "肩帶滑落上衣 (Strap slipping off shoulder)", ["sexy", "nsfw"]),
-                    opt("tactical carbon fiber chestplate", "戰術碳纖胸甲 (Tactical carbon fiber chestplate)"),
-                    opt("royal velvet bodice", "皇家天鵝絨緊身上衣 (Royal velvet bodice)"),
-                    opt("chainmail hauberk", "鏈甲胸甲 (Chainmail hauberk)"),
-                    opt("crimson velvet corset", "深紅天鵝絨緊身胸衣 (Crimson velvet corset)", ["sexy", "nsfw"]),
-                    opt("obsidian leather bustier", "黑曜石皮質束腰背心 (Obsidian leather bustier)", ["sexy", "nsfw"]),
-                    opt("devilish pvc corset", "妖艷PVC緊身胸衣 (Devilish PVC corset)", ["sexy", "nsfw"]),
-                    opt("fiery lace-up corset", "火紅綁帶緊身胸衣 (Fiery lace-up corset)", ["sexy", "nsfw"])
+                    opt("sexy sundress", "性感連身裙 (Sexy sundress)", ["sexy", "nsfw"]), opt("sheer lace cheongsam lingerie", "蕾絲透視旗袍 (Sheer lace cheongsam lingerie)", ["sexy", "nsfw"]),
+                    opt("tight shiny latex bodysuit top", "乳膠緊身衣 (上身) (Tight shiny latex bodysuit top)", ["sexy", "nsfw"]), opt("translucent tulle top", "透視薄紗襯衫 (Translucent tulle top)", ["sexy", "nsfw"]),
+                    opt("fishnet top", "網狀上衣 (Fishnet top)", ["sexy", "nsfw"]), opt("open-front sheer blouse", "開襟透視上衣 (Open-front sheer blouse)", ["sexy", "nsfw"]),
+                    opt("satin bunny girl corset bodysuit", "兔女郎馬甲 (Satin bunny girl corset bodysuit)", ["sexy", "nsfw"]), opt("tight white formal shirt straining buttons", "爆扣襯衫 (Tight white formal shirt straining buttons)", ["sexy", "nsfw"]),
+                    opt("wet shirt", "濕透襯衫 (Wet shirt)", ["sexy", "nsfw"]), opt("tight nurse tunic with zipper down", "護士服 (拉鍊) (Tight nurse tunic with zipper down)", ["sexy", "nsfw"]),
+                    opt("sexy nurse uniform with open chest", "護士服 (開胸) (Sexy nurse uniform with open chest)", ["sexy", "nsfw"]), opt("sexy french maid outfit with low-cut neckline", "女僕裝 (低胸) (Sexy french maid outfit with low-cut neckline)", ["sexy", "nsfw"]),
+                    opt("sexy french maid outfit with short skirt", "女僕裝 (短裙) (Sexy french maid outfit with short skirt)", ["sexy", "nsfw"]), opt("cropped sailor uniform top", "性感水手服 (露腰) (Cropped sailor uniform top)", ["sexy", "nsfw"]),
+                    opt("rococo style fitted dress", "洛可可風格塑身連身裙 (Rococo style fitted dress)", ["sexy", "nsfw"]), opt("sexy japanese kimono", "性感和服 (Sexy japanese kimono)", ["sexy", "nsfw"]),
+                    opt("sexy korean hanbok", "性感韓服 (Sexy korean hanbok)", ["sexy", "nsfw"]), opt("sexy thai outfit", "性感泰服 (Sexy thai outfit)", ["sexy", "nsfw"]),
+                    opt("sexy chinese ancient hanfu", "性感漢服 (Sexy chinese ancient hanfu)", ["sexy", "nsfw"]), opt("luxurious and elegant evening gown with deep v-neck", "超深V高貴華麗晚裝 (Luxurious deep V evening gown)", ["sexy", "nsfw"]),
+                    opt("deep v-neck top", "深V開胸上衣 (Deep v-neck top)", ["sexy", "nsfw"]), opt("deep v-neck top with thin straps", "深V細肩帶上衣 (Deep v-neck top with thin straps)", ["sexy", "nsfw"]),
+                    opt("backless top with criss-cross straps", "綁帶露背上衣 (Backless top with criss-cross straps)", ["sexy", "nsfw"]), opt("front-tie crop top", "綁帶露胸上衣 (Front-tie crop top)", ["sexy", "nsfw"]),
+                    opt("high-neck sleeveless sweater with open sides", "側開高領毛衣 (High-neck sleeveless sweater with open sides)", ["sexy", "nsfw"]), opt("virgin killer sweater", "殺死處男毛衣 (Virgin killer sweater)", ["sexy", "nsfw"]),
+                    opt("sexy women's clothing", "性感女裝 (Sexy women's clothing)", ["sexy", "nsfw"]), opt("push-up bra", "集中型胸圍 (Push-up bra)", ["sexy", "nsfw"]),
+                    opt("bralette", "無鋼圈胸圍 (Bralette)", ["sexy", "nsfw"]), opt("demi-cup bra", "1/2杯內衣 (Demi-cup bra)", ["sexy", "nsfw"]),
+                    opt("cage bra", "籠式胸圍 (Cage bra)", ["sexy", "nsfw"]), opt("bandeau bra", "無肩帶胸圍 (Bandeau bra)", ["sexy", "nsfw"]),
+                    opt("sports bra", "運動內衣 (Sports bra)"), opt("sexy lace-up bra", "性感蕾絲胸圍 (Sexy lace-up bra)", ["sexy", "nsfw"]),
+                    opt("sheer lace bra", "透明蕾絲胸罩 (Sheer lace bra)", ["sexy", "nsfw"]), opt("teddy lingerie", "超深V高衩連身睡衣 (Teddy lingerie)", ["sexy", "nsfw"]),
+                    opt("triangle string bikini top", "三點式比基尼上衣 (Triangle string bikini top)", ["sexy", "nsfw"]), opt("deep-v halter neck swimsuit", "深V掛脖泳裝 (Deep-v halter neck swimsuit)", ["sexy", "nsfw"]),
+                    opt("high-cut bodysuit swimsuit", "側空連身泳衣 (High-cut bodysuit swimsuit)", ["sexy", "nsfw"]), opt("onesie sleepwear", "居家連身服 (Onesie sleepwear)"),
+                    opt("bf-style oversized white shirt", "寬鬆白襯衫 (BF風) (BF-style oversized white shirt)"), opt("spaghetti strap nightgown", "吊帶露背絲綢睡裙 (Spaghetti strap nightgown)", ["sexy", "nsfw"]),
+                    opt("spaghetti strap top with one strap slipping off shoulder", "肩帶滑落上衣 (Strap slipping off shoulder)", ["sexy", "nsfw"]), opt("tactical carbon fiber chestplate", "戰術碳纖胸甲 (Tactical carbon fiber chestplate)"),
+                    opt("royal velvet bodice", "皇家天鵝絨緊身上衣 (Royal velvet bodice)"), opt("chainmail hauberk", "鏈甲胸甲 (Chainmail hauberk)"),
+                    opt("crimson velvet corset", "深紅天鵝絨緊身胸衣 (Crimson velvet corset)", ["sexy", "nsfw"]), opt("obsidian leather bustier", "黑曜石皮質束腰背心 (Obsidian leather bustier)", ["sexy", "nsfw"]),
+                    opt("devilish pvc corset", "妖艷PVC緊身胸衣 (Devilish PVC corset)", ["sexy", "nsfw"]), opt("fiery lace-up corset", "火紅綁帶緊身胸衣 (Fiery lace-up corset)", ["sexy", "nsfw"])
                 ]),
                 grp("NSFW 專屬", [
-                    opt("topless, bare breasts", "上身赤裸 (Topless)", ["nsfw"]),
-                    opt("pasties on breasts", "僅胸貼 (Pasties)", ["nsfw"]),
+                    opt("topless, bare breasts", "上身赤裸 (Topless)", ["nsfw"]), opt("pasties on breasts", "僅胸貼 (Pasties)", ["nsfw"]),
                     opt("naked apron", "裸體圍裙 (Naked apron)", ["nsfw"])
                 ])
             ],
             outfitBottom: [
                 grp("長褲 (Pants)", [
-                    opt("jeans", "牛仔褲 (Jeans)"),
-                    opt("waterproof insulated snow pants", "尼龍雪褲 (Waterproof insulated snow pants)"),
-                    opt("fleece-lined winter trousers", "內起絨保暖長褲 (Fleece-lined winter trousers)"),
-                    opt("straight leg pants", "優閒直腳褲 (Straight leg pants)"),
-                    opt("denim overalls", "牛仔吊帶褲 (Denim overalls)"),
-                    opt("beige work dungarees", "卡其吊帶褲 (Beige work dungarees)"),
-                    opt("skinny jeans", "緊身牛仔褲 (Skinny jeans)"),
-                    opt("regular jeans", "一般牛仔褲 (Regular jeans)"),
-                    opt("sweatpants", "棉質褲 (Sweatpants)"),
-                    opt("cargo pants", "寬鬆工裝褲 (Cargo pants)"),
-                    opt("retro flared trousers", "喇叭褲 (Retro flared trousers)"),
-                    opt("tailored formal trousers", "西裝長褲 (Tailored formal trousers)"),
-                    opt("palazzo pants", "寬褲 (Palazzo pants)"),
-                    opt("track pants", "體育長褲 (Track pants)"),
-                    opt("tight yoga pants", "瑜伽褲 (Tight yoga pants)"),
-                    opt("tight leather pants", "皮褲 (Tight leather pants)", ["sexy", "nsfw"])
+                    opt("jeans", "牛仔褲 (Jeans)"), opt("waterproof insulated snow pants", "尼龍雪褲 (Waterproof insulated snow pants)"),
+                    opt("fleece-lined winter trousers", "內起絨保暖長褲 (Fleece-lined winter trousers)"), opt("straight leg pants", "優閒直腳褲 (Straight leg pants)"),
+                    opt("denim overalls", "牛仔吊帶褲 (Denim overalls)"), opt("beige work dungarees", "卡其吊帶褲 (Beige work dungarees)"),
+                    opt("skinny jeans", "緊身牛仔褲 (Skinny jeans)"), opt("regular jeans", "一般牛仔褲 (Regular jeans)"),
+                    opt("sweatpants", "棉質褲 (Sweatpants)"), opt("cargo pants", "寬鬆工裝褲 (Cargo pants)"),
+                    opt("retro flared trousers", "喇叭褲 (Retro flared trousers)"), opt("tailored formal trousers", "西裝長褲 (Tailored formal trousers)"),
+                    opt("palazzo pants", "寬褲 (Palazzo pants)"), opt("track pants", "體育長褲 (Track pants)"),
+                    opt("tight yoga pants", "瑜伽褲 (Tight yoga pants)"), opt("tight leather pants", "皮褲 (Tight leather pants)", ["sexy", "nsfw"])
                 ]),
                 grp("短褲/運動 (Shorts/Sport)", [
-                    opt("shorts", "短褲 (Shorts)"),
-                    opt("high-waisted denim shorts", "高腰牛仔短褲 (High-waisted denim shorts)"),
-                    opt("biker shorts", "單車褲 (Biker shorts)"),
-                    opt("bloomers", "體育短褲 (Bloomers)"),
-                    opt("dolphin shorts", "真理褲 (Dolphin shorts)"),
-                    opt("low-rise cheeky shorts", "低腰半包臀短褲 (Low-rise cheeky shorts)", ["sexy", "nsfw"]),
-                    opt("soft and lightweight mini shorts", "柔軟輕薄迷你短褲 (Soft and lightweight mini shorts)", ["sexy", "nsfw"]),
-                    opt("ultra-short denim daisy dukes", "熱褲 (牛仔) (Ultra-short denim daisy dukes)", ["sexy", "nsfw"])
+                    opt("shorts", "短褲 (Shorts)"), opt("high-waisted denim shorts", "高腰牛仔短褲 (High-waisted denim shorts)"),
+                    opt("biker shorts", "單車褲 (Biker shorts)"), opt("bloomers", "體育短褲 (Bloomers)"),
+                    opt("dolphin shorts", "真理褲 (Dolphin shorts)"), opt("low-rise cheeky shorts", "低腰半包臀短褲 (Low-rise cheeky shorts)", ["sexy", "nsfw"]),
+                    opt("soft and lightweight mini shorts", "柔軟輕薄迷你短褲 (Soft and lightweight mini shorts)", ["sexy", "nsfw"]), opt("ultra-short denim daisy dukes", "熱褲 (牛仔) (Ultra-short denim daisy dukes)", ["sexy", "nsfw"])
                 ]),
                 grp("裙裝 (Skirts)", [
-                    opt("long skirt", "長裙 (Long skirt)"),
-                    opt("knee-length pencil skirt", "及膝鉛筆裙 (Knee-length pencil skirt)"),
-                    opt("a-line formal skirt", "A字西裝裙 (A-line formal skirt)"),
-                    opt("tight skirt with side slit", "開衩包臀裙 (Tight skirt with side slit)", ["sexy", "nsfw"]),
-                    opt("plaid skirt", "格紋百褶裙 (Plaid skirt)"),
-                    opt("solid pleated school skirt", "百褶校裙 (Solid pleated school skirt)"),
-                    opt("formal school skirt", "西裝校裙 (Formal school skirt)"),
-                    opt("mini school skirt", "超短改裝校裙 (Mini school skirt)", ["sexy", "nsfw"]),
-                    opt("plaid pleated skirt", "格紋百褶裙 (Plaid pleated skirt)"),
-                    opt("ruffled hem skater skirt", "荷葉邊高腰半圓裙 (Ruffled hem skater skirt)"),
-                    opt("classic black pinafore", "經典黑色圍裙裙裝 (Classic black pinafore)"),
-                    opt("a-line camel skirt", "喇叭裙卡其色裙裝 (A-line camel skirt)"),
-                    opt("pleated burgundy skirt", "百褶酒紅色裙 (Pleated burgundy skirt)"),
-                    opt("sailor collar navy dress", "海軍領深藍洋裝 (Sailor collar navy dress)"),
-                    opt("pleated mini skirt", "百褶短裙 (Pleated mini skirt)"),
-                    opt("high-waisted pleated skirt", "高腰百褶裙 (High-waisted pleated skirt)"),
-                    opt("micro mini skirt", "超短迷你裙 (Micro mini skirt)", ["sexy", "nsfw"]),
-                    opt("short denim skirt", "牛仔短裙 (Short denim skirt)"),
-                    opt("sexy mini skirt", "性感短裙 (Sexy mini skirt)", ["sexy", "nsfw"]),
-                    opt("ruffled mini skirt", "荷葉邊短裙 (Ruffled mini skirt)"),
-                    opt("tight leather pencil skirt", "包臀皮裙 (Tight leather pencil skirt)", ["sexy", "nsfw"]),
-                    opt("short skirt with thigh-high slit", "開衩短裙 (Short skirt with thigh-high slit)", ["sexy", "nsfw"]),
-                    opt("sheer tulle skirt", "透明薄紗裙 (Sheer tulle skirt)", ["sexy", "nsfw"]),
-                    opt("shiny latex mini skirt", "乳膠短裙 (Shiny latex mini skirt)", ["sexy", "nsfw"])
+                    opt("long skirt", "長裙 (Long skirt)"), opt("knee-length pencil skirt", "及膝鉛筆裙 (Knee-length pencil skirt)"),
+                    opt("a-line formal skirt", "A字西裝裙 (A-line formal skirt)"), opt("tight skirt with side slit", "開衩包臀裙 (Tight skirt with side slit)", ["sexy", "nsfw"]),
+                    opt("plaid skirt", "格紋百褶裙 (Plaid skirt)"), opt("solid pleated school skirt", "百褶校裙 (Solid pleated school skirt)"),
+                    opt("formal school skirt", "西裝校裙 (Formal school skirt)"), opt("mini school skirt", "超短改裝校裙 (Mini school skirt)", ["sexy", "nsfw"]),
+                    opt("plaid pleated skirt", "格紋百褶裙 (Plaid pleated skirt)"), opt("ruffled hem skater skirt", "荷葉邊高腰半圓裙 (Ruffled hem skater skirt)"),
+                    opt("classic black pinafore", "經典黑色圍裙裙裝 (Classic black pinafore)"), opt("a-line camel skirt", "喇叭裙卡其色裙裝 (A-line camel skirt)"),
+                    opt("pleated burgundy skirt", "百褶酒紅色裙 (Pleated burgundy skirt)"), opt("sailor collar navy dress", "海軍領深藍洋裝 (Sailor collar navy dress)"),
+                    opt("pleated mini skirt", "百褶短裙 (Pleated mini skirt)"), opt("high-waisted pleated skirt", "高腰百褶裙 (High-waisted pleated skirt)"),
+                    opt("micro mini skirt", "超短迷你裙 (Micro mini skirt)", ["sexy", "nsfw"]), opt("short denim skirt", "牛仔短裙 (Short denim skirt)"),
+                    opt("sexy mini skirt", "性感短裙 (Sexy mini skirt)", ["sexy", "nsfw"]), opt("ruffled mini skirt", "荷葉邊短裙 (Ruffled mini skirt)"),
+                    opt("tight leather pencil skirt", "包臀皮裙 (Tight leather pencil skirt)", ["sexy", "nsfw"]), opt("short skirt with thigh-high slit", "開衩短裙 (Short skirt with thigh-high slit)", ["sexy", "nsfw"]),
+                    opt("sheer tulle skirt", "透明薄紗裙 (Sheer tulle skirt)", ["sexy", "nsfw"]), opt("shiny latex mini skirt", "乳膠短裙 (Shiny latex mini skirt)", ["sexy", "nsfw"])
                 ]),
                 grp("內褲/泳褲 (Panties/Swim)", [
-                    opt("side-tie string bikini bottoms", "三點式比基尼下著 (Side-tie string bikini bottoms)", ["sexy", "nsfw"]),
-                    opt("micro bikini bottom", "比基尼泳褲 (Micro bikini bottom)", ["sexy", "nsfw"]),
-                    opt("thong", "丁字褲 (Thong)", ["sexy", "nsfw"]),
-                    opt("c-string", "C字褲 (C-string)", ["sexy", "nsfw"]),
-                    opt("lace panties", "蕾絲內褲 (Lace panties)", ["sexy", "nsfw"]),
-                    opt("brazilian panties", "巴西式內褲 (Brazilian panties)", ["sexy", "nsfw"]),
-                    opt("women's boxer briefs", "女裝平腳內褲 (Women's boxer briefs)"),
-                    opt("lace-trimmed silk thong", "蕾絲修飾絲質丁字褲 (Lace-trimmed silk thong)", ["sexy", "nsfw"]),
-                    opt("satin high-waisted briefs", "緞面高腰三角褲 (Satin high-waisted briefs)", ["sexy", "nsfw"]),
-                    opt("sheer mesh bikini panties", "透明網眼比基尼 (Sheer mesh bikini panties)", ["sexy", "nsfw"]),
-                    opt("floral lace cheeky panties", "花朵蕾絲性感小內褲 (Floral lace cheeky panties)", ["sexy", "nsfw"]),
-                    opt("cotton candy striped boyshorts", "棉花糖條紋平口短褲 (Cotton candy striped boyshorts)"),
-                    opt("seamless microfiber hipster", "無痕超細纖維臀部褲 (Seamless microfiber hipster)"),
-                    opt("velvet ribbon-trimmed thong", "天鵝絨緞帶修飾丁字褲 (Velvet ribbon-trimmed thong)", ["sexy", "nsfw"]),
-                    opt("leopard print g-string", "豹紋印花G弦褲 (Leopard print g-string)", ["sexy", "nsfw"]),
-                    opt("ruffled tulle french knickers", "荷葉邊蕾絲法蘭絨內褲 (Ruffled tulle french knickers)", ["sexy", "nsfw"]),
-                    opt("silk charmeuse tap pants", "絲縐緞提花短褲 (Silk charmeuse tap pants)", ["sexy", "nsfw"]),
-                    opt("polka dot cotton hipsters", "波點棉質臀部褲 (Polka dot cotton hipsters)"),
-                    opt("embroidered satin bikini panties", "刺繡緞面比基尼 (Embroidered satin bikini panties)", ["sexy", "nsfw"]),
-                    opt("lace-trim cheeky briefs", "蕾絲修飾性感小三角褲 (Lace-trim cheeky briefs)", ["sexy", "nsfw"]),
-                    opt("vintage floral print boyshorts", "復古花卉印花平口短褲 (Vintage floral print boyshorts)"),
-                    opt("sheer lace thong with bow", "透明蕾絲蝴蝶結丁字褲 (Sheer lace thong with bow)", ["sexy", "nsfw"]),
-                    opt("polished satin high-cut panties", "光澤緞面高腰大褲 (Polished satin high-cut panties)", ["sexy", "nsfw"]),
-                    opt("bow-tied mesh hipster", "蝴蝶結網眼臀部褲 (Bow-tied mesh hipster)", ["sexy", "nsfw"]),
-                    opt("strappy lace brazilian panty", "交叉蕾絲巴西褲 (Strappy lace brazilian panty)", ["sexy", "nsfw"]),
-                    opt("sheer lace side panel shorts", "透明蕾絲側邊短褲 (Sheer lace side panel shorts)", ["sexy", "nsfw"])
+                    opt("side-tie string bikini bottoms", "三點式比基尼下著 (Side-tie string bikini bottoms)", ["sexy", "nsfw"]), opt("micro bikini bottom", "比基尼泳褲 (Micro bikini bottom)", ["sexy", "nsfw"]),
+                    opt("thong", "丁字褲 (Thong)", ["sexy", "nsfw"]), opt("c-string", "C字褲 (C-string)", ["sexy", "nsfw"]),
+                    opt("lace panties", "蕾絲內褲 (Lace panties)", ["sexy", "nsfw"]), opt("brazilian panties", "巴西式內褲 (Brazilian panties)", ["sexy", "nsfw"]),
+                    opt("women's boxer briefs", "女裝平腳內褲 (Women's boxer briefs)"), opt("lace-trimmed silk thong", "蕾絲修飾絲質丁字褲 (Lace-trimmed silk thong)", ["sexy", "nsfw"]),
+                    opt("satin high-waisted briefs", "緞面高腰三角褲 (Satin high-waisted briefs)", ["sexy", "nsfw"]), opt("sheer mesh bikini panties", "透明網眼比基尼 (Sheer mesh bikini panties)", ["sexy", "nsfw"]),
+                    opt("floral lace cheeky panties", "花朵蕾絲性感小內褲 (Floral lace cheeky panties)", ["sexy", "nsfw"]), opt("cotton candy striped boyshorts", "棉花糖條紋平口短褲 (Cotton candy striped boyshorts)"),
+                    opt("seamless microfiber hipster", "無痕超細纖維臀部褲 (Seamless microfiber hipster)"), opt("velvet ribbon-trimmed thong", "天鵝絨緞帶修飾丁字褲 (Velvet ribbon-trimmed thong)", ["sexy", "nsfw"]),
+                    opt("leopard print g-string", "豹紋印花G弦褲 (Leopard print g-string)", ["sexy", "nsfw"]), opt("ruffled tulle french knickers", "荷葉邊蕾絲法蘭絨內褲 (Ruffled tulle french knickers)", ["sexy", "nsfw"]),
+                    opt("silk charmeuse tap pants", "絲縐緞提花短褲 (Silk charmeuse tap pants)", ["sexy", "nsfw"]), opt("polka dot cotton hipsters", "波點棉質臀部褲 (Polka dot cotton hipsters)"),
+                    opt("embroidered satin bikini panties", "刺繡緞面比基尼 (Embroidered satin bikini panties)", ["sexy", "nsfw"]), opt("lace-trim cheeky briefs", "蕾絲修飾性感小三角褲 (Lace-trim cheeky briefs)", ["sexy", "nsfw"]),
+                    opt("vintage floral print boyshorts", "復古花卉印花平口短褲 (Vintage floral print boyshorts)"), opt("sheer lace thong with bow", "透明蕾絲蝴蝶結丁字褲 (Sheer lace thong with bow)", ["sexy", "nsfw"]),
+                    opt("polished satin high-cut panties", "光澤緞面高腰大褲 (Polished satin high-cut panties)", ["sexy", "nsfw"]), opt("bow-tied mesh hipster", "蝴蝶結網眼臀部褲 (Bow-tied mesh hipster)", ["sexy", "nsfw"]),
+                    opt("strappy lace brazilian panty", "交叉蕾絲巴西褲 (Strappy lace brazilian panty)", ["sexy", "nsfw"]), opt("sheer lace side panel shorts", "透明蕾絲側邊短褲 (Sheer lace side panel shorts)", ["sexy", "nsfw"])
                 ]),
                 grp("NSFW/特殊", [
-                    opt("bottomless", "下身赤裸 (Bottomless)", ["nsfw"]),
-                    opt("crotchless panties", "開檔內褲 (Crotchless panties)", ["nsfw"]),
-                    opt("open-crotch leggings", "開檔緊身褲 (Open-crotch leggings)", ["nsfw"]),
-                    opt("crotchless lace boyshorts", "開檔蕾絲平口短褲 (Crotchless lace boyshorts)", ["nsfw"]),
-                    opt("tight yoga pants with cameltoe", "瑜伽褲 (駱駝) (Tight yoga pants with cameltoe)", ["nsfw"]),
-                    opt("garter belt and stockings only", "僅吊帶襪 (Garter belt and stockings only)", ["sexy", "nsfw"])
+                    opt("bottomless", "下身赤裸 (Bottomless)", ["nsfw"]), opt("crotchless panties", "開檔內褲 (Crotchless panties)", ["nsfw"]),
+                    opt("open-crotch leggings", "開檔緊身褲 (Open-crotch leggings)", ["nsfw"]), opt("crotchless lace boyshorts", "開檔蕾絲平口短褲 (Crotchless lace boyshorts)", ["nsfw"]),
+                    opt("tight yoga pants with cameltoe", "瑜伽褲 (駱駝) (Tight yoga pants with cameltoe)", ["nsfw"]), opt("garter belt and stockings only", "僅吊帶襪 (Garter belt and stockings only)", ["sexy", "nsfw"])
                 ])
             ],
             outfitSock: [
-                opt("thick thermal wool socks", "厚羊毛襪 (Thick thermal wool socks)"),
-                opt("ankle socks", "短襪 (Ankle socks)"),
-                opt("knee-high socks", "膝下襪 (Knee-high socks)"),
-                opt("thigh-high socks", "過膝襪 (Thigh-high socks)"),
-                opt("pantyhose", "黑絲襪 (Pantyhose)"),
-                opt("fishnet tights", "網襪 (Fishnet tights)"),
-                opt("garter belt and stockings", "吊帶襪 (Garter belt and stockings)", ["sexy", "nsfw"]),
-                opt("stockings", "絲襪 (Stockings)")
+                opt("thick thermal wool socks", "厚羊毛襪 (Thick thermal wool socks)"), opt("ankle socks", "短襪 (Ankle socks)"),
+                opt("knee-high socks", "膝下襪 (Knee-high socks)"), opt("thigh-high socks", "過膝襪 (Thigh-high socks)"),
+                opt("pantyhose", "黑絲襪 (Pantyhose)"), opt("fishnet tights", "網襪 (Fishnet tights)"),
+                opt("garter belt and stockings", "吊帶襪 (Garter belt and stockings)", ["sexy", "nsfw"]), opt("stockings", "絲襪 (Stockings)")
             ],
             outfitShoe: [
                 grp("休閒與運動", [
-                    opt("white sneakers", "小白鞋 (White sneakers)"),
-                    opt("sneakers", "運動鞋 (Sneakers)"),
-                    opt("canvas shoes", "帆布鞋 (Canvas shoes)"),
-                    opt("chunky dad sneakers", "老爹鞋 (Chunky dad sneakers)")
+                    opt("white sneakers", "小白鞋 (White sneakers)"), opt("sneakers", "運動鞋 (Sneakers)"),
+                    opt("canvas shoes", "帆布鞋 (Canvas shoes)"), opt("chunky dad sneakers", "老爹鞋 (Chunky dad sneakers)")
                 ]),
                 grp("平底與皮鞋", [
-                    opt("flat shoes", "平底鞋 (Flat shoes)"),
-                    opt("ballet flats", "娃娃鞋 (Ballet flats)"),
-                    opt("mary jane shoes", "瑪莉珍鞋 (Mary jane shoes)"),
-                    opt("loafers", "樂福鞋 (Loafers)"),
-                    opt("student loafers", "學生皮鞋 (Student loafers)"),
-                    opt("black school shoes", "黑色制服鞋 (Black school shoes)"),
-                    opt("oxford shoes", "牛津鞋 (Oxford shoes)"),
-                    opt("derby shoes", "德比鞋 (Derby shoes)"),
-                    opt("casual leather shoes", "休閒皮鞋 (Casual leather shoes)"),
-                    opt("uwabaki indoor shoes", "室內鞋 (Uwabaki)"),
+                    opt("flat shoes", "平底鞋 (Flat shoes)"), opt("ballet flats", "娃娃鞋 (Ballet flats)"),
+                    opt("mary jane shoes", "瑪莉珍鞋 (Mary jane shoes)"), opt("loafers", "樂福鞋 (Loafers)"),
+                    opt("student loafers", "學生皮鞋 (Student loafers)"), opt("black school shoes", "黑色制服鞋 (Black school shoes)"),
+                    opt("oxford shoes", "牛津鞋 (Oxford shoes)"), opt("derby shoes", "德比鞋 (Derby shoes)"),
+                    opt("casual leather shoes", "休閒皮鞋 (Casual leather shoes)"), opt("uwabaki indoor shoes", "室內鞋 (Uwabaki)"),
                     opt("slippers", "拖鞋 (Slippers)")
                 ]),
                 grp("高跟與涼鞋", [
-                    opt("high heels", "高跟鞋 (Heels)"),
-                    opt("stilettos", "細高跟 (Stilettos)"),
-                    opt("sandals", "涼鞋 (Sandals)")
+                    opt("high heels", "高跟鞋 (Heels)"), opt("stilettos", "細高跟 (Stilettos)"), opt("sandals", "涼鞋 (Sandals)")
                 ]),
                 grp("靴子", [
-                    opt("boots", "靴子 (Boots)"),
-                    opt("ankle boots", "短靴 (Ankle boots)"),
-                    opt("combat boots", "馬丁靴 (Combat boots)"),
-                    opt("knee-high boots", "膝下長靴 (Knee-high boots)"),
-                    opt("thigh-high boots", "過膝長靴 (Thigh-high boots)"),
-                    opt("snow boots", "毛絨雪靴 (Snow boots)"),
+                    opt("boots", "靴子 (Boots)"), opt("ankle boots", "短靴 (Ankle boots)"),
+                    opt("combat boots", "馬丁靴 (Combat boots)"), opt("knee-high boots", "膝下長靴 (Knee-high boots)"),
+                    opt("thigh-high boots", "過膝長靴 (Thigh-high boots)"), opt("snow boots", "毛絨雪靴 (Snow boots)"),
                     opt("ugg style boots", "麂皮保暖靴 (Ugg style boots)")
                 ])
             ],
             actionPose: [
                 grp("靜態姿勢 (Static)", [
-                    opt("standing", "自然站立 (Standing)"),
-                    opt("sitting", "優閒坐著 (Sitting)"),
-                    opt("sitting sideways", "側坐 (Sitting sideways)"),
-                    opt("sitting with legs together", "並腿坐 (Sit legs together)"),
-                    opt("cross-legged", "盤膝而坐 (Cross-legged)"),
-                    opt("legs crossed", "雙腿交疊/翹腳 (Legs Crossed)"),
-                    opt("hugging knees", "抱膝坐 (Hugging Knees)"),
-                    opt("squatting", "蹲著 (Squat)"),
-                    opt("squatting facing front", "正蹲 (Squatting on the front)"),
-                    opt("side squat", "側蹲 (Side squat)"),
-                    opt("kneeling", "跪姿 (Kneeling)"),
-                    opt("kneeling with hands on knees", "雙手扶膝跪姿 (Kneel with hands on knees)"),
-                    opt("standing on one leg", "單腿站立 (Standing on one Leg)"),
-                    opt("looking back", "回眸 (Looking Back)"),
-                    opt("leaning against a wall", "靠牆 (Leaning Against Wall)"),
-                    opt("casual leaning against a pillar", "隨性靠在柱子旁 (Casual leaning against a pillar)"),
-                    opt("bending over", "彎腰 (Bending Over)"),
-                    opt("arms crossed", "交叉手臂/抱胸 (Crossed arms)"),
-                    opt("hand on hip pose", "手放腰間 (Hand-on-hip pose)"),
-                    opt("resting chin on hands", "雙手托腮 (Resting Chin)"),
-                    opt("propping head with one hand", "單手托頭 (Propping Head)"),
-                    opt("hands behind head", "雙手抱頭 (Hands Behind Head)"),
-                    opt("one hand on head", "單手放頭上 (Hand on Head)"),
-                    opt("half-heart hand gesture", "單手心形手勢 (Half-Heart)")
+                    opt("standing", "自然站立 (Standing)"), opt("sitting", "優閒坐著 (Sitting)"),
+                    opt("sitting sideways", "側坐 (Sitting sideways)"), opt("sitting with legs together", "並腿坐 (Sit legs together)"),
+                    opt("cross-legged", "盤膝而坐 (Cross-legged)"), opt("legs crossed", "雙腿交疊/翹腳 (Legs Crossed)"),
+                    opt("hugging knees", "抱膝坐 (Hugging Knees)"), opt("squatting", "蹲著 (Squat)"),
+                    opt("squatting facing front", "正蹲 (Squatting on the front)"), opt("side squat", "側蹲 (Side squat)"),
+                    opt("kneeling", "跪姿 (Kneeling)"), opt("kneeling with hands on knees", "雙手扶膝跪姿 (Kneel with hands on knees)"),
+                    opt("standing on one leg", "單腿站立 (Standing on one Leg)"), opt("looking back", "回眸 (Looking Back)"),
+                    opt("leaning against a wall", "靠牆 (Leaning Against Wall)"), opt("casual leaning against a pillar", "隨性靠在柱子旁 (Casual leaning against a pillar)"),
+                    opt("bending over", "彎腰 (Bending Over)"), opt("arms crossed", "交叉手臂/抱胸 (Crossed arms)"),
+                    opt("hand on hip pose", "手放腰間 (Hand-on-hip pose)"), opt("resting chin on hands", "雙手托腮 (Resting Chin)"),
+                    opt("propping head with one hand", "單手托頭 (Propping Head)"), opt("hands behind head", "雙手抱頭 (Hands Behind Head)"),
+                    opt("one hand on head", "單手放頭上 (Hand on Head)"), opt("half-heart hand gesture", "單手心形手勢 (Half-Heart)")
                 ]),
                 grp("動態/生活 (Dynamic)", [
-                    opt("walking", "走路 (Walking)"),
-                    opt("running", "跑步 (Running)"),
-                    opt("jumping mid-air", "跳躍 (Jumping shot)"),
-                    opt("twirling", "旋轉 (Twirling pose)"),
-                    opt("stretching and yawning", "伸懶腰/打哈欠 (Stretching/Yawning)"),
-                    opt("grooming", "梳妝/整理儀容 (Grooming)"),
-                    opt("tying hair", "綁馬尾 (Tying Hair)"),
-                    opt("running fingers through hair", "撩髮/手梳頭髮 (Running Fingers Through Hair)"),
+                    opt("walking", "走路 (Walking)"), opt("running", "跑步 (Running)"),
+                    opt("jumping mid-air", "跳躍 (Jumping shot)"), opt("twirling", "旋轉 (Twirling pose)"),
+                    opt("stretching and yawning", "伸懶腰/打哈欠 (Stretching/Yawning)"), opt("grooming", "梳妝/整理儀容 (Grooming)"),
+                    opt("tying hair", "綁馬尾 (Tying Hair)"), opt("running fingers through hair", "撩髮/手梳頭髮 (Running Fingers Through Hair)"),
                     opt("head toss", "甩頭髮 (Head toss)")
                 ]),
                 grp("躺臥/特殊 (Lying)", [
-                    opt("lying supine", "仰躺 (Supine)"),
-                    opt("lying on side", "側躺 (Side Lying)"),
-                    opt("fetal position", "蜷縮 (Fetal)"),
-                    opt("lying prone", "趴著 (Prone)"),
-                    opt("reclining", "半躺/靠坐 (Reclining)"),
-                    opt("sprawled out", "隨意攤開 (Sprawled)"),
+                    opt("lying supine", "仰躺 (Supine)"), opt("lying on side", "側躺 (Side Lying)"),
+                    opt("fetal position", "蜷縮 (Fetal)"), opt("lying prone", "趴著 (Prone)"),
+                    opt("reclining", "半躺/靠坐 (Reclining)"), opt("sprawled out", "隨意攤開 (Sprawled)"),
                     opt("floor pose", "地板姿勢 (Floor pose)")
                 ]),
                 grp("性感/誘惑 (Sexy/NSFW)", [
-                    opt("leaning forward showing cleavage", "前傾 (擠溝) (Leaning Forward)", ["sexy", "nsfw"]),
-                    opt("s-curve pose", "S曲線姿勢 (S-curve pose)", ["sexy", "nsfw"]),
-                    opt("w-sitting", "鴨子坐 (W-Sitting)", ["sexy", "nsfw"]),
-                    opt("holding own breasts", "雙手托胸 (Holding Breasts)", ["sexy", "nsfw"]),
-                    opt("pulling panty strap", "拉扯內褲邊緣 (Pulling Panty Strap)", ["sexy", "nsfw"]),
-                    opt("finger touching lip", "手指觸唇 (Finger Touching Lip)", ["sexy", "nsfw"]),
-                    opt("strap slipping off shoulder", "肩帶滑落 (Strap Slipping)", ["sexy", "nsfw"]),
-                    opt("kneeling arching back", "跪姿後仰/背弓姿勢 (Kneeling Arching Back)", ["sexy", "nsfw"]),
-                    opt("crawling on all fours", "四肢著地/爬行 (Crawling)", ["sexy", "nsfw"]),
-                    opt("legs up against wall", "抬腿靠牆 (Legs Up Wall)", ["sexy", "nsfw"]),
-                    opt("sitting with legs spread open", "張開雙腿坐 (Legs Spread Open)", ["sexy", "nsfw"]),
-                    opt("hands tied behind back", "雙手被縛身後 (Hands Tied Behind Back)", ["nsfw"]),
-                    opt("playful teasing pose", "俏皮戲弄姿勢 (Playful teasing pose)", ["sexy", "nsfw"]),
-                    opt("seductive leaning on a wall", "誘人靠在牆上 (Seductive leaning on a wall)", ["sexy", "nsfw"]),
+                    opt("leaning forward showing cleavage", "前傾 (擠溝) (Leaning Forward)", ["sexy", "nsfw"]), opt("s-curve pose", "S曲線姿勢 (S-curve pose)", ["sexy", "nsfw"]),
+                    opt("w-sitting", "鴨子坐 (W-Sitting)", ["sexy", "nsfw"]), opt("holding own breasts", "雙手托胸 (Holding Breasts)", ["sexy", "nsfw"]),
+                    opt("pulling panty strap", "拉扯內褲邊緣 (Pulling Panty Strap)", ["sexy", "nsfw"]), opt("finger touching lip", "手指觸唇 (Finger Touching Lip)", ["sexy", "nsfw"]),
+                    opt("strap slipping off shoulder", "肩帶滑落 (Strap Slipping)", ["sexy", "nsfw"]), opt("kneeling arching back", "跪姿後仰/背弓姿勢 (Kneeling Arching Back)", ["sexy", "nsfw"]),
+                    opt("crawling on all fours", "四肢著地/爬行 (Crawling)", ["sexy", "nsfw"]), opt("legs up against wall", "抬腿靠牆 (Legs Up Wall)", ["sexy", "nsfw"]),
+                    opt("sitting with legs spread open", "張開雙腿坐 (Legs Spread Open)", ["sexy", "nsfw"]), opt("hands tied behind back", "雙手被縛身後 (Hands Tied Behind Back)", ["nsfw"]),
+                    opt("playful teasing pose", "俏皮戲弄姿勢 (Playful teasing pose)", ["sexy", "nsfw"]), opt("seductive leaning on a wall", "誘人靠在牆上 (Seductive leaning on a wall)", ["sexy", "nsfw"]),
                     opt("provocative silhouette in shadow", "暗影中的挑逗剪影 (Provocative silhouette)", ["sexy", "nsfw"])
                 ])
             ],
             actionActivity: [
                 grp("日常休閒", [
-                    opt("looking at viewer", "看著鏡頭 (Looking at viewer)"),
-                    opt("taking a selfie", "自拍/拍照 (Taking a Selfie)"),
-                    opt("reading a book or writing", "閱讀/書寫 (Reading/Writing)"),
-                    opt("using phone or computer", "使用手機/電腦 (Using Phone/Computer)"),
-                    opt("eating or drinking coffee", "飲食/喝咖啡 (Eating/Drinking)"),
-                    opt("listening to music", "聽音樂 (Listening to Music)"),
-                    opt("playing board games", "桌遊/趣味競賽 (Playing Board Games)"),
-                    opt("sleeping or resting", "睡覺/休息 (Sleeping/Resting)")
+                    opt("looking at viewer", "看著鏡頭 (Looking at viewer)"), opt("taking a selfie", "自拍/拍照 (Taking a Selfie)"),
+                    opt("reading a book or writing", "閱讀/書寫 (Reading/Writing)"), opt("using phone or computer", "使用手機/電腦 (Using Phone/Computer)"),
+                    opt("eating or drinking coffee", "飲食/喝咖啡 (Eating/Drinking)"), opt("listening to music", "聽音樂 (Listening to Music)"),
+                    opt("playing board games", "桌遊/趣味競賽 (Playing Board Games)"), opt("sleeping or resting", "睡覺/休息 (Sleeping/Resting)")
                 ]),
                 grp("互動交流", [
-                    opt("gazing into each other's eyes", "對坐凝視 (Gazing into Each Other's Eyes)"),
-                    opt("hand holding or hand over hand", "手部交疊/牽手 (Hand Holding/Hand Over Hand)"),
-                    opt("whispering or sharing a secret", "耳語傳遞 (Whispering/Sharing a Secret)"),
-                    opt("walking side by side", "並肩散步 (Walking Side by Side)"),
-                    opt("clinking glasses", "乾杯慶祝 (Clinking Glasses)"),
-                    opt("giving a gift or flowers", "遞送小禮物/花束 (Giving a Gift/Flowers)"),
-                    opt("sharing earphones", "分享耳機 (Sharing Earphones)"),
-                    opt("high-five or handshake", "擊掌/握手 (High-five / Handshake)"),
+                    opt("gazing into each other's eyes", "對坐凝視 (Gazing into Each Other's Eyes)"), opt("hand holding or hand over hand", "手部交疊/牽手 (Hand Holding/Hand Over Hand)"),
+                    opt("whispering or sharing a secret", "耳語傳遞 (Whispering/Sharing a Secret)"), opt("walking side by side", "並肩散步 (Walking Side by Side)"),
+                    opt("clinking glasses", "乾杯慶祝 (Clinking Glasses)"), opt("giving a gift or flowers", "遞送小禮物/花束 (Giving a Gift/Flowers)"),
+                    opt("sharing earphones", "分享耳機 (Sharing Earphones)"), opt("high-five or handshake", "擊掌/握手 (High-five / Handshake)"),
                     opt("looking at a screen together", "共同觀看螢幕 (Looking at a Screen Together)")
                 ]),
                 grp("運動與勞動", [
-                    opt("exercising or jogging", "運動流汗 (Exercising/Jogging)"),
-                    opt("dancing", "跳舞/表演 (Dancing)"),
-                    opt("cooking or meal prep", "共同烹飪/備料 (Cooking/Meal Prep)"),
-                    opt("doing chores", "做家務/打掃 (Doing Chores)"),
-                    opt("repairing or assembling", "修理/組裝東西 (Repairing/Assembling)"),
-                    opt("walking a dog or pet care", "遛狗/照顧寵物 (Walking a Dog/Pet Care)"),
-                    opt("writing on a whiteboard", "在白板上書寫 (Writing on a Whiteboard)"),
-                    opt("adjusting appearance or tie", "繫領帶或整理儀容 (Adjusting Appearance)")
+                    opt("exercising or jogging", "運動流汗 (Exercising/Jogging)"), opt("dancing", "跳舞/表演 (Dancing)"),
+                    opt("cooking or meal prep", "共同烹飪/備料 (Cooking/Meal Prep)"), opt("doing chores", "做家務/打掃 (Doing Chores)"),
+                    opt("repairing or assembling", "修理/組裝東西 (Repairing/Assembling)"), opt("walking a dog or pet care", "遛狗/照顧寵物 (Walking a Dog/Pet Care)"),
+                    opt("writing on a whiteboard", "在白板上書寫 (Writing on a Whiteboard)"), opt("adjusting appearance or tie", "繫領帶或整理儀容 (Adjusting Appearance)")
                 ])
             ],
             actionExpression: [
                 grp("可愛/甜美 (Cute/Sweet)", [
-                    opt("adorable pout", "可愛噘嘴 (Adorable Pout)"),
-                    opt("cute wink", "可愛眨眼 (Cute Wink)"),
-                    opt("sweet smile", "甜美微笑 (Sweet Smile)"),
-                    opt("playful tongue out", "俏皮吐舌 (Playful Tongue Out)"),
-                    opt("sparkling eyes", "明亮眼神 (Sparkling Eyes)"),
-                    opt("cheeky grin", "頑皮咧嘴笑 (Cheeky Grin)"),
-                    opt("kawaii blush", "可愛腮紅 (Kawaii Blush)"),
-                    opt("puppy eyes", "小狗眼 (Puppy Eyes)"),
-                    opt("innocent stare", "天真凝視 (Innocent Stare)"),
-                    opt("dreamy expression", "夢幻表情 (Dreamy Expression)"),
-                    opt("silly face", "傻氣臉 (Silly Face)"),
-                    opt("shy blush", "害羞腮紅 (Shy Blush)"),
-                    opt("gentle smile", "溫柔微笑 (Gentle Smile)"),
-                    opt("sweet smile with dimples", "梨渦淺笑 (Sweet Smile with Dimples)"),
+                    opt("adorable pout", "可愛噘嘴 (Adorable Pout)"), opt("cute wink", "可愛眨眼 (Cute Wink)"),
+                    opt("sweet smile", "甜美微笑 (Sweet Smile)"), opt("playful tongue out", "俏皮吐舌 (Playful Tongue Out)"),
+                    opt("sparkling eyes", "明亮眼神 (Sparkling Eyes)"), opt("cheeky grin", "頑皮咧嘴笑 (Cheeky Grin)"),
+                    opt("kawaii blush", "可愛腮紅 (Kawaii Blush)"), opt("puppy eyes", "小狗眼 (Puppy Eyes)"),
+                    opt("innocent stare", "天真凝視 (Innocent Stare)"), opt("dreamy expression", "夢幻表情 (Dreamy Expression)"),
+                    opt("silly face", "傻氣臉 (Silly Face)"), opt("shy blush", "害羞腮紅 (Shy Blush)"),
+                    opt("gentle smile", "溫柔微笑 (Gentle Smile)"), opt("sweet smile with dimples", "梨渦淺笑 (Sweet Smile with Dimples)"),
                     opt("shy smile", "羞澀靦腆笑容 (Shy Smile)")
                 ]),
                 grp("開心/活力 (Happy/Energetic)", [
-                    opt("heartwarming grin", "溫暖笑容 (Heartwarming Grin)"),
-                    opt("radiant glow", "光彩煥發 (Radiant Glow)"),
-                    opt("cheerful bliss", "愉快幸福 (Cheerful Bliss)"),
-                    opt("heartfelt laughter", "衷心大笑/開懷大笑 (Heartfelt Laughter)"),
-                    opt("smile with teeth", "微露齒笑 (Smile with Teeth)"),
-                    opt("bright eyes looking forward", "明亮眼神直視 (Bright Eyes)")
+                    opt("heartwarming grin", "溫暖笑容 (Heartwarming Grin)"), opt("radiant glow", "光彩煥發 (Radiant Glow)"),
+                    opt("cheerful bliss", "愉快幸福 (Cheerful Bliss)"), opt("heartfelt laughter", "衷心大笑/開懷大笑 (Heartfelt Laughter)"),
+                    opt("smile with teeth", "微露齒笑 (Smile with Teeth)"), opt("bright eyes looking forward", "明亮眼神直視 (Bright Eyes)")
                 ]),
                 grp("性感/誘惑 (Sexy/Seductive)", [
-                    opt("tempting lip biting", "誘人的咬唇 (Tempting Lip Biting)", ["sexy", "nsfw"]),
-                    opt("sultry wink", "火辣的眨眼 (Sultry Wink)", ["sexy", "nsfw"]),
-                    opt("alluring neck arch", "迷人的頸部彎曲 (Alluring Neck Arch)", ["sexy", "nsfw"]),
-                    opt("erotic whispering", "色誘的耳語 (Erotic Whispering)", ["sexy", "nsfw"]),
-                    opt("passionate eyebrow raise", "熱情的挑眉 (Passionate Eyebrow Raise)", ["sexy", "nsfw"]),
-                    opt("fiery stare", "火辣的凝視 (Fiery Stare)", ["sexy", "nsfw"]),
-                    opt("pure lust", "清純欲 (Pure Lust)", ["sexy", "nsfw"]),
-                    opt("seductive eyes", "迷離眼神 (Seductive Eyes)", ["sexy", "nsfw"]),
-                    opt("tipsy", "微醺迷離 (Tipsy)", ["sexy", "nsfw"]),
-                    opt("pouting lips", "嘟嘴 (Pouting)"),
-                    opt("luscious lips", "誘人的嘴唇 (Luscious Lips)", ["sexy", "nsfw"]),
-                    opt("slightly open mouth", "微張嘴 (Slightly Open Mouth)", ["sexy", "nsfw"])
+                    opt("tempting lip biting", "誘人的咬唇 (Tempting Lip Biting)", ["sexy", "nsfw"]), opt("sultry wink", "火辣的眨眼 (Sultry Wink)", ["sexy", "nsfw"]),
+                    opt("alluring neck arch", "迷人的頸部彎曲 (Alluring Neck Arch)", ["sexy", "nsfw"]), opt("erotic whispering", "色誘的耳語 (Erotic Whispering)", ["sexy", "nsfw"]),
+                    opt("passionate eyebrow raise", "熱情的挑眉 (Passionate Eyebrow Raise)", ["sexy", "nsfw"]), opt("fiery stare", "火辣的凝視 (Fiery Stare)", ["sexy", "nsfw"]),
+                    opt("pure lust", "清純欲 (Pure Lust)", ["sexy", "nsfw"]), opt("seductive eyes", "迷離眼神 (Seductive Eyes)", ["sexy", "nsfw"]),
+                    opt("tipsy", "微醺迷離 (Tipsy)", ["sexy", "nsfw"]), opt("pouting lips", "嘟嘴 (Pouting)"),
+                    opt("luscious lips", "誘人的嘴唇 (Luscious Lips)", ["sexy", "nsfw"]), opt("slightly open mouth", "微張嘴 (Slightly Open Mouth)", ["sexy", "nsfw"])
                 ]),
                 grp("冷酷/哀愁/其他 (Cool/Sad/Other)", [
-                    opt("serious", "嚴肅 (Serious)"),
-                    opt("deep gaze", "深情對視 (Deep Gaze)"),
-                    opt("looking away", "眼神離開鏡頭 (Looking Away)"),
-                    opt("looking up", "向上仰望 (Looking Up)"),
-                    opt("looking down", "向下俯視 (Looking Down)"),
-                    opt("cold contempt", "高冷鄙視 (Cold Contempt)"),
-                    opt("expressionless", "放空無表情 (Expressionless)"),
-                    opt("noble and aloof", "高貴疏離 (Noble & Aloof)"),
-                    opt("sad eyes", "哀愁眼神 (Sad Eyes)"),
-                    opt("eyes closed enjoying", "閉眼享受 (Eyes Closed)"),
-                    opt("face frozen red", "臉部凍紅 (Face Frozen Red)"),
-                    opt("embarrassed face", "羞恥臉紅 (Embarrassed Face)")
+                    opt("serious", "嚴肅 (Serious)"), opt("deep gaze", "深情對視 (Deep Gaze)"),
+                    opt("looking away", "眼神離開鏡頭 (Looking Away)"), opt("looking up", "向上仰望 (Looking Up)"),
+                    opt("looking down", "向下俯視 (Looking Down)"), opt("cold contempt", "高冷鄙視 (Cold Contempt)"),
+                    opt("expressionless", "放空無表情 (Expressionless)"), opt("noble and aloof", "高貴疏離 (Noble & Aloof)"),
+                    opt("sad eyes", "哀愁眼神 (Sad Eyes)"), opt("eyes closed enjoying", "閉眼享受 (Eyes Closed)"),
+                    opt("face frozen red", "臉部凍紅 (Face Frozen Red)"), opt("embarrassed face", "羞恥臉紅 (Embarrassed Face)")
                 ]),
                 grp("特殊/NSFW", [
                     opt("ahegao", "高潮臉 (Ahegao)", ["nsfw"])
@@ -1645,42 +1209,26 @@
             ],
             sceneLoc: [
                 grp("室內/居家 (Indoor)", [
-                    opt("bedroom", "臥室 (Bedroom)"),
-                    opt("cozy bed", "舒適床鋪 (Cozy Bed)"),
-                    opt("living room", "客廳 (Living Room)"),
-                    opt("leather sofa", "復古皮沙發 (Leather Sofa)"),
-                    opt("bathroom", "浴室 (Bathroom)"),
-                    opt("kitchen", "廚房 (Kitchen)"),
-                    opt("by the window", "窗邊 (Windows)"),
-                    opt("balcony", "陽台 (Balcony)")
+                    opt("bedroom", "臥室 (Bedroom)"), opt("cozy bed", "舒適床鋪 (Cozy Bed)"),
+                    opt("living room", "客廳 (Living Room)"), opt("leather sofa", "復古皮沙發 (Leather Sofa)"),
+                    opt("bathroom", "浴室 (Bathroom)"), opt("kitchen", "廚房 (Kitchen)"),
+                    opt("by the window", "窗邊 (Windows)"), opt("balcony", "陽台 (Balcony)")
                 ]),
                 grp("都市/休閒 (Urban)", [
-                    opt("city street intersection", "街道/路口 (Street/Intersection)"),
-                    opt("cafe or restaurant", "咖啡廳/餐廳 (Cafe/Restaurant)"),
-                    opt("park plaza", "公園/廣場 (Park/Plaza)"),
-                    opt("shopping mall", "商店/商場 (Shop/Mall)"),
-                    opt("public transport subway bus", "大眾運輸 (地鐵/巴士)"),
-                    opt("inside a car", "車內 (Car)"),
-                    opt("library or bookstore", "圖書館/書店 (Library/Bookstore)"),
-                    opt("entertainment venue", "娛樂場所 (電影/KTV) (Entertainment)"),
-                    opt("nightclub or bar", "夜店/酒吧 (Nightclub/Bar)"),
-                    opt("hotel room", "飯店/旅館 (Hotel)"),
-                    opt("office", "辦公室 (Office)"),
-                    opt("classroom", "教室 (Classroom)"),
-                    opt("hospital or clinic", "醫院/診所 (Hospital)"),
-                    opt("gym", "健身房 (Gym)"),
-                    opt("factory or warehouse", "工廠/倉庫 (Factory/Warehouse)"),
-                    opt("photography studio", "攝影棚 (Studio)")
+                    opt("city street intersection", "街道/路口 (Street/Intersection)"), opt("cafe or restaurant", "咖啡廳/餐廳 (Cafe/Restaurant)"),
+                    opt("park plaza", "公園/廣場 (Park/Plaza)"), opt("shopping mall", "商店/商場 (Shop/Mall)"),
+                    opt("public transport subway bus", "大眾運輸 (地鐵/巴士)"), opt("inside a car", "車內 (Car)"),
+                    opt("library or bookstore", "圖書館/書店 (Library/Bookstore)"), opt("entertainment venue", "娛樂場所 (電影/KTV) (Entertainment)"),
+                    opt("nightclub or bar", "夜店/酒吧 (Nightclub/Bar)"), opt("hotel room", "飯店/旅館 (Hotel)"),
+                    opt("office", "辦公室 (Office)"), opt("classroom", "教室 (Classroom)"),
+                    opt("hospital or clinic", "醫院/診所 (Hospital)"), opt("gym", "健身房 (Gym)"),
+                    opt("factory or warehouse", "工廠/倉庫 (Factory/Warehouse)"), opt("photography studio", "攝影棚 (Studio)")
                 ]),
                 grp("自然/戶外 (Nature)", [
-                    opt("beach", "海灘 (Beach)"),
-                    opt("swimming pool", "泳池 (Swimming Pool)"),
-                    opt("hot spring", "溫泉 (Hot Spring)"),
-                    opt("forest", "森林/樹林 (Forest)"),
-                    opt("garden or lawn", "花園/草地 (Garden/Lawn)"),
-                    opt("flower field", "雛菊/花海 (Flower Field)"),
-                    opt("mountain peak", "山頂/高處 (Mountain Peak)"),
-                    opt("snowy landscape", "雪地/冬季 (Snowy Landscape)")
+                    opt("beach", "海灘 (Beach)"), opt("swimming pool", "泳池 (Swimming Pool)"),
+                    opt("hot spring", "溫泉 (Hot Spring)"), opt("forest", "森林/樹林 (Forest)"),
+                    opt("garden or lawn", "花園/草地 (Garden/Lawn)"), opt("flower field", "雛菊/花海 (Flower Field)"),
+                    opt("mountain peak", "山頂/高處 (Mountain Peak)"), opt("snowy landscape", "雪地/冬季 (Snowy Landscape)")
                 ])
             ],
             sceneTime: [
@@ -1809,7 +1357,7 @@
         };
 
         const AppState = {
-            mode: 'clean', // 預設為清純版
+            mode: 'clean',
             db: MOCK_DB
         };
 
@@ -1987,10 +1535,8 @@
                     getF('eye-color') ? `${getF('eye-color')} eyes` : '',
                     getF('face-shape'),
                     getF('skin-type'),
-                    p.c('effect-damp-hair') ? 'noticeably damp hair' : '',
-                    p.c('effect-wet-skin') ? 'wet skin, sweating' : '',
-                    p.v('body-height'),
-                    p.v('body-type')
+                    getF('body-height'),
+                    getF('body-type')
                 ].filter(s => s && s.length > 1);
                 
                 let makeup = [getF('makeup-base'), getF('makeup-detail-1')].filter(Boolean);
@@ -2040,6 +1586,22 @@
                     p.v('scene-props') ? [getF('scene-props-detail'), getF('scene-props')].filter(Boolean).join(" ") : getF('scene-props')
                 ].filter(s => s && s.trim() !== '');
                 if(env.length) parts.push(env.join(", "));
+
+                let texEffects = [
+                    p.c('effect-damp-hair') ? document.getElementById('effect-damp-hair').value : '',
+                    p.c('effect-steamy') ? document.getElementById('effect-steamy').value : '',
+                    p.c('effect-showered') ? document.getElementById('effect-showered').value : '',
+                    p.c('effect-oily') ? document.getElementById('effect-oily').value : '',
+                    p.c('effect-rain') ? document.getElementById('effect-rain').value : '',
+                    p.c('effect-sweaty') ? document.getElementById('effect-sweaty').value : '',
+                    p.c('effect-underwater') ? document.getElementById('effect-underwater').value : '',
+                    p.c('effect-glitter') ? document.getElementById('effect-glitter').value : '',
+                    p.c('effect-frost') ? document.getElementById('effect-frost').value : '',
+                    p.c('effect-goosebumps') ? document.getElementById('effect-goosebumps').value : '',
+                    p.c('effect-flush') ? document.getElementById('effect-flush').value : '',
+                    p.c('effect-glow') ? document.getElementById('effect-glow').value : ''
+                ].filter(Boolean);
+                if(texEffects.length) parts.push(texEffects.join(", "));
 
                 if (AppState.mode === 'sexy') {
                     parts.push("emphasizing her feminine silhouette");
@@ -2201,7 +1763,7 @@
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `WardrobeMaster_Bookmarks_${new Date().toISOString().slice(0,10)}.json`;
+                a.download = `Bookmarks_${new Date().toISOString().slice(0,10)}.json`;
                 a.click();
                 URL.revokeObjectURL(url);
                 UI.toast("書籤已匯出");
@@ -2250,6 +1812,18 @@
                     bustWarn.classList.add('hidden');
                     Array.from(bustContainer.querySelectorAll('select, input')).forEach(s => s.classList.remove('opacity-30', 'pointer-events-none'));
                 }
+                
+                document.querySelectorAll('.texture-cb').forEach(el => {
+                    const tags = el.getAttribute('data-tags');
+                    if (tags && !tags.includes(mode)) {
+                        el.classList.add('hidden');
+                        const cb = el.querySelector('input[type="checkbox"]');
+                        if(cb) cb.checked = false;
+                    } else {
+                        el.classList.remove('hidden');
+                        el.style.display = 'flex'; 
+                    }
+                });
 
                 Database.populateAll();
                 PromptEngine.build();
@@ -2338,18 +1912,6 @@
                             }
                         });
                     }, { root: container, rootMargin: "-20% 0px -80% 0px" });
-                    
-                    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
-                } else {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.replace('tab-active', 'tab-inactive'));
-                                const btn = document.getElementById(`btn-${entry.target.id}`);
-                                if(btn) btn.classList.replace('tab-inactive', 'tab-active');
-                            }
-                        });
-                    }, { rootMargin: "-20% 0px -80% 0px" });
                     
                     document.querySelectorAll('section').forEach(sec => observer.observe(sec));
                 }
