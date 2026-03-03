@@ -235,7 +235,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
                         <div>
                             <label class="field-label"><i class="fas fa-birthday-cake"></i> 年齡 (Age)</label>
                             <select id="char-age" class="input-field w-full px-3 py-2 text-sm"></select>
@@ -247,6 +247,11 @@
                         <div>
                             <label class="field-label text-theme"><i class="fas fa-shapes"></i> 體態 (Type)</label>
                             <select id="body-type" class="input-field w-full px-3 py-2 text-sm"></select>
+                        </div>
+                        <div>
+                            <label class="field-label text-theme"><i class="fas fa-briefcase"></i> 職業 (Profession)</label>
+                            <select id="char-profession" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                            <input type="text" id="char-profession-custom" placeholder="自訂職業..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                         </div>
                     </div>
 
@@ -466,8 +471,43 @@
                         <h2 class="text-lg md:text-xl font-bold text-main flex items-center"><i class="fas fa-map-marked-alt mr-3 text-theme"></i>場景與氛圍</h2>
                     </div>
 
-                    <div class="bg-[var(--theme-glow)] border border-theme p-4 rounded-[8px] transition-all duration-300">
-                        <label class="field-label text-theme mb-3"><i class="fas fa-wand-magic-sparkles"></i> 質感疊加 (Texture Overlay)</label>
+                    <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="field-label">地點 (Location)</label>
+                                <select id="scene-loc" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="scene-loc-custom" placeholder="自訂地點細節..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label">時間 (Time)</label>
+                                <select id="scene-time" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="scene-time-custom" placeholder="自訂時間..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label">環境裝飾 (Props)</label>
+                                <select id="scene-props" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="scene-props-custom" placeholder="自訂裝飾..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label">裝飾細節 (Detail)</label>
+                                <select id="scene-props-detail" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="scene-props-detail-custom" placeholder="自訂細節..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label">天氣 (Weather)</label>
+                                <select id="scene-weather" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="scene-weather-custom" placeholder="自訂天氣..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label">光影 (Lighting)</label>
+                                <select id="scene-lighting" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="scene-lighting-custom" placeholder="自訂光影..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
+                        <label class="field-label text-theme mb-3"><i class="fas fa-layer-group"></i> 質感疊加 (Texture Overlay)</label>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 texture-container">
                             <label class="texture-cb flex items-center space-x-2 cursor-pointer bg-surface px-3 py-2 rounded-[6px] hover:bg-gray-500/10 border border-line transition" data-tags="clean,sexy,nsfw">
                                 <input type="checkbox" id="effect-damp-hair" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="noticeably damp hair, glistening wet hair texture">
@@ -517,41 +557,6 @@
                                 <input type="checkbox" id="effect-glow" class="texture-input w-4 h-4 flex-none rounded" style="accent-color: var(--theme-color);" value="bioluminescent skin, glowing veins, UV reactive body paint">
                                 <span class="text-sm text-main truncate">🧪 螢光/生物發光</span>
                             </label>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="field-label">地點 (Location)</label>
-                                <select id="scene-loc" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="scene-loc-custom" placeholder="自訂地點細節..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                            </div>
-                            <div>
-                                <label class="field-label">時間 (Time)</label>
-                                <select id="scene-time" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="scene-time-custom" placeholder="自訂時間..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                            </div>
-                            <div>
-                                <label class="field-label">環境裝飾 (Props)</label>
-                                <select id="scene-props" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="scene-props-custom" placeholder="自訂裝飾..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                            </div>
-                            <div>
-                                <label class="field-label">裝飾細節 (Detail)</label>
-                                <select id="scene-props-detail" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="scene-props-detail-custom" placeholder="自訂細節..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                            </div>
-                            <div>
-                                <label class="field-label">天氣 (Weather)</label>
-                                <select id="scene-weather" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="scene-weather-custom" placeholder="自訂天氣..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                            </div>
-                            <div>
-                                <label class="field-label">光影 (Lighting)</label>
-                                <select id="scene-lighting" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                                <input type="text" id="scene-lighting-custom" placeholder="自訂光影..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -682,7 +687,7 @@
 
     <!-- Footer -->
     <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line mt-auto">
-        v0.1.11 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+        v1.0.1 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
@@ -845,6 +850,7 @@
             populateAll: () => {
                 const mappings = {
                     'gender': 'gender', 'race': 'race', 'char-age': 'charAge', 'body-height': 'bodyHeight', 'body-type': 'bodyType',
+                    'char-profession': 'charProfession',
                     'body-bust': 'bodyBust', 'body-waist': 'bodyWaist', 'body-hip': 'bodyHip',
                     'hair-style': 'hairStyle', 'hair-color': 'hairColor',
                     'eye-color': 'eyeColor', 'face-shape': 'faceShape', 'skin-type': 'skinType',
@@ -901,7 +907,7 @@
                 let charName = p.v('char-name');
                 let gender = p.v('gender') || 'female';
                 let dna = charName ? `Analog photograph of ${charName}` : `Analog photograph`;
-                let traits = [p.v('char-age'), p.v('race'), gender].filter(Boolean).join(" ");
+                let traits = [p.v('char-age'), p.v('race'), gender, getF('char-profession')].filter(Boolean).join(" ");
                 if(traits.length > 3) dna += `, a ${traits}`;
                 parts.push(dna);
 
