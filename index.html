@@ -687,7 +687,7 @@
 
     <!-- Footer -->
     <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line mt-auto">
-        v1.0.1 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+        v1.0.4 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
@@ -907,8 +907,17 @@
                 let charName = p.v('char-name');
                 let gender = p.v('gender') || 'female';
                 let dna = charName ? `Analog photograph of ${charName}` : `Analog photograph`;
-                let traits = [p.v('char-age'), p.v('race'), gender, getF('char-profession')].filter(Boolean).join(" ");
+                
+                // 修正 1：確保職業會被正確加入
+                let traits = [p.v('char-age'), p.v('race'), gender].filter(Boolean).join(" ");
                 if(traits.length > 3) dna += `, a ${traits}`;
+                
+                // 職業因為可以很長，單獨拿出來判斷加入
+                let profession = getF('char-profession');
+                if(profession) {
+                    dna += `, ${profession}`;
+                }
+                
                 parts.push(dna);
 
                 let features = [
@@ -959,13 +968,19 @@
                     parts.push(getF('outfit-fit-physics'));
                 }
 
+                // 修正 2：優化場景與裝飾細節的邏輯
+                let scenePropsStr = getF('scene-props');
+                let scenePropsDetailStr = getF('scene-props-detail');
+                
                 let env = [
                     getF('scene-time'),
                     getF('scene-weather'),
                     getF('scene-loc'),
                     getF('scene-lighting'),
-                    p.v('scene-props') ? [getF('scene-props-detail'), getF('scene-props')].filter(Boolean).join(" ") : getF('scene-props')
+                    // 獨立處理 props 和 detail，只要有其中一個就加入
+                    [scenePropsDetailStr, scenePropsStr].filter(Boolean).join(" ")
                 ].filter(s => s && s.trim() !== '');
+                
                 if(env.length) parts.push(env.join(", "));
 
                 let texEffects = [
