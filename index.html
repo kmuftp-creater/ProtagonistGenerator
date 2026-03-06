@@ -724,7 +724,7 @@
 
     <!-- Footer -->
     <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line mt-auto">
-        v1.1.1 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+        v1.1.2 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
@@ -1029,16 +1029,17 @@
 
                 let scenePropsStr = getF('scene-props');
                 let scenePropsDetailStr = getF('scene-props-detail');
+                let combinedProps = [scenePropsDetailStr, scenePropsStr].filter(Boolean).join(" ");
                 
                 let env = [
                     getF('scene-time'),
                     getF('scene-weather'),
                     getF('scene-loc'),
-                    getF('scene-lighting'),
-                    [scenePropsDetailStr, scenePropsStr].filter(Boolean).join(" ")
+                    getF('scene-lighting')
                 ].filter(s => s && s.trim() !== '');
                 
                 if(env.length) parts.push(env.join(", "));
+                if(combinedProps) parts.push(combinedProps); // 獨立加入物件與裝飾
 
                 let texEffects = [
                     p.c('effect-damp-hair') ? document.getElementById('effect-damp-hair').value : '',
@@ -1143,16 +1144,18 @@
 
                 let scenePropsStrZh = getZhF('scene-props');
                 let scenePropsDetailStrZh = getZhF('scene-props-detail');
+                let combinedPropsZh = [scenePropsDetailStrZh, scenePropsStrZh].filter(Boolean).join("的");
                 
                 let envZh = [
                     getZhF('scene-loc') ? `在${getZhF('scene-loc')}` : '',
                     getZhF('scene-time'),
                     getZhF('scene-weather'),
-                    getZhF('scene-lighting'),
-                    [scenePropsDetailStrZh, scenePropsStrZh].filter(Boolean).join("的")
+                    getZhF('scene-lighting')
                 ].filter(s => s && s.trim() !== '');
                 
-                if(envZh.length) partsZh.push(`場景環境：${envZh.join("，")}`);
+                // 將環境氛圍與裝飾物件分開
+                if(envZh.length) partsZh.push(`場景氛圍：${envZh.join("，")}`);
+                if(combinedPropsZh) partsZh.push(`物件與裝飾：${combinedPropsZh}`);
 
                 let texEffectsZh = [
                     p.c('effect-damp-hair') ? document.getElementById('effect-damp-hair').nextElementSibling.innerText : '',
