@@ -279,53 +279,119 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                        <div>
-                            <label class="field-label"><i class="fas fa-cut"></i> 髮型 (Style)</label>
-                            <select id="hair-style" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="hair-style-custom" placeholder="自訂髮型..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                        </div>
-                        <div>
-                            <label class="field-label"><i class="fas fa-palette"></i> 髮色 (Color)</label>
-                            <select id="hair-color" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="hair-color-custom" placeholder="自訂髮色..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                        </div>
-                        <div>
-                            <label class="field-label"><i class="fas fa-eye"></i> 瞳色 (Eyes)</label>
-                            <select id="eye-color" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="eye-color-custom" placeholder="自訂瞳色..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                        </div>
-                        <div>
-                            <label class="field-label"><i class="fas fa-smile"></i> 臉型 (Face)</label>
-                            <select id="face-shape" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="face-shape-custom" placeholder="自訂臉型..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                        </div>
-                        <div>
-                            <label class="field-label"><i class="fas fa-hand-sparkles"></i> 膚質 (Skin)</label>
-                            <select id="skin-type" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="skin-type-custom" placeholder="自訂膚質..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                        </div>
-                        <div>
-                            <label class="field-label text-theme"><i class="fas fa-magic"></i> 紋身 (Tattoo)</label>
-                            <select id="body-tattoo" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="body-tattoo-custom" placeholder="自訂紋身..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
-                        </div>
-                        <div>
-                            <label class="field-label text-theme"><i class="fas fa-laugh"></i> 臉部表情 (Expression)</label>
-                            <select id="action-expression" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
-                            <input type="text" id="action-expression-custom" placeholder="自訂表情..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                    <!-- 擴充五官與毛髮區塊 -->
+                    <div class="grid grid-cols-1 gap-3 md:gap-4">
+                        <!-- 頭髮合併區塊 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div>
+                                <label class="field-label"><i class="fas fa-cut"></i> 髮型 (Style)</label>
+                                <select id="hair-style" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="hair-style-custom" placeholder="自訂髮型..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label"><i class="fas fa-palette"></i> 髮色與挑染 (Color & Dye)</label>
+                                <select id="hair-color" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="hair-color-custom" placeholder="自訂髮色/挑染..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
                         </div>
 
-                        <div class="sm:col-span-2 lg:col-span-4 bg-gray-500/5 p-3 rounded-[8px] border border-line grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- 身體特徵區塊 -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="field-label"><i class="fas fa-hand-sparkles"></i> 膚質 (Skin)</label>
+                                <select id="skin-type" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="skin-type-custom" placeholder="自訂膚質..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label text-theme"><i class="fas fa-magic"></i> 紋身 (Tattoo)</label>
+                                <select id="body-tattoo" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="body-tattoo-custom" placeholder="自訂紋身..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
+                                <label class="field-label text-theme"><i class="fas fa-laugh"></i> 臉部表情 (Expression)</label>
+                                <select id="action-expression" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="action-expression-custom" placeholder="自訂表情..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                        </div>
+
+                        <!-- 妝容區塊 -->
+                        <div class="bg-gray-500/5 p-3 rounded-[8px] border border-line grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
                                 <label class="field-label text-theme"><i class="fas fa-paint-brush"></i> 底妝 (Base)</label>
                                 <select id="makeup-base" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
                                 <input type="text" id="makeup-base-custom" placeholder="自訂底妝..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
                             </div>
                             <div>
+                                <label class="field-label text-theme"><i class="fas fa-ruler-horizontal"></i> 眉毛 (Eyebrows)</label>
+                                <select id="makeup-eyebrow" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
+                                <input type="text" id="makeup-eyebrow-custom" placeholder="自訂眉毛..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                            <div>
                                 <label class="field-label text-theme"><i class="fas fa-star"></i> 唇妝與眼妝</label>
                                 <select id="makeup-detail-1" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
                                 <input type="text" id="makeup-detail-1-custom" placeholder="自訂細節..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                            </div>
+                        </div>
+                        
+                        <!-- 全新五官細節區塊 (放置於最底) -->
+                        <div class="bg-gray-500/5 p-3 rounded-[8px] border border-line mt-2">
+                            <p class="text-xs text-theme font-bold uppercase mb-3 flex items-center"><i class="fas fa-smile-beam mr-2"></i> 五官輪廓細節</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                <div>
+                                    <label class="field-label"><i class="fas fa-smile"></i> 臉型 (Face)</label>
+                                    <select id="face-shape" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-shape-custom" placeholder="自訂臉型..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label"><i class="fas fa-eye"></i> 眼型 (Eye Shape)</label>
+                                    <select id="eye-shape" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="eye-shape-custom" placeholder="自訂眼型..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label class="field-label"><i class="fas fa-eye"></i> 瞳色與形狀 (Color & Pupil)</label>
+                                    <select id="eye-color" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="eye-color-custom" placeholder="自訂瞳色/形狀..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">額頭 (Forehead)</label>
+                                    <select id="face-forehead" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-forehead-custom" placeholder="自訂額頭..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">臉頰 (Cheeks)</label>
+                                    <select id="face-cheek" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-cheek-custom" placeholder="自訂臉頰..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">下巴 (Chin)</label>
+                                    <select id="face-chin" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-chin-custom" placeholder="自訂下巴..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">耳朵 (Ears)</label>
+                                    <select id="face-ear" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-ear-custom" placeholder="自訂耳朵..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">鼻型 (Nose Shape)</label>
+                                    <select id="face-nose-shape" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-nose-shape-custom" placeholder="自訂鼻型..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">鼻翼 (Nose Wing)</label>
+                                    <select id="face-nose-wing" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-nose-wing-custom" placeholder="自訂鼻翼..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">鼻頭 (Nose Tip)</label>
+                                    <select id="face-nose-tip" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-nose-tip-custom" placeholder="自訂鼻頭..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
+                                <div>
+                                    <label class="field-label">嘴巴 (Mouth)</label>
+                                    <select id="face-mouth" class="input-field w-full px-2 py-1.5 text-sm mb-1"></select>
+                                    <input type="text" id="face-mouth-custom" placeholder="自訂嘴巴..." class="input-field w-full px-2 py-1.5 text-xs text-muted">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -457,7 +523,7 @@
                     <div class="bg-gray-500/5 p-3 md:p-4 rounded-[8px] border border-line">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="field-label">基礎姿勢 (Pose)</label>
+                                <label class="field-label">基礎姿勢與手勢 (Pose/Gestures)</label>
                                 <select id="action-pose" class="input-field w-full px-3 py-2 text-sm mb-1"></select>
                                 <input type="text" id="action-pose-custom" placeholder="自訂姿勢..." class="input-field w-full px-2 py-1.5 text-xs text-muted mt-1">
                             </div>
@@ -724,7 +790,7 @@
 
     <!-- Footer -->
     <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line mt-auto">
-        v1.1.2 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+        v1.1.7 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
@@ -889,10 +955,15 @@
                     'gender': 'gender', 'race': 'race', 'char-age': 'charAge', 'body-height': 'bodyHeight', 'body-type': 'bodyType',
                     'char-profession': 'charProfession',
                     'body-bust': 'bodyBust', 'body-waist': 'bodyWaist', 'body-hip': 'bodyHip',
-                    'hair-style': 'hairStyle', 'hair-color': 'hairColor',
-                    'eye-color': 'eyeColor', 'face-shape': 'faceShape', 'skin-type': 'skinType',
+                    'hair-style': 'hairStyle', 
+                    'hair-color': 'hairColor', // 恢復直接讀取資料庫的 hairColor
+                    'eye-color': 'eyeColor',   // 恢復直接讀取資料庫的 eyeColor
+                    'eye-shape': 'eyeShape', 
+                    'face-forehead': 'faceForehead', 'face-cheek': 'faceCheek', 'face-chin': 'faceChin', 'face-ear': 'faceEar',
+                    'face-nose-shape': 'faceNoseShape', 'face-nose-wing': 'faceNoseWing', 'face-nose-tip': 'faceNoseTip', 'face-mouth': 'faceMouth',
+                    'face-shape': 'faceShape', 'skin-type': 'skinType',
                     'body-tattoo': 'bodyTattoo',
-                    'makeup-base': 'makeupBase', 'makeup-detail-1': 'makeupDetail',
+                    'makeup-base': 'makeupBase', 'makeup-eyebrow': 'makeupEyebrow', 'makeup-detail-1': 'makeupDetail',
                     'outfit-theme': 'outfitTheme', 'outfit-head': 'outfitHead', 'outfit-acc': 'outfitAcc',
                     'outfit-hands': 'outfitHands', 'outfit-bag': 'outfitBag', 'outfit-outer': 'outfitOuter',
                     'outfit-fit-physics': 'outfitFitPhysics',
@@ -944,8 +1015,11 @@
                     
                     if (selectEl && selectEl.selectedIndex > 0) {
                         const fullText = selectEl.options[selectEl.selectedIndex].text;
-                        // 提取括號前面的中文部分 (例如: "長直髮 (Long Straight Hair)" -> "長直髮")
                         zhText = fullText.split('(')[0].trim();
+                        // 特殊處理分隔符號 (移除「/」後面的備註)
+                        if (zhText.includes('/')) {
+                            zhText = zhText.split('/')[0].trim();
+                        }
                     }
                     
                     if (customEl && customEl.value.trim() !== '') {
@@ -977,10 +1051,40 @@
                     dna += `, ${profession}`;
                 }
                 parts.push(dna);
+                
+                // 頭髮特徵智能組合 (解決只選顏色沒有 hair 的問題)
+                let hairColorEn = getF('hair-color');
+                let hairStyleEn = getF('hair-style');
+                let hairStrEn = [hairColorEn, hairStyleEn].filter(Boolean).join(" ");
+                if (hairColorEn && !hairStyleEn && !hairColorEn.toLowerCase().includes('hair')) {
+                    hairStrEn += ' hair';
+                }
+
+                // 眼睛特徵智能判斷 (如果是選到瞳孔形狀，就不加 eyes)
+                let eyeVal = getF('eye-color');
+                let eyeStr = '';
+                if (eyeVal) {
+                    if (eyeVal.toLowerCase().includes('pupil') || eyeVal.toLowerCase().includes('iris') || eyeVal.toLowerCase().includes('void')) {
+                        eyeStr = eyeVal; 
+                    } else {
+                        eyeStr = eyeVal + ' eyes'; 
+                    }
+                }
+                let eyeParts = [
+                    eyeStr,
+                    getF('eye-shape')
+                ].filter(Boolean).join(", ");
+                
+                // 五官細節組合
+                let faceDetails = [
+                    getF('face-forehead'), getF('face-cheek'), getF('face-chin'), getF('face-ear'), 
+                    getF('face-nose-shape'), getF('face-nose-wing'), getF('face-nose-tip'), getF('face-mouth')
+                ].filter(Boolean).join(", ");
 
                 let features = [
-                    [getF('hair-color'), getF('hair-style')].filter(Boolean).join(" "),
-                    getF('eye-color') ? `${getF('eye-color')} eyes` : '',
+                    hairStrEn,
+                    eyeParts,
+                    faceDetails,
                     getF('face-shape'),
                     getF('skin-type'),
                     getF('body-height'),
@@ -988,7 +1092,7 @@
                     getF('body-tattoo')
                 ].filter(s => s && s.length > 1);
                 
-                let makeup = [getF('makeup-base'), getF('makeup-detail-1')].filter(Boolean);
+                let makeup = [getF('makeup-base'), getF('makeup-eyebrow'), getF('makeup-detail-1')].filter(Boolean);
                 if(makeup.length) features.push(makeup.join(", "));
 
                 if(getF('body-waist')) features.push(getF('body-waist'));
@@ -1089,10 +1193,41 @@
                 let traitsZh = [getZhF('char-age'), getZhF('race'), genderZh, getZhF('char-profession')].filter(Boolean).join("");
                 if(traitsZh) dnaZh += `，一位${traitsZh}`;
                 partsZh.push(dnaZh);
+                
+                // 頭髮特徵中文智能組合 (解決只選顏色沒有頭髮字眼的問題)
+                let hairColorZh = getZhF('hair-color');
+                let hairStyleZh = getZhF('hair-style');
+                let hairStrZh = [hairColorZh, hairStyleZh].filter(Boolean).join("");
+                if (hairColorZh && !hairStyleZh && !hairColorZh.includes('髮')) {
+                    hairStrZh += '頭髮';
+                }
+
+                // 眼睛特徵中文智能組合
+                let eyeValZh = getZhF('eye-color');
+                let eyeStrZh = '';
+                if (eyeValZh) {
+                    // 如果選到的是瞳孔形狀，就不加「的眼睛」
+                    if (eyeValZh.includes('瞳') || eyeValZh.includes('星')) {
+                        eyeStrZh = eyeValZh; 
+                    } else {
+                        eyeStrZh = eyeValZh + '的眼睛'; 
+                    }
+                }
+                let eyePartsZh = [
+                    eyeStrZh, 
+                    getZhF('eye-shape')
+                ].filter(Boolean).join("、");
+                
+                // 中文五官細節組合
+                let faceDetailsZh = [
+                    getZhF('face-forehead'), getZhF('face-cheek'), getZhF('face-chin'), getZhF('face-ear'), 
+                    getZhF('face-nose-shape'), getZhF('face-nose-wing'), getZhF('face-nose-tip'), getZhF('face-mouth')
+                ].filter(Boolean).join("、");
 
                 let featuresZh = [
-                    [getZhF('hair-color'), getZhF('hair-style')].filter(Boolean).join(""),
-                    getZhF('eye-color') ? `${getZhF('eye-color')}的眼睛` : '',
+                    hairStrZh,
+                    eyePartsZh,
+                    faceDetailsZh,
                     getZhF('face-shape'),
                     getZhF('skin-type'),
                     getZhF('body-height'),
@@ -1100,7 +1235,7 @@
                     getZhF('body-tattoo')
                 ].filter(s => s && s.length > 1);
                 
-                let makeupZh = [getZhF('makeup-base'), getZhF('makeup-detail-1')].filter(Boolean);
+                let makeupZh = [getZhF('makeup-base'), getZhF('makeup-eyebrow'), getZhF('makeup-detail-1')].filter(Boolean);
                 if(makeupZh.length) featuresZh.push(`妝容：${makeupZh.join("、")}`);
 
                 if(getZhF('body-waist')) featuresZh.push(getZhF('body-waist'));
