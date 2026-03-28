@@ -790,13 +790,13 @@
 
     <!-- Footer -->
     <footer class="flex-none text-center text-muted text-xs pb-4 pt-2 w-full border-t border-line mt-auto">
-        v1.1.7 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
+        v1.1.9 | &copy;2026 <a href="https://huobest.com/" target="_blank" class="text-theme hover:opacity-80 transition-colors font-bold">霍家私塾</a>
     </footer>
 
     <!-- Application Logic -->
     <script>
         // 👉 將你剛剛在 GAS 部署後獲得的「網頁應用程式網址」填入下方的雙引號中
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbwgP_TQJ3Ioi_v-kHAi0b2Mc2UaaDk7dBEIQ5UT5DvWob3RR08TKD4OAxmj8r5dBwmOHQ/exec"; 
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyNyYYjsTfUbdXF7yxGkIWU-fSVIhoFfCJXveEIZqnUXLjPaUNVzu6dxyTKEckBwmYPRA/exec"; 
 
         const AppState = {
             mode: 'clean',
@@ -866,13 +866,22 @@
                     // 1. 嘗試讀取本地快取，讓畫面能瞬間渲染不卡頓
                     const cached = localStorage.getItem('wm_db_cache');
                     if (cached) {
-                        AppState.db = JSON.parse(cached);
-                        Database.populateAll();
+                        try {
+                            AppState.db = JSON.parse(cached);
+                            if (Object.keys(AppState.db).length > 0) {
+                                Database.populateAll();
+                            }
+                        } catch (e) {
+                            console.warn("快取解析失敗，將重新獲取", e);
+                        }
                     }
 
                     // 2. 向 GAS 獲取最新資料 (背景同步更新)
                     if (GAS_URL && GAS_URL.startsWith("https://script.google.com")) {
                         const res = await fetch(GAS_URL);
+                        if (!res.ok) {
+                            throw new Error(`伺服器回應錯誤: ${res.status}`);
+                        }
                         const text = await res.text(); // 先轉成純文字，以便抓出 Google 登入擋板錯誤
                         
                         let data;
@@ -880,7 +889,7 @@
                             data = JSON.parse(text);
                         } catch (parseError) {
                             console.error("解析失敗，伺服器回傳了非 JSON 內容:", text);
-                            throw new Error("部署權限設定錯誤！請回 GAS 重新部署，並確保存取權限設為「所有人 (Anyone)」");
+                            throw new Error("部署權限設定錯誤或遭封鎖！請回 GAS 執行 testAuth 解鎖，並確認已設定為「所有人 (Anyone)」");
                         }
 
                         // 如果 GAS 腳本內部回報錯誤 (例如找不到 Data 工作表)
@@ -907,7 +916,7 @@
                     }
                 } catch (err) {
                     console.error("DB Fetch Error:", err);
-                    UI.toast(`❌ 連線失敗: ${err.message}`, "fa-times-circle");
+                    UI.toast(`❌ 連線失敗: 請確認 GAS 網址與權限設定是否正確`, "fa-times-circle");
                 }
             },
             isAllowed: (item) => {
@@ -916,8 +925,9 @@
             },
             populateSelect: (id, dataKey) => {
                 const el = document.getElementById(id);
-                const data = AppState.db[dataKey];
-                if (!el || !data) return;
+                // 防呆：確保 AppState.db 存在且 dataKey 有對應的資料
+                const data = AppState.db && AppState.db[dataKey] ? AppState.db[dataKey] : [];
+                if (!el || data.length === 0) return;
 
                 const currentVal = el.value;
                 const defaultText = el.getAttribute('data-placeholder') || '-- 無 --';
@@ -951,13 +961,16 @@
                 if(exists) el.value = currentVal;
             },
             populateAll: () => {
+                // 防呆：確保 AppState.db 已經被載入
+                if (!AppState.db || Object.keys(AppState.db).length === 0) return;
+
                 const mappings = {
                     'gender': 'gender', 'race': 'race', 'char-age': 'charAge', 'body-height': 'bodyHeight', 'body-type': 'bodyType',
                     'char-profession': 'charProfession',
                     'body-bust': 'bodyBust', 'body-waist': 'bodyWaist', 'body-hip': 'bodyHip',
                     'hair-style': 'hairStyle', 
-                    'hair-color': 'hairColor', // 恢復直接讀取資料庫的 hairColor
-                    'eye-color': 'eyeColor',   // 恢復直接讀取資料庫的 eyeColor
+                    'hair-color': 'hairColor', 
+                    'eye-color': 'eyeColor',   
                     'eye-shape': 'eyeShape', 
                     'face-forehead': 'faceForehead', 'face-cheek': 'faceCheek', 'face-chin': 'faceChin', 'face-ear': 'faceEar',
                     'face-nose-shape': 'faceNoseShape', 'face-nose-wing': 'faceNoseWing', 'face-nose-tip': 'faceNoseTip', 'face-mouth': 'faceMouth',
@@ -1013,12 +1026,15 @@
                     const selectEl = document.getElementById(id);
                     let zhText = "";
                     
-                    if (selectEl && selectEl.selectedIndex > 0) {
-                        const fullText = selectEl.options[selectEl.selectedIndex].text;
-                        zhText = fullText.split('(')[0].trim();
-                        // 特殊處理分隔符號 (移除「/」後面的備註)
-                        if (zhText.includes('/')) {
-                            zhText = zhText.split('/')[0].trim();
+                    if (selectEl && selectEl.options && selectEl.selectedIndex > 0) {
+                        const selectedOpt = selectEl.options[selectEl.selectedIndex];
+                        if (selectedOpt) {
+                            const fullText = selectedOpt.text;
+                            zhText = fullText.split('(')[0].trim();
+                            // 特殊處理分隔符號 (移除「/」後面的備註)
+                            if (zhText.includes('/')) {
+                                zhText = zhText.split('/')[0].trim();
+                            }
                         }
                     }
                     
@@ -1170,9 +1186,12 @@
                 let finalString = parts.filter(Boolean).join(". ").replace(/\s+/g, ' ').trim();
                 
                 // 加入圖片尺寸 (英文)
-                const arValue = document.getElementById('aspect-ratio')?.value;
-                if (arValue) {
-                    finalString += ` ${arValue}`;
+                const arSelectEn = document.getElementById('aspect-ratio');
+                if (arSelectEn && arSelectEn.options && arSelectEn.selectedIndex > 0) {
+                    const opt = arSelectEn.options[arSelectEn.selectedIndex];
+                    if (opt && opt.value) {
+                        finalString += ` ${opt.value}`;
+                    }
                 }
                 
                 document.getElementById('output-text').value = finalString;
@@ -1188,7 +1207,15 @@
                 ].filter(s => s && s.trim() !== '');
                 if(cameraZh.length) partsZh.push(`鏡頭與風格：${cameraZh.join("、")}`);
 
-                let genderZh = document.getElementById('gender').options[document.getElementById('gender').selectedIndex].text.split('(')[0].trim();
+                let genderZh = '';
+                const genderSelect = document.getElementById('gender');
+                if (genderSelect && genderSelect.options && genderSelect.selectedIndex >= 0) {
+                    const opt = genderSelect.options[genderSelect.selectedIndex];
+                    if (opt) {
+                        genderZh = opt.text.split('(')[0].trim();
+                    }
+                }
+
                 let dnaZh = charName ? `${charName}的照片` : `人物照片`;
                 let traitsZh = [getZhF('char-age'), getZhF('race'), genderZh, getZhF('char-profession')].filter(Boolean).join("");
                 if(traitsZh) dnaZh += `，一位${traitsZh}`;
@@ -1314,10 +1341,13 @@
                 let finalStringZh = partsZh.filter(Boolean).join("。\n").trim();
                 
                 // 加入圖片尺寸 (中文)
-                const arSelect = document.getElementById('aspect-ratio');
-                if (arSelect && arSelect.selectedIndex > 0) {
-                    const arText = arSelect.options[arSelect.selectedIndex].text.split('(')[0].trim();
-                    finalStringZh += `\n\n圖片比例：${arText}`;
+                const arSelectZh = document.getElementById('aspect-ratio');
+                if (arSelectZh && arSelectZh.options && arSelectZh.selectedIndex > 0) {
+                    const opt = arSelectZh.options[arSelectZh.selectedIndex];
+                    if (opt) {
+                        const arText = opt.text.split('(')[0].trim();
+                        finalStringZh += `\n\n圖片比例：${arText}`;
+                    }
                 }
 
                 document.getElementById('output-text-zh').value = finalStringZh;
